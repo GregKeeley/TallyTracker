@@ -11,7 +11,7 @@ import SwiftUI
 struct TallyTrackerApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TallyView(player1Score: 0, player2Score: 0)
         }
     }
 }
