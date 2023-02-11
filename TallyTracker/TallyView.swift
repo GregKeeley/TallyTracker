@@ -23,10 +23,10 @@ struct TallyView: View {
                     .font(.system(size: 148, weight: .bold))
                     .minimumScaleFactor(0.5)
                     .foregroundColor(.red.opacity(0.8))
-                    .rotationEffect(.degrees(180))
-                    .onTapGesture {
-                        player1Score += 1
-                }
+                    .rotationEffect(.degrees(90))
+            }
+            .onTapGesture {
+                player1Score += 1
             }
             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.9)
             Spacer()
@@ -40,9 +40,10 @@ struct TallyView: View {
                     .font(.system(size: 148, weight: .bold))
                     .minimumScaleFactor(0.5)
                     .foregroundColor(.blue.opacity(0.8))
-                    .onTapGesture {
-                        player2Score += 1
-                    }
+                    .rotationEffect(.degrees(90))
+            }
+            .onTapGesture {
+                player2Score += 1
             }
             .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.9)
             Spacer()
