@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-struct TallyView: View {
-    
+struct TallyViewPortrait: View {
     @State var player1Score: Int
     @State var player2Score: Int
     
@@ -23,7 +22,7 @@ struct TallyView: View {
                     .font(.system(size: 148, weight: .bold))
                     .minimumScaleFactor(0.5)
                     .foregroundColor(.red.opacity(0.8))
-                    .rotationEffect(.degrees(90))
+//                    .rotationEffect(.degrees(90))
             }
             .onTapGesture {
                 player1Score += 1
@@ -40,7 +39,7 @@ struct TallyView: View {
                     .font(.system(size: 148, weight: .bold))
                     .minimumScaleFactor(0.5)
                     .foregroundColor(.blue.opacity(0.8))
-                    .rotationEffect(.degrees(90))
+//                    .rotationEffect(.degrees(90))
             }
             .onTapGesture {
                 player2Score += 1
@@ -55,6 +54,6 @@ struct TallyView: View {
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TallyView(player1Score: 3, player2Score: 2)
+        TallyViewPortrait(player1Score: 5, player2Score: 7)
     }
 }

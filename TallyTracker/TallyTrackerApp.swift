@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct TallyTrackerApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            TallyView(player1Score: 0, player2Score: 0)
+            MainTallyContentView(player1Score: 0, player2Score: 0)
         }
     }
 }
