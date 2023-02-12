@@ -40,13 +40,22 @@ struct MainTallyContentView: View {
             } else if orientation.isLandscape {
                 TallyViewLandscape(player1Score: player1Score, player2Score: player2Score)
             } else if orientation.isFlat {
-                Text("Flat")
+                TallyViewLandscape(player1Score: player1Score, player2Score: player2Score)
             } else {
                 Text("Unknown")
             }
         }
         .onRotate { newOrientation in
             orientation = newOrientation
+        }
+        .onAppear {
+            if let scene = UIApplication.shared.connectedScenes.first,
+                let sceneDelegate = scene as? UIWindowScene,
+               sceneDelegate.interfaceOrientation.isPortrait {
+                orientation = .portrait
+            } else {
+                orientation = .landscapeLeft
+            }
         }
     }
     

@@ -12,40 +12,46 @@ struct TallyViewLandscape: View {
     @State var player2Score: Int
     
     var body: some View {
-        HStack {
-            Spacer()
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke()
-                    .foregroundColor(.red.opacity(0.8))
-                Text(player1Score.description)
-                    .font(.system(size: 148, weight: .bold))
-                    .minimumScaleFactor(0.5)
-                    .foregroundColor(.red.opacity(0.8))
+        
+        ZStack {
+            Text("LANDSCAPE")
+                .font(.system(size: 72, weight: .bold))
+            HStack {
+                Spacer()
+                ZStack {
+                    
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke()
+                        .foregroundColor(.red.opacity(0.8))
+                    Text(player1Score.description)
+                        .font(.system(size: 148, weight: .bold))
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(.red.opacity(0.8))
+                }
+                .onTapGesture {
+                    player1Score += 1
+                }
+                .frame(width: UIScreen.main.bounds.height * 0.9, height: UIScreen.main.bounds.height * 0.9)
+                Spacer()
+                Divider()
+                Spacer()
+                ZStack {
+                    RoundedRectangle(cornerRadius: 8)
+                        .stroke()
+                        .foregroundColor(.blue.opacity(0.8))
+                    Text(player2Score.description)
+                        .font(.system(size: 148, weight: .bold))
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(.blue.opacity(0.8))
+                }
+                .onTapGesture {
+                    player2Score += 1
+                }
+                .frame(width: UIScreen.main.bounds.height * 0.9, height: UIScreen.main.bounds.height * 0.9)
+                Spacer()
             }
-            .onTapGesture {
-                player1Score += 1
-            }
-            .frame(width: UIScreen.main.bounds.height * 0.9, height: UIScreen.main.bounds.height * 0.9)
-            Spacer()
-            Divider()
-            Spacer()
-            ZStack {
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke()
-                    .foregroundColor(.blue.opacity(0.8))
-                Text(player2Score.description)
-                    .font(.system(size: 148, weight: .bold))
-                    .minimumScaleFactor(0.5)
-                    .foregroundColor(.blue.opacity(0.8))
-            }
-            .onTapGesture {
-                player2Score += 1
-            }
-            .frame(width: UIScreen.main.bounds.height * 0.9, height: UIScreen.main.bounds.height * 0.9)
-            Spacer()
+            .padding()
         }
-        .padding()
     }
 }
 
