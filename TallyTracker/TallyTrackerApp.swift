@@ -12,7 +12,7 @@ struct TallyTrackerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TallyViewPortrait(player1Score: 0, player2Score: 0)
+            MainTallyView(player1Score: 0, player2Score: 0)
         }
     }
 }

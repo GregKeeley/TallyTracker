@@ -8,21 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		370A87802997E68D00CAB1E2 /* TallyTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A877F2997E68D00CAB1E2 /* TallyTrackerApp.swift */; };
-		370A87822997E68D00CAB1E2 /* TallyViewPortrait.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A87812997E68D00CAB1E2 /* TallyViewPortrait.swift */; };
+		370A87822997E68D00CAB1E2 /* MainTallyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A87812997E68D00CAB1E2 /* MainTallyView.swift */; };
 		370A87842997E68E00CAB1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370A87832997E68E00CAB1E2 /* Assets.xcassets */; };
 		370A87872997E68E00CAB1E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370A87862997E68E00CAB1E2 /* Preview Assets.xcassets */; };
 		370A878E2999669C00CAB1E2 /* TallyViewLandscape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A878D2999669C00CAB1E2 /* TallyViewLandscape.swift */; };
 		370A8790299966B800CAB1E2 /* MainTallyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A878F299966B800CAB1E2 /* MainTallyContentView.swift */; };
+		376C48D8299AEBD100801CBA /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48D7299AEBD100801CBA /* ViewModifiers.swift */; };
+		376C48DA299AEBE900801CBA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48D9299AEBE900801CBA /* ViewExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		370A877C2997E68D00CAB1E2 /* TallyTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TallyTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		370A877F2997E68D00CAB1E2 /* TallyTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyTrackerApp.swift; sourceTree = "<group>"; };
-		370A87812997E68D00CAB1E2 /* TallyViewPortrait.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyViewPortrait.swift; sourceTree = "<group>"; };
+		370A87812997E68D00CAB1E2 /* MainTallyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTallyView.swift; sourceTree = "<group>"; };
 		370A87832997E68E00CAB1E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		370A87862997E68E00CAB1E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		370A878D2999669C00CAB1E2 /* TallyViewLandscape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyViewLandscape.swift; sourceTree = "<group>"; };
 		370A878F299966B800CAB1E2 /* MainTallyContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTallyContentView.swift; sourceTree = "<group>"; };
+		376C48D7299AEBD100801CBA /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
+		376C48D9299AEBE900801CBA /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +60,11 @@
 			isa = PBXGroup;
 			children = (
 				370A877F2997E68D00CAB1E2 /* TallyTrackerApp.swift */,
-				370A87812997E68D00CAB1E2 /* TallyViewPortrait.swift */,
+				370A87812997E68D00CAB1E2 /* MainTallyView.swift */,
 				370A878D2999669C00CAB1E2 /* TallyViewLandscape.swift */,
 				370A878F299966B800CAB1E2 /* MainTallyContentView.swift */,
+				376C48D7299AEBD100801CBA /* ViewModifiers.swift */,
+				376C48D9299AEBE900801CBA /* ViewExtension.swift */,
 				370A87832997E68E00CAB1E2 /* Assets.xcassets */,
 				370A87852997E68E00CAB1E2 /* Preview Content */,
 			);
@@ -143,7 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				370A87822997E68D00CAB1E2 /* TallyViewPortrait.swift in Sources */,
+				376C48DA299AEBE900801CBA /* ViewExtension.swift in Sources */,
+				376C48D8299AEBD100801CBA /* ViewModifiers.swift in Sources */,
+				370A87822997E68D00CAB1E2 /* MainTallyView.swift in Sources */,
 				370A87802997E68D00CAB1E2 /* TallyTrackerApp.swift in Sources */,
 				370A8790299966B800CAB1E2 /* MainTallyContentView.swift in Sources */,
 				370A878E2999669C00CAB1E2 /* TallyViewLandscape.swift in Sources */,

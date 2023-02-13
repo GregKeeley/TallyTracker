@@ -7,22 +7,19 @@
 
 import SwiftUI
 
-struct TallyViewPortrait: View {
+struct MainTallyView: View {
     
     @State var player1Score: Int
-    
     @State var player2Score: Int
-    
-    @State private var orientation = UIDeviceOrientation.unknown
+    @State private var orientation = UIDevice.current.orientation
     
     
     var body: some View {
         ZStack {
-            Text("Portrait")
-                .font(.system(size: 72, weight: .bold))
             VStack {
                 Spacer()
                 ZStack {
+                    Color.clear
                     RoundedRectangle(cornerRadius: 8)
                         .stroke()
                         .foregroundColor(.red.opacity(0.8))
@@ -40,6 +37,7 @@ struct TallyViewPortrait: View {
                 Divider()
                 Spacer()
                 ZStack {
+                    Color.clear
                     RoundedRectangle(cornerRadius: 8)
                         .stroke()
                         .foregroundColor(.blue.opacity(0.8))
@@ -57,12 +55,13 @@ struct TallyViewPortrait: View {
             }
             .padding()
         }
+        .onRotate($orientation)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        TallyViewPortrait(player1Score: 5, player2Score: 7)
+        MainTallyView(player1Score: 5, player2Score: 7)
     }
 }
