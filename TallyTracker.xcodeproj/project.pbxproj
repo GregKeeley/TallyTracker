@@ -15,6 +15,7 @@
 		370A8790299966B800CAB1E2 /* MainTallyContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A878F299966B800CAB1E2 /* MainTallyContentView.swift */; };
 		376C48D8299AEBD100801CBA /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48D7299AEBD100801CBA /* ViewModifiers.swift */; };
 		376C48DA299AEBE900801CBA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48D9299AEBE900801CBA /* ViewExtension.swift */; };
+		376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48DB299AF2FA00801CBA /* TallyButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		370A878F299966B800CAB1E2 /* MainTallyContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTallyContentView.swift; sourceTree = "<group>"; };
 		376C48D7299AEBD100801CBA /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
 		376C48D9299AEBE900801CBA /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		376C48DB299AF2FA00801CBA /* TallyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				370A877F2997E68D00CAB1E2 /* TallyTrackerApp.swift */,
 				370A87812997E68D00CAB1E2 /* MainTallyView.swift */,
+				376C48DB299AF2FA00801CBA /* TallyButtonView.swift */,
 				370A878D2999669C00CAB1E2 /* TallyViewLandscape.swift */,
 				370A878F299966B800CAB1E2 /* MainTallyContentView.swift */,
 				376C48D7299AEBD100801CBA /* ViewModifiers.swift */,
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */,
 				376C48DA299AEBE900801CBA /* ViewExtension.swift in Sources */,
 				376C48D8299AEBD100801CBA /* ViewModifiers.swift in Sources */,
 				370A87822997E68D00CAB1E2 /* MainTallyView.swift in Sources */,
