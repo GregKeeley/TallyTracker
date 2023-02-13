@@ -22,7 +22,8 @@ struct TallyButtonView: View {
                 .font(.system(size: 148, weight: .bold))
                 .minimumScaleFactor(0.5)
                 .foregroundColor(color.opacity(0.8))
-                .rotationEffect(UIDevice.current.orientation == .portrait ? .degrees(0) : (UIDevice.current.orientation.rawValue == 3 ? .degrees(90) : .degrees(-90)))
+                //
+                .rotationEffect(orientation == .portrait ? .degrees(0) : (UIDevice.current.orientation.rawValue == 3 ? .degrees(90) : .degrees(-90)))
         }
         .contentShape(RoundedRectangle(cornerRadius: 8))
         .onTapGesture {
