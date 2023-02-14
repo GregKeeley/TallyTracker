@@ -20,9 +20,6 @@ struct TallyButtonView: View {
                     
                     HStack {
                         ZStack {
-//                            RoundedRectangle(cornerRadius: 8)
-//                                .foregroundColor(color.opacity(0.8))
-//                                .frame(height: 48)
 //                            Text(playerName)
 //                                .font(.system(size: 32, weight: .regular))
 //                                .frame(maxWidth: .infinity)
