@@ -8,31 +8,18 @@
 import SwiftUI
 
 struct MainMenuOrientationView: View {
-    @State var orientation = UIDevice.current.orientation
-
-        let orientationChanged = NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)
-            .makeConnectable()
-            .autoconnect()
+    
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
+    
     var body: some View {
         ZStack {
-            if orientation == .portrait {
+            if heightSizeClass == .regular && widthSizeClass == .compact {
                 MainMenuView()
             } else {
                 MainMenuViewLandScape()
             }
-            if orientation.isLandscape {
-                            Text("LANDSCAPE")
-                        } else {
-                            Text("PORTRAIT")
-                        }
         }
-        .onAppear {
-            orientation = UIDevice.current.orientation
-        }
-        .onReceive(orientationChanged) { _ in
-                    self.orientation = UIDevice.current.orientation
-                }
-        .onRotate($orientation)
     }
 }
 
