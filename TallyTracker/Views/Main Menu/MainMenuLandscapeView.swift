@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-// TODO: Rename this to MainMenuLandscapeView
-struct MainMenuViewLandScape: View {
+struct MainMenuLandscapeView: View {
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -56,7 +55,7 @@ struct MainMenuViewLandScape: View {
 
 struct MainMenuViewLandScape_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuViewLandScape()
+        MainMenuLandscapeView()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

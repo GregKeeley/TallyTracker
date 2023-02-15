@@ -7,8 +7,7 @@
 
 import SwiftUI
 
-// TODO: Rename this to GameTallyView
-struct MainTallyView: View {
+struct GameTallyView: View {
     
     @State var player1Score: Int
     
@@ -35,6 +34,6 @@ struct MainTallyView: View {
 struct ContentView_Previews: PreviewProvider {
     
     static var previews: some View {
-        MainTallyView(player1Score: 5, player2Score: 7)
+        GameTallyView(player1Score: 5, player2Score: 7)
     }
 }

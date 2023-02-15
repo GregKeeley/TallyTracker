@@ -8,7 +8,7 @@
 import SwiftUI
 
 // TODO: Rename this to MainMenuPortraitView
-struct MainMenuView: View {
+struct MainMenuPortraitView: View {
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -57,6 +57,6 @@ struct MainMenuView: View {
 
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuView()
+        MainMenuPortraitView()
     }
 }

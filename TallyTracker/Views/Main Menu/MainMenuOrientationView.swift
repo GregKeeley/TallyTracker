@@ -17,9 +17,9 @@ struct MainMenuOrientationView: View {
     var body: some View {
         ZStack {
             if heightSizeClass == .regular {
-                MainMenuView()
+                MainMenuPortraitView()
             } else if heightSizeClass == .compact {
-                MainMenuViewLandScape()
+                MainMenuLandscapeView()
             }
         }
     }
