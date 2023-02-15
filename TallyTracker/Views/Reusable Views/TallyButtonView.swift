@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct TallyButtonView: View {
-    @StateObject var viewModel: GameViewModel
-    @State var playerScore: Int
-    @State var color: Color
-    @State var playerName: String
+    @StateObject var viewModel: TallyButtonViewModel
     
     var body: some View {
         GeometryReader { geo in
@@ -33,18 +30,18 @@ struct TallyButtonView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(lineWidth: 2)
                     .padding(8)
-                    .foregroundColor(color.opacity(0.8))
-                Text(playerScore.description)
+                    .foregroundColor(viewModel.color.opacity(0.8))
+                Text(viewModel.playerScore.description)
                     .font(.system(size: 148, weight: .bold))
                     .minimumScaleFactor(0.5)
-                    .foregroundColor(color.opacity(0.8))
+                    .foregroundColor(viewModel.color.opacity(0.8))
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
-                playerScore += 1
+                viewModel.playerScore += 1
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
-                playerScore -= 1
+                viewModel.playerScore -= 1
             })
         }
     }
@@ -54,9 +51,9 @@ struct TallyButtonView: View {
 
 
 struct TallyButton_Previews: PreviewProvider {
-    static let viewModel = GameViewModel(serveLimit: 11)
+    static let viewModel = TallyButtonViewModel(color: .red, playerName: "Greg", playerScore: 5)
     static var previews: some View {
-        TallyButtonView(viewModel: viewModel, playerScore: 5, color: .green, playerName: "Gregory")
+        TallyButtonView(viewModel: viewModel)
             .frame(width: 400, height: 400)
             .previewLayout(.sizeThatFits)
     }

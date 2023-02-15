@@ -32,11 +32,12 @@ struct MainMenuLandscapeView: View {
                 VStack {
                     HStack {
                         NavigationLink {
-                            
+                            GameTallyView(viewModel: GameViewModel(serveLimit: 11))
                         } label: {
                             MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 11))
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
+                        .isDetailLink(false)
                         Spacer(minLength: 40)
                         NavigationLink {
                             

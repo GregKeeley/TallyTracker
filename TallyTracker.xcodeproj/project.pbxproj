@@ -17,6 +17,7 @@
 		375A11BD299C517100830277 /* MainMenuLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BC299C517100830277 /* MainMenuLandscapeView.swift */; };
 		376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48DB299AF2FA00801CBA /* TallyButtonView.swift */; };
 		37D9FFEC299D8D31009E6729 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9FFEB299D8D31009E6729 /* GameViewModel.swift */; };
+		37D9FFF2299D9B1C009E6729 /* TallyButtonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9FFF1299D9B1C009E6729 /* TallyButtonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		375A11BC299C517100830277 /* MainMenuLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuLandscapeView.swift; sourceTree = "<group>"; };
 		376C48DB299AF2FA00801CBA /* TallyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonView.swift; sourceTree = "<group>"; };
 		37D9FFEB299D8D31009E6729 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		37D9FFF1299D9B1C009E6729 /* TallyButtonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				37D9FFEB299D8D31009E6729 /* GameViewModel.swift */,
+				37D9FFF1299D9B1C009E6729 /* TallyButtonViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -191,6 +194,7 @@
 				375A11B9299C484900830277 /* MainMenuGameButtonView.swift in Sources */,
 				375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */,
 				375A11B7299C468400830277 /* MainMenuPortraitView.swift in Sources */,
+				37D9FFF2299D9B1C009E6729 /* TallyButtonViewModel.swift in Sources */,
 				376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */,
 				370A87822997E68D00CAB1E2 /* GameTallyView.swift in Sources */,
 				37D9FFEC299D8D31009E6729 /* GameViewModel.swift in Sources */,

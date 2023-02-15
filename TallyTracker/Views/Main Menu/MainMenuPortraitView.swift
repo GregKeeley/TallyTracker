@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-// TODO: Rename this to MainMenuPortraitView
 struct MainMenuPortraitView: View {
+// TODO: Rename this to MainMenuPortraitView
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
@@ -35,16 +35,17 @@ struct MainMenuPortraitView: View {
                 Spacer()
                 HStack {
                     VStack {
-                        NavigationLink {
-                            
-                        } label: {
+                        NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 11))) {
                             MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 11))
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
+                        .isDetailLink(false)
                         Spacer(minLength: 40)
                         NavigationLink {
                             
                         } label: {
                             MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 11))
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
                     .frame(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.height * 0.3)
