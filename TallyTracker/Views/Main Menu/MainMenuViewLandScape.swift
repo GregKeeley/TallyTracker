@@ -1,5 +1,5 @@
 //
-//  MainMenuView.swift
+//  MainMenuViewLandScape.swift
 //  TallyTracker
 //
 //  Created by Gregory Keeley on 2/14/23.
@@ -7,13 +7,22 @@
 
 import SwiftUI
 
-struct MainMenuView: View {
+// TODO: Rename this to MainMenuLandscapeView
+struct MainMenuViewLandScape: View {
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack {
             VStack {
+                Spacer()
                 HStack {
+                    Spacer()
+                    Text("Logo")
+                        .font(.system(size: 48, weight: .bold))
+                        .frame(maxWidth: UIScreen.main.bounds.size.width * 0.17)
+                        .background(colorScheme == .dark ? .black : .white)
+                        .ignoresSafeArea()
+                        .colorInvert()
                     Spacer()
                     Image(systemName: "gear")
                         .resizable()
@@ -21,19 +30,8 @@ struct MainMenuView: View {
                     .padding(.trailing)
                 }
                 Spacer()
-                HStack {
-                    Spacer()
-                    Text("Logo")
-                        .font(.system(size: 48, weight: .bold))
-                        .frame(maxWidth: UIScreen.main.bounds.size.width * 0.33)
-                        .background(colorScheme == .dark ? .black : .white)
-                        .ignoresSafeArea()
-                        .colorInvert()
-                    Spacer()
-                }
-                Spacer()
-                HStack {
-                    VStack {
+                VStack {
+                    HStack {
                         MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.")
                         Spacer(minLength: 40)
                         MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.")
@@ -46,8 +44,8 @@ struct MainMenuView: View {
     }
 }
 
-struct MainMenuView_Previews: PreviewProvider {
+struct MainMenuViewLandScape_Previews: PreviewProvider {
     static var previews: some View {
-        MainMenuView()
+        MainMenuViewLandScape()
     }
 }

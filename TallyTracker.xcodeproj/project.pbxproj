@@ -15,8 +15,6 @@
 		375A11B9299C484900830277 /* MainMenuGameButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11B8299C484900830277 /* MainMenuGameButtonView.swift */; };
 		375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */; };
 		375A11BD299C517100830277 /* MainMenuViewLandScape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BC299C517100830277 /* MainMenuViewLandScape.swift */; };
-		376C48D8299AEBD100801CBA /* ViewModifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48D7299AEBD100801CBA /* ViewModifiers.swift */; };
-		376C48DA299AEBE900801CBA /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48D9299AEBE900801CBA /* ViewExtension.swift */; };
 		376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48DB299AF2FA00801CBA /* TallyButtonView.swift */; };
 		37D9FFEC299D8D31009E6729 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9FFEB299D8D31009E6729 /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
@@ -31,8 +29,6 @@
 		375A11B8299C484900830277 /* MainMenuGameButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuGameButtonView.swift; sourceTree = "<group>"; };
 		375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOrientationView.swift; sourceTree = "<group>"; };
 		375A11BC299C517100830277 /* MainMenuViewLandScape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewLandScape.swift; sourceTree = "<group>"; };
-		376C48D7299AEBD100801CBA /* ViewModifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModifiers.swift; sourceTree = "<group>"; };
-		376C48D9299AEBE900801CBA /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		376C48DB299AF2FA00801CBA /* TallyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonView.swift; sourceTree = "<group>"; };
 		37D9FFEB299D8D31009E6729 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -68,15 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				370A877F2997E68D00CAB1E2 /* TallyTrackerApp.swift */,
-				370A87812997E68D00CAB1E2 /* MainTallyView.swift */,
-				376C48DB299AF2FA00801CBA /* TallyButtonView.swift */,
-				37D9FFEB299D8D31009E6729 /* GameViewModel.swift */,
-				376C48D7299AEBD100801CBA /* ViewModifiers.swift */,
-				376C48D9299AEBE900801CBA /* ViewExtension.swift */,
-				375A11B6299C468400830277 /* MainMenuView.swift */,
-				375A11BC299C517100830277 /* MainMenuViewLandScape.swift */,
-				375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */,
-				375A11B8299C484900830277 /* MainMenuGameButtonView.swift */,
+				37D9FFF0299D92A8009E6729 /* View Models */,
+				37D9FFED299D91E2009E6729 /* Views */,
 				370A87832997E68E00CAB1E2 /* Assets.xcassets */,
 				370A87852997E68E00CAB1E2 /* Preview Content */,
 			);
@@ -89,6 +78,43 @@
 				370A87862997E68E00CAB1E2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		37D9FFED299D91E2009E6729 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				37D9FFEE299D925D009E6729 /* Main Menu */,
+				370A87812997E68D00CAB1E2 /* MainTallyView.swift */,
+				37D9FFEF299D9270009E6729 /* Reusable Views */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		37D9FFEE299D925D009E6729 /* Main Menu */ = {
+			isa = PBXGroup;
+			children = (
+				375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */,
+				375A11B6299C468400830277 /* MainMenuView.swift */,
+				375A11BC299C517100830277 /* MainMenuViewLandScape.swift */,
+			);
+			path = "Main Menu";
+			sourceTree = "<group>";
+		};
+		37D9FFEF299D9270009E6729 /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				376C48DB299AF2FA00801CBA /* TallyButtonView.swift */,
+				375A11B8299C484900830277 /* MainMenuGameButtonView.swift */,
+			);
+			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
+		37D9FFF0299D92A8009E6729 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				37D9FFEB299D8D31009E6729 /* GameViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,8 +192,6 @@
 				375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */,
 				375A11B7299C468400830277 /* MainMenuView.swift in Sources */,
 				376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */,
-				376C48DA299AEBE900801CBA /* ViewExtension.swift in Sources */,
-				376C48D8299AEBD100801CBA /* ViewModifiers.swift in Sources */,
 				370A87822997E68D00CAB1E2 /* MainTallyView.swift in Sources */,
 				37D9FFEC299D8D31009E6729 /* GameViewModel.swift in Sources */,
 				370A87802997E68D00CAB1E2 /* TallyTrackerApp.swift in Sources */,

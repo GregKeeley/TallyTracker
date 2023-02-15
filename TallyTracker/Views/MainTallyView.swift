@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: Rename this to GameTallyView
 struct MainTallyView: View {
     
     @State var player1Score: Int
@@ -28,7 +29,6 @@ struct MainTallyView: View {
             }
             .padding()
         }
-        .onRotate($orientation)
     }
 }
 
