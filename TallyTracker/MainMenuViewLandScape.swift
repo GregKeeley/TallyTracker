@@ -16,7 +16,7 @@ struct MainMenuViewLandScape: View {
                     Spacer()
                     Text("Logo")
                         .font(.system(size: 48, weight: .bold))
-                        .frame(maxWidth: UIScreen.main.bounds.size.width * 0.33)
+                        .frame(maxWidth: UIScreen.main.bounds.size.width * 0.17)
                         .background(.white)
                         .ignoresSafeArea()
                         .colorInvert()
@@ -33,7 +33,7 @@ struct MainMenuViewLandScape: View {
                         Spacer(minLength: 40)
                         MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.")
                     }
-                    .frame(width: UIScreen.main.bounds.size.height * 0.8, height: UIScreen.main.bounds.size.width * 0.3)
+                    .frame(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.height * 0.3)
                 }
                 Spacer()
             }

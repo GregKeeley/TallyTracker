@@ -14,14 +14,16 @@ struct MainMenuOrientationView: View {
     
     var body: some View {
         ZStack {
-            if heightSizeClass == .regular && widthSizeClass == .compact {
+            if heightSizeClass == .regular {
                 MainMenuView()
-            } else {
+            } else if heightSizeClass == .compact {
                 MainMenuViewLandScape()
             }
         }
     }
 }
+
+
 
 struct MainMenuOrientationView_Previews: PreviewProvider {
     static var previews: some View {
