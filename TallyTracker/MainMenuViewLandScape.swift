@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainMenuViewLandScape: View {
+    /// Stores the users current color scheme (dark/light) to determine style in the view.
+    @Environment(\.colorScheme) var colorScheme
     var body: some View {
         ZStack {
             VStack {
@@ -17,7 +19,7 @@ struct MainMenuViewLandScape: View {
                     Text("Logo")
                         .font(.system(size: 48, weight: .bold))
                         .frame(maxWidth: UIScreen.main.bounds.size.width * 0.17)
-                        .background(.white)
+                        .background(colorScheme == .dark ? .black : .white)
                         .ignoresSafeArea()
                         .colorInvert()
                     Spacer()
