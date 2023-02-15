@@ -11,6 +11,9 @@ struct MainMenuGameButtonView: View {
     
     @State var gameTitle: String
     @State var message: String
+    
+    @ObservedObject var viewModel: GameViewModel
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 8)
@@ -38,8 +41,9 @@ struct MainMenuGameButtonView: View {
 
 
 struct MainMenuGameButtonView_Previews: PreviewProvider {
+    static let viewModel = GameViewModel(serveLimit: 11)
     static var previews: some View {
-        MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.")
+        MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: viewModel)
             .previewLayout(.sizeThatFits)
     }
 }

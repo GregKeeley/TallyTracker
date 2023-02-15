@@ -32,9 +32,19 @@ struct MainMenuViewLandScape: View {
                 Spacer()
                 VStack {
                     HStack {
-                        MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.")
+                        NavigationLink {
+                            
+                        } label: {
+                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 11))
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                        }
                         Spacer(minLength: 40)
-                        MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.")
+                        NavigationLink {
+                            
+                        } label: {
+                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 11))
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                        }
                     }
                     .frame(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.height * 0.3)
                 }
@@ -47,5 +57,6 @@ struct MainMenuViewLandScape: View {
 struct MainMenuViewLandScape_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuViewLandScape()
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

@@ -35,9 +35,17 @@ struct MainMenuView: View {
                 Spacer()
                 HStack {
                     VStack {
-                        MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.")
+                        NavigationLink {
+                            
+                        } label: {
+                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 11))
+                        }
                         Spacer(minLength: 40)
-                        MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.")
+                        NavigationLink {
+                            
+                        } label: {
+                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 11))
+                        }
                     }
                     .frame(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.height * 0.3)
                 }

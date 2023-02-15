@@ -5,9 +5,12 @@
 //  Created by Gregory Keeley on 2/15/23.
 //
 
-import Foundation
+import SwiftUI
 
 class GameViewModel: ObservableObject {
+
+    @Environment(\.colorScheme) var colorScheme
+    
     /// Tracks the score of player 1.
     @Published var player1Score: Int = 0
     /// Track the score of player 2.
@@ -25,9 +28,17 @@ class GameViewModel: ObservableObject {
     @Published var scoreLimit: Int = 11
     /// Tracks when the end of the has been reached.
     @Published var gameOver: Bool = false
+    /// When to set to 'true', the user will start a game with standard rules.
+    @Published var navigateToStandardGame: Bool = false
+    /// When to set to 'true', the user will be navigated to the custome game view setup view.
+    @Published var navigateToCustomGame: Bool = false
     
     init(serveLimit: Int) {
         self.serveLimit = serveLimit
+    }
+    
+    func resetGame() {
+        
     }
     
 }
