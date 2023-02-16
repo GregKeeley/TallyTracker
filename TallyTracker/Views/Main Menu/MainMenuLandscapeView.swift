@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct MainMenuLandscapeView: View {
+    // MARK: - Properties and Variables
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
+    
+    // MARK: - Body
     var body: some View {
         ZStack {
             VStack {
@@ -52,8 +55,12 @@ struct MainMenuLandscapeView: View {
             }
         }
     }
+    
 }
 
+
+
+//MARK: - Previews
 struct MainMenuViewLandScape_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuLandscapeView()

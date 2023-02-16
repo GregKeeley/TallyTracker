@@ -20,7 +20,7 @@ struct GameTallyView: View {
                 Spacer()
                 Divider()
                 Spacer()
-                TallyButtonView(viewModel: TallyButtonViewModel(color: .red, playerName: "", playerScore: 0))
+                TallyButtonView(viewModel: TallyButtonViewModel(color: .blue, playerName: "", playerScore: 0))
                 .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.9)
                 Spacer()
             }
@@ -28,6 +28,8 @@ struct GameTallyView: View {
         }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     

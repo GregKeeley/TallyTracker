@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MainMenuPortraitView: View {
-// TODO: Rename this to MainMenuPortraitView
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack {
             VStack {
@@ -19,7 +19,7 @@ struct MainMenuPortraitView: View {
                     Image(systemName: "gear")
                         .resizable()
                         .frame(width: 28, height: 28)
-                    .padding(.trailing)
+                        .padding(.trailing)
                 }
                 Spacer()
                 HStack {
@@ -55,6 +55,8 @@ struct MainMenuPortraitView: View {
         }
     }
 }
+
+
 
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {

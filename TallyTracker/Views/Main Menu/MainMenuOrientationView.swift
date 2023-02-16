@@ -15,11 +15,13 @@ struct MainMenuOrientationView: View {
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
     
     var body: some View {
-        ZStack {
-            if heightSizeClass == .regular {
-                MainMenuPortraitView()
-            } else if heightSizeClass == .compact {
-                MainMenuLandscapeView()
+        NavigationStack() {
+            ZStack {
+                if heightSizeClass == .regular {
+                    MainMenuPortraitView()
+                } else if heightSizeClass == .compact {
+                    MainMenuLandscapeView()
+                }
             }
         }
     }
