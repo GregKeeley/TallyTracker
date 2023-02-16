@@ -15,12 +15,12 @@ struct GameTallyView: View {
         ZStack {
             VStack {
                 Spacer()
-                TallyButtonView(viewModel: TallyButtonViewModel(color: .red, playerName: "", playerScore: 0))
+                TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.player1Color, playerName: "", playerScore: 0))
                 .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.9)
                 Spacer()
                 Divider()
                 Spacer()
-                TallyButtonView(viewModel: TallyButtonViewModel(color: .blue, playerName: "", playerScore: 0))
+                TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.player2Color, playerName: "", playerScore: 0))
                 .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.9)
                 Spacer()
             }
@@ -33,7 +33,7 @@ struct GameTallyView: View {
 
 struct ContentView_Previews: PreviewProvider {
     
-    static let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11)
+    static let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue)
     
     static var previews: some View {
         GameTallyView(viewModel: viewModel)
