@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct CustomGameSetupView: View {
+    /// Stores the users current color scheme (dark/light) to determine style in the view.
+    @Environment(\.colorScheme) var colorScheme
     
-    @State var setPoints: Int = 0
-    @State var servesPerRotation: Int = 0
-    @State var gamePerMatch: Int = 0
+    @State var maxScorePerGame: Int = 11
+    @State var servesPerRotation: Int = 3
+    @State var maxGamePerMatch: Int = 1
     
     @State var player1Color = Color.red
     
@@ -34,19 +36,19 @@ struct CustomGameSetupView: View {
                     .font(.system(size: 24, weight: .bold))
                 Spacer()
                 Button {
-                    // Decrement set points
-                    if setPoints > 0 {
-                        setPoints -= 1
+                    // Decrement set points, 11 point minimum.
+                    if maxScorePerGame > 10 {
+                        maxScorePerGame -= 1
                     }
                 } label: {
                     Text("-")
                         .font(.system(size: 32, weight: .regular))
                 }
-                Text(setPoints.description)
+                Text(maxScorePerGame.description)
                     .font(.system(size: 32, weight: .regular))
                 Button {
-                    // Increment set points
-                    setPoints += 1
+                    // Increment set points, no maximum set.
+                    maxScorePerGame += 1
                 } label: {
                     Text("+")
                         .font(.system(size: 32, weight: .regular))
@@ -60,8 +62,8 @@ struct CustomGameSetupView: View {
                     .font(.system(size: 24, weight: .bold))
                 Spacer()
                 Button {
-                    // Decrement serves
-                    if servesPerRotation > 0 {
+                    // Decrement serves, only if above 3 serves.
+                    if servesPerRotation > 3 {
                         servesPerRotation -= 1
                     }
                 } label: {
@@ -71,8 +73,10 @@ struct CustomGameSetupView: View {
                 Text(servesPerRotation.description)
                     .font(.system(size: 32, weight: .regular))
                 Button {
-                    // Increment serves
-                    servesPerRotation += 1
+                    // Increment serves, max of 7.
+                    if servesPerRotation < 7 {
+                        servesPerRotation += 1
+                    }
                 } label: {
                     Text("+")
                         .font(.system(size: 32, weight: .regular))
@@ -108,19 +112,19 @@ struct CustomGameSetupView: View {
                     .font(.system(size: 24, weight: .bold))
                 Spacer()
                 Button {
-                    // Decrement serves
-                    if gamePerMatch > 0 {
-                        gamePerMatch -= 1
+                    // Decrement game per match. 1 game minimum.
+                    if maxGamePerMatch > 1 {
+                        maxGamePerMatch -= 1
                     }
                 } label: {
                     Text("-")
                         .font(.system(size: 32, weight: .regular))
                 }
-                Text(gamePerMatch.description)
+                Text(maxGamePerMatch.description)
                     .font(.system(size: 32, weight: .regular))
                 Button {
-                    // Increment serves
-                    gamePerMatch += 1
+                    // Increment games per match, mo maxiumum.
+                    maxGamePerMatch += 1
                 } label: {
                     Text("+")
                         .font(.system(size: 32, weight: .regular))
@@ -164,7 +168,23 @@ struct CustomGameSetupView: View {
                     .font(.system(size: 24, weight: .bold))
                 Spacer()
             }
-            
+            Spacer()
+            HStack {
+                Spacer()
+                NavigationLink {
+                    if servesPerRotation > 2 {
+                        GameTallyView(viewModel: GameViewModel(serveLimit: servesPerRotation, scoreLimit: maxScorePerGame))
+                    }
+                } label: {
+                    Text("BEGIN")
+                        .font(.system(size: 48, weight: .bold))
+                        .frame(maxWidth: UIScreen.main.bounds.size.width * 0.5)
+                        .background(colorScheme == .dark ? .black : .white)
+                        .ignoresSafeArea()
+                        .colorInvert()
+                }
+                Spacer()
+            }
             Spacer()
         }
     }

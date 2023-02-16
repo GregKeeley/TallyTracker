@@ -25,7 +25,7 @@ class GameViewModel: ObservableObject {
     /// This represents the max amount of serves that occur before the players switch who serves the ball.
     @Published var serveLimit: Int?
     /// This represents the score a single player needs to achieve before that player is declared the winner.
-    @Published var scoreLimit: Int = 11
+    @Published var scoreLimit: Int?
     /// Tracks when the end of the has been reached.
     @Published var gameOver: Bool = false
     /// When to set to 'true', the user will start a game with standard rules.
@@ -33,8 +33,9 @@ class GameViewModel: ObservableObject {
     /// When to set to 'true', the user will be navigated to the custome game view setup view.
     @Published var navigateToCustomGame: Bool = false
     
-    init(serveLimit: Int) {
+    init(serveLimit: Int, scoreLimit: Int) {
         self.serveLimit = serveLimit
+        self.scoreLimit = scoreLimit
     }
     
     func resetGame() {

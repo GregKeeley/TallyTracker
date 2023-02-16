@@ -33,7 +33,7 @@ struct GameTallyView: View {
 
 struct ContentView_Previews: PreviewProvider {
     
-    static let viewModel = GameViewModel(serveLimit: 11)
+    static let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11)
     
     static var previews: some View {
         GameTallyView(viewModel: viewModel)

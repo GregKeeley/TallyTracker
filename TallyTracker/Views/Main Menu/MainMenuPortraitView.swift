@@ -35,8 +35,8 @@ struct MainMenuPortraitView: View {
                 Spacer()
                 HStack {
                     VStack {
-                        NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 11))) {
-                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 11))
+                        NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11))) {
+                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11))
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                         .isDetailLink(false)
@@ -44,7 +44,8 @@ struct MainMenuPortraitView: View {
                         NavigationLink {
                             CustomGameSetupView()
                         } label: {
-                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 11))
+                            // TODO: Refactor this button view to not have a reference directly to GameViewModel.
+                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11))
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
