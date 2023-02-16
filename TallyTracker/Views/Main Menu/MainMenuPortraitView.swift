@@ -42,7 +42,7 @@ struct MainMenuPortraitView: View {
                         .isDetailLink(false)
                         Spacer(minLength: 40)
                         NavigationLink {
-                            
+                            CustomGameSetupView()
                         } label: {
                             MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 11))
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
