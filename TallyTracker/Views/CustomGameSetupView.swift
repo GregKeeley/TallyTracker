@@ -9,6 +9,10 @@ import SwiftUI
 
 struct CustomGameSetupView: View {
     
+    @State var setPoints: Int = 0
+    @State var servesPerRotation: Int = 0
+    @State var gamePerMatch: Int = 0
+    
     @State var player1Color = Color.red
     
     @State var player2Color = Color.blue
@@ -18,25 +22,34 @@ struct CustomGameSetupView: View {
     // MARK: - Body
     var body: some View {
         VStack(alignment: .leading) {
-            
+            // House Rules
             Text("House Rules")
+                .font(.system(size: 48, weight: .bold))
                 .underline()
                 .padding()
             
             // SET POINTS
             HStack {
                 Text("Set Points")
+                    .font(.system(size: 24, weight: .bold))
                 Spacer()
                 Button {
                     // Decrement set points
+                    if setPoints > 0 {
+                        setPoints -= 1
+                    }
                 } label: {
                     Text("-")
+                        .font(.system(size: 32, weight: .regular))
                 }
-                Text("0")
+                Text(setPoints.description)
+                    .font(.system(size: 32, weight: .regular))
                 Button {
                     // Increment set points
+                    setPoints += 1
                 } label: {
                     Text("+")
+                        .font(.system(size: 32, weight: .regular))
                 }
             }
             .padding()
@@ -44,17 +57,25 @@ struct CustomGameSetupView: View {
             // # of serves before rotation
             HStack {
                 Text("# of serves per rotation")
+                    .font(.system(size: 24, weight: .bold))
                 Spacer()
                 Button {
                     // Decrement serves
+                    if servesPerRotation > 0 {
+                        servesPerRotation -= 1
+                    }
                 } label: {
                     Text("-")
+                        .font(.system(size: 32, weight: .regular))
                 }
-                Text("0")
+                Text(servesPerRotation.description)
+                    .font(.system(size: 32, weight: .regular))
                 Button {
                     // Increment serves
+                    servesPerRotation += 1
                 } label: {
                     Text("+")
+                        .font(.system(size: 32, weight: .regular))
                 }
             }
             .padding()
@@ -68,14 +89,42 @@ struct CustomGameSetupView: View {
                     .padding(.leading)
                 // TODO: Replace these text strings with text fields to allow for changing of the player names.
                 Text("Player 1")
+                    .font(.system(size: 24, weight: .bold))
                     .padding(.leading)
                 Spacer()
                 ColorPicker("", selection: $player2Color)
                     .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
                     .padding(.leading)
                 Text("Player 2")
+                    .font(.system(size: 24, weight: .bold))
                     .padding(.leading)
                 Spacer()
+            }
+            .padding()
+            
+            // Games Per Match
+            HStack {
+                Text("Game Per Match")
+                    .font(.system(size: 24, weight: .bold))
+                Spacer()
+                Button {
+                    // Decrement serves
+                    if gamePerMatch > 0 {
+                        gamePerMatch -= 1
+                    }
+                } label: {
+                    Text("-")
+                        .font(.system(size: 32, weight: .regular))
+                }
+                Text(gamePerMatch.description)
+                    .font(.system(size: 32, weight: .regular))
+                Button {
+                    // Increment serves
+                    gamePerMatch += 1
+                } label: {
+                    Text("+")
+                        .font(.system(size: 32, weight: .regular))
+                }
             }
             .padding()
             
@@ -96,6 +145,7 @@ struct CustomGameSetupView: View {
                     }
                 }
                 Text("Singles")
+                    .font(.system(size: 24, weight: .bold))
                 Spacer()
                 Button {
                     singlesModeSelected.toggle()
@@ -111,25 +161,9 @@ struct CustomGameSetupView: View {
                     }
                 }
                 Text("Doubles")
+                    .font(.system(size: 24, weight: .bold))
                 Spacer()
             }
-            // Games Per Match
-            HStack {
-                Text("Game Per Match")
-                Spacer()
-                Button {
-                    // Decrement serves
-                } label: {
-                    Text("-")
-                }
-                Text("0")
-                Button {
-                    // Increment serves
-                } label: {
-                    Text("+")
-                }
-            }
-            .padding()
             
             Spacer()
         }
