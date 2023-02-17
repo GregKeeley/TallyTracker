@@ -42,7 +42,7 @@ struct GameTallyView: View {
 //MARK: - Previews
 struct ContentView_Previews: PreviewProvider {
     
-    static let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true)
+    static let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true, matchLimit: 5)
     
     static var previews: some View {
         GameTallyView(viewModel: viewModel)

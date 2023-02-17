@@ -177,7 +177,7 @@ struct CustomGameSetupView: View {
                     Spacer()
                     NavigationLink {
                         if servesPerRotation > 2 {
-                            GameTallyView(viewModel: GameViewModel(serveLimit: servesPerRotation, scoreLimit: maxScorePerGame, player1Color: player1Color, player2Color: player2Color, isTeam1Serving: true))
+                            GameTallyView(viewModel: GameViewModel(serveLimit: servesPerRotation, scoreLimit: maxScorePerGame, player1Color: player1Color, player2Color: player2Color, isTeam1Serving: true, matchLimit: 5))
                         }
                     } label: {
                         Text("BEGIN")

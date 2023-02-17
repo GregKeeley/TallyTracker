@@ -75,6 +75,7 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
+                
                 // Serve count is below or at the limit, increment count and continue.
                 if viewModel.serveCount < viewModel.serveLimit {
                     viewModel.serveCount += 1
@@ -83,12 +84,41 @@ struct TallyButtonView: View {
                     viewModel.serveCount = 1
                     viewModel.isTeam1Serving.toggle()
                 }
+                
                 // Increase score depending on which side pressed the button.
                 if isPlayerOne {
-                    viewModel.player1Score += 1
+                    // Player score is below score limit, increment player score.
+                    if viewModel.player1Score < viewModel.scoreLimit {
+                        viewModel.player1Score += 1
+                    } else {
+                        // Player 1 score has reached limit, winning the match.
+                        if viewModel.player1Wins.count < viewModel.matchLimit {
+                            // Append 'true' to player1Wins to represent a won match for player 1.
+                            viewModel.player1Wins.append(true)
+                            // Reset player scores.
+                            viewModel.player1Score = 0
+                            viewModel.player2Score = 0
+                        } else {
+                            // Game is over! Check who wins.
+                        }
+                    }
                 } else {
-                    viewModel.player2Score += 1
+                    if viewModel.player2Score < viewModel.scoreLimit {
+                        viewModel.player2Score += 1
+                    } else {
+                        // Player 2 score has reached limit, winning the match.
+                        if viewModel.player1Wins.count < viewModel.matchLimit {
+                            // Append 'false' to player1Wins to represent a lost match for player 1.
+                            // Reset player scores.
+                            viewModel.player1Wins.append(false)
+                            viewModel.player1Score = 0
+                            viewModel.player2Score = 0
+                        } else {
+                            // Game is over! Check who wins.
+                        }
+                    }
                 }
+                
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
                 // Decrement score, and serve count with a long press.
@@ -109,9 +139,9 @@ struct TallyButtonView: View {
 
 //MARK: - Previews
 struct TallyButton_Previews: PreviewProvider {
-    static let viewModel1 = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true)
+    static let viewModel1 = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true, matchLimit: 5)
     static var viewModel2: GameViewModel {
-        let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: false)
+        let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: false, matchLimit: 5)
         viewModel.team1Name = "Team1"
         viewModel.team2Name = "Greg"
         viewModel.serveCount = 3
