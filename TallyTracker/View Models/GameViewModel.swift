@@ -16,14 +16,13 @@ class GameViewModel: ObservableObject {
     /// Track the score of player 2.
     @Published var player2Score: Int = 0
     /// Store the names for player 1.
-    @Published var player1Name: String = ""
+    @Published var team1Name: String = ""
     /// Stores the name for player 2.
-    @Published var player2Name: String = ""
+    @Published var team2Name: String = ""
     /// Store the names for player 1.
-    @Published var player1Color: Color
+    @Published var team1Color: Color
     /// Stores the name for player 2.
-    @Published var player2Color: Color
-
+    @Published var team2Color: Color
     /// Tracks the current count of the serve. This will increment every time the score of the game
     /// increments until the 'serveLimit' is reached. Once this happens, the serve count will reset to zero and repeat.
     @Published var serveCount: Int = 0
@@ -41,8 +40,8 @@ class GameViewModel: ObservableObject {
     init(serveLimit: Int, scoreLimit: Int, player1Color: Color, player2Color: Color) {
         self.serveLimit = serveLimit
         self.scoreLimit = scoreLimit
-        self.player1Color = player1Color
-        self.player2Color = player2Color
+        self.team1Color = player1Color
+        self.team2Color = player2Color
     }
     
     func resetGame() {
