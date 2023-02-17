@@ -23,9 +23,9 @@ struct TallyButtonView: View {
                     .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
                 VStack {
                     HStack {
-                        ForEach(0..<viewModel.serveLimit, id: \.self) { num in
+                        ForEach(0..<viewModel.serveLimit, id: \.self) { serveLimit in
                             if viewModel.isTeam1Serving && isPlayerOne {
-                                if viewModel.serveCount > num {
+                                if viewModel.serveCount > serveLimit {
                                     Circle()
                                         .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
                                         .frame(width: geo.size.width / 16)
@@ -36,7 +36,7 @@ struct TallyButtonView: View {
                                         .frame(width: geo.size.width / 16)
                                 }
                             } else if !viewModel.isTeam1Serving && !isPlayerOne {
-                                if viewModel.serveCount > num {
+                                if viewModel.serveCount > serveLimit {
                                     Circle()
                                         .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
                                         .frame(width: geo.size.width / 16)
@@ -75,60 +75,67 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
-                
-                // Serve count is below or at the limit, increment count and continue.
-                if viewModel.serveCount < viewModel.serveLimit {
-                    viewModel.serveCount += 1
-                } else {
-                    // Serve count is above the limit, reset the count and toggle which side is serving.
-                    viewModel.serveCount = 1
-                    viewModel.isTeam1Serving.toggle()
-                }
-                
-                // Increase score depending on which side pressed the button.
-                if isPlayerOne {
-                    // Player score is below score limit, increment player score.
-                    if viewModel.player1Score < viewModel.scoreLimit {
-                        viewModel.player1Score += 1
+                if !viewModel.gameOver {
+                    // Serve count is below or at the limit, increment count and continue.
+                    if viewModel.serveCount < viewModel.serveLimit {
+                        viewModel.serveCount += 1
                     } else {
-                        // Player 1 score has reached limit, winning the match.
-                        if viewModel.player1Wins.count < viewModel.matchLimit {
-                            // Append 'true' to player1Wins to represent a won match for player 1.
-                            viewModel.player1Wins.append(true)
-                            // Reset player scores.
+                        // Serve count is above the limit, reset the count and toggle which side is serving.
+                        viewModel.serveCount = 1
+                        viewModel.isTeam1Serving.toggle()
+                    }
+                    // Increase score depending on which side pressed the button.
+                    if isPlayerOne {
+                        // Player score is below score limit, increment player score.
+                        if viewModel.player1Score < viewModel.scoreLimit {
+                            viewModel.player1Score += 1
+                        } else {
                             viewModel.player1Score = 0
                             viewModel.player2Score = 0
-                        } else {
-                            // Game is over! Check who wins.
+                            // Player 1 score has reached limit, winning the match.
+                            if let indexOfPreviousWinner = viewModel.playerWins.lastIndex(where: { $0 != .gray }) {
+                                if (indexOfPreviousWinner + 1) < viewModel.matchLimit {
+                                    viewModel.playerWins[indexOfPreviousWinner + 1] = viewModel.team1Color
+                                } else {
+                                    // Game Over. Player 1 wins.
+                                    viewModel.gameOver = true
+                                }
+                            } else {
+                                viewModel.playerWins[0] = viewModel.team1Color
+                            }
                         }
-                    }
-                } else {
-                    if viewModel.player2Score < viewModel.scoreLimit {
-                        viewModel.player2Score += 1
                     } else {
-                        // Player 2 score has reached limit, winning the match.
-                        if viewModel.player1Wins.count < viewModel.matchLimit {
-                            // Append 'false' to player1Wins to represent a lost match for player 1.
-                            // Reset player scores.
-                            viewModel.player1Wins.append(false)
+                        if viewModel.player2Score < viewModel.scoreLimit {
+                            viewModel.player2Score += 1
+                        } else {
                             viewModel.player1Score = 0
                             viewModel.player2Score = 0
-                        } else {
-                            // Game is over! Check who wins.
+                            // Player 2 score has reached limit, winning the match.
+                            if let indexOfPreviousWinner = viewModel.playerWins.lastIndex(where: { $0 != .gray }) {
+                                if (indexOfPreviousWinner + 1) < viewModel.matchLimit {
+                                    viewModel.playerWins[indexOfPreviousWinner + 1] = viewModel.team2Color
+                                } else {
+                                    // Game Over. Player 2 wins.
+                                    viewModel.gameOver = true
+                                }
+                            } else {
+                                viewModel.playerWins[0] = viewModel.team2Color
+                            }
                         }
                     }
                 }
-                
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
-                // Decrement score, and serve count with a long press.
-                if viewModel.serveCount > 1 {
-                    viewModel.serveCount -= 1
-                }
-                if isPlayerOne {
-                    viewModel.player1Score -= 1
-                } else {
-                    viewModel.player2Score -= 1
+                if !viewModel.gameOver {
+                    // Decrement score, and serve count with a long press.
+                    if viewModel.serveCount > 1 {
+                        viewModel.serveCount -= 1
+                    }
+                    if isPlayerOne {
+                        viewModel.player1Score -= 1
+                    } else {
+                        viewModel.player2Score -= 1
+                    }
                 }
             })
         }
@@ -139,9 +146,19 @@ struct TallyButtonView: View {
 
 //MARK: - Previews
 struct TallyButton_Previews: PreviewProvider {
-    static let viewModel1 = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true, matchLimit: 5)
+    static let viewModel1 = GameViewModel(serveLimit: 5,
+                                          scoreLimit: 11,
+                                          player1Color: .red,
+                                          player2Color: .blue,
+                                          isTeam1Serving: true,
+                                          matchLimit: 5)
     static var viewModel2: GameViewModel {
-        let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: false, matchLimit: 5)
+        let viewModel = GameViewModel(serveLimit: 5,
+                                      scoreLimit: 11,
+                                      player1Color: .red,
+                                      player2Color: .blue,
+                                      isTeam1Serving: false,
+                                      matchLimit: 5)
         viewModel.team1Name = "Team1"
         viewModel.team2Name = "Greg"
         viewModel.serveCount = 3

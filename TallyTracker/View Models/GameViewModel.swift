@@ -38,7 +38,13 @@ class GameViewModel: ObservableObject {
     /// Tracks when the end of the has been reached.
     @Published var gameOver: Bool = false
     ///
-    @Published var player1Wins: [Bool] = []
+    @Published var playerWins: [Color] = Array(repeating: .gray, count: 5) {
+        didSet {
+            if !playerWins.contains(.gray) {
+                gameOver = true
+            }
+        }
+    }
     /// When to set to 'true', the user will start a game with standard rules.
     @Published var navigateToStandardGame: Bool = false
     /// When to set to 'true', the user will be navigated to the custome game view setup view.

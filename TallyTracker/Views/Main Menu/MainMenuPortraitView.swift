@@ -35,9 +35,19 @@ struct MainMenuPortraitView: View {
                 Spacer()
                 HStack {
                     VStack {
-                        NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true, matchLimit: 5))) {
-                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true, matchLimit: 5))
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                        NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 5,
+                                                                                           scoreLimit: 11,
+                                                                                           player1Color: .red,
+                                                                                           player2Color: .blue,
+                                                                                           isTeam1Serving: true,
+                                                                                           matchLimit: 5))) {
+                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 5,
+                                                                                                                                                      scoreLimit: 11,
+                                                                                                                                                      player1Color: .red,
+                                                                                                                                                      player2Color: .blue,
+                                                                                                                                                      isTeam1Serving: true,
+                                                                                                                                                      matchLimit: 5))
+                                                                                                                                                      
                         }
                         .isDetailLink(false)
                         Spacer(minLength: 40)
@@ -45,7 +55,12 @@ struct MainMenuPortraitView: View {
                             CustomGameSetupView()
                         } label: {
                             // TODO: Refactor this button view to not have a reference directly to GameViewModel.
-                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true, matchLimit: 5))
+                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 5,
+                                                                                                                               scoreLimit: 11,
+                                                                                                                               player1Color: .red,
+                                                                                                                               player2Color: .blue,
+                                                                                                                               isTeam1Serving: true,
+                                                                                                                               matchLimit: 5))
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
