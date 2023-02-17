@@ -35,10 +35,10 @@ struct MainMenuLandscapeView: View {
                 VStack {
                     HStack {
                         NavigationLink {
-                            GameTallyView(viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue))
+                            GameTallyView(viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true))
                         } label: {
                             // TODO: Refactor this button view to not have a reference directly to GameViewModel.
-                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue))
+                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.", viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true))
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                         .isDetailLink(false)
@@ -46,7 +46,7 @@ struct MainMenuLandscapeView: View {
                         NavigationLink {
                             
                         } label: {
-                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue))
+                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.", viewModel: GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true))
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }

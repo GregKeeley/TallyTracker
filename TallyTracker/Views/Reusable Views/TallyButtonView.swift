@@ -11,7 +11,6 @@ struct TallyButtonView: View {
     //    @StateObject var viewModel: TallyButtonViewModel
     @ObservedObject var viewModel: GameViewModel
     @State var isPlayerOne: Bool
-    @State var isPlayerServing: Bool
     
     // MARK: - Body
     var body: some View {
@@ -25,7 +24,18 @@ struct TallyButtonView: View {
                 VStack {
                     HStack {
                         ForEach(0..<viewModel.serveLimit, id: \.self) { num in
-                            if isPlayerServing {
+                            if viewModel.isTeam1Serving && isPlayerOne {
+                                if viewModel.serveCount > num {
+                                    Circle()
+                                        .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
+                                        .frame(width: geo.size.width / 16)
+                                } else {
+                                    Circle()
+                                        .stroke()
+                                        .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
+                                        .frame(width: geo.size.width / 16)
+                                }
+                            } else if !viewModel.isTeam1Serving && !isPlayerOne {
                                 if viewModel.serveCount > num {
                                     Circle()
                                         .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
@@ -65,7 +75,15 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
-                viewModel.serveCount += 1
+                // Serve count is below or at the limit, increment count and continue.
+                if viewModel.serveCount < viewModel.serveLimit {
+                    viewModel.serveCount += 1
+                } else {
+                    // Serve count is above the limit, reset the count and toggle which side is serving.
+                    viewModel.serveCount = 1
+                    viewModel.isTeam1Serving.toggle()
+                }
+                // Increase score depending on which side pressed the button.
                 if isPlayerOne {
                     viewModel.player1Score += 1
                 } else {
@@ -73,7 +91,10 @@ struct TallyButtonView: View {
                 }
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
-                viewModel.serveCount -= 1
+                // Decrement score, and serve count with a long press.
+                if viewModel.serveCount > 1 {
+                    viewModel.serveCount -= 1
+                }
                 if isPlayerOne {
                     viewModel.player1Score -= 1
                 } else {
@@ -88,9 +109,9 @@ struct TallyButtonView: View {
 
 //MARK: - Previews
 struct TallyButton_Previews: PreviewProvider {
-    static let viewModel1 = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue)
+    static let viewModel1 = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true)
     static var viewModel2: GameViewModel {
-        let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue)
+        let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: false)
         viewModel.team1Name = "Team1"
         viewModel.team2Name = "Greg"
         viewModel.serveCount = 3
@@ -98,10 +119,10 @@ struct TallyButton_Previews: PreviewProvider {
         return viewModel
     }
     static var previews: some View {
-        TallyButtonView(viewModel: viewModel1, isPlayerOne: true, isPlayerServing: false)
+        TallyButtonView(viewModel: viewModel1, isPlayerOne: true)
             .frame(width: 400, height: 400)
             .previewLayout(.sizeThatFits)
-        TallyButtonView(viewModel: viewModel2, isPlayerOne: false, isPlayerServing: true)
+        TallyButtonView(viewModel: viewModel2, isPlayerOne: false)
             .frame(width: 400, height: 400)
             .previewLayout(.sizeThatFits)
     }

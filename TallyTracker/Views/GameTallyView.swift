@@ -19,16 +19,16 @@ struct GameTallyView: View {
         ZStack {
             if heightSizeClass == .regular {
                 VStack {
-                    TallyButtonView(viewModel: viewModel, isPlayerOne: true, isPlayerServing: true)
+                    TallyButtonView(viewModel: viewModel, isPlayerOne: true)
                     Divider()
-                    TallyButtonView(viewModel: viewModel, isPlayerOne: false, isPlayerServing: false)
+                    TallyButtonView(viewModel: viewModel, isPlayerOne: false)
                 }
                 .padding()
             } else {
                 HStack {
-                    TallyButtonView(viewModel: viewModel, isPlayerOne: true, isPlayerServing: true)
+                    TallyButtonView(viewModel: viewModel, isPlayerOne: true)
                     Divider()
-                    TallyButtonView(viewModel: viewModel, isPlayerOne: false, isPlayerServing: false)
+                    TallyButtonView(viewModel: viewModel, isPlayerOne: false)
                 }
                 .padding()
             }
@@ -42,7 +42,7 @@ struct GameTallyView: View {
 //MARK: - Previews
 struct ContentView_Previews: PreviewProvider {
     
-    static let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue)
+    static let viewModel = GameViewModel(serveLimit: 5, scoreLimit: 11, player1Color: .red, player2Color: .blue, isTeam1Serving: true)
     
     static var previews: some View {
         GameTallyView(viewModel: viewModel)

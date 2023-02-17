@@ -25,8 +25,10 @@ class GameViewModel: ObservableObject {
     @Published var team2Color: Color
     /// Tracks the current count of the serve. This will increment every time the score of the game
     /// increments until the 'serveLimit' is reached. Once this happens, the serve count will reset to zero and repeat.
-    @Published var serveCount: Int = 0
+    /// Default is set to 1, as it can never be the count '0'.
+    @Published var serveCount: Int = 1
     /// This represents the max amount of serves that occur before the players switch who serves the ball.
+    @Published var isTeam1Serving: Bool
     @Published var serveLimit: Int
     /// This represents the score a single player needs to achieve before that player is declared the winner.
     @Published var scoreLimit: Int
@@ -37,11 +39,12 @@ class GameViewModel: ObservableObject {
     /// When to set to 'true', the user will be navigated to the custome game view setup view.
     @Published var navigateToCustomGame: Bool = false
     
-    init(serveLimit: Int, scoreLimit: Int, player1Color: Color, player2Color: Color) {
+    init(serveLimit: Int, scoreLimit: Int, player1Color: Color, player2Color: Color, isTeam1Serving: Bool) {
         self.serveLimit = serveLimit
         self.scoreLimit = scoreLimit
         self.team1Color = player1Color
         self.team2Color = player2Color
+        self.isTeam1Serving = isTeam1Serving
     }
     
     func resetGame() {
