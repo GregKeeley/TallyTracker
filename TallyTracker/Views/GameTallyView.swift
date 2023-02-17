@@ -20,22 +20,22 @@ struct GameTallyView: View {
             if heightSizeClass == .regular {
                 VStack {
                     Spacer()
-                    TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.team1Color, playerName: viewModel.team1Name, playerScore: viewModel.player1Score, isPlayerOne: true))
+                    TallyButtonView(viewModel: viewModel, isPlayerOne: true)
                     Spacer()
                     Divider()
                     Spacer()
-                    TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.team2Color, playerName: viewModel.team1Name, playerScore: viewModel.player1Score, isPlayerOne: false))
+                    TallyButtonView(viewModel: viewModel, isPlayerOne: false)
                     Spacer()
                 }
                 .padding()
             } else {
                 HStack {
                     Spacer()
-                    TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.team1Color, playerName: viewModel.team2Name, playerScore: viewModel.player2Score, isPlayerOne: true))
+                    TallyButtonView(viewModel: viewModel, isPlayerOne: true)
                     Spacer()
                     Divider()
                     Spacer()
-                    TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.team2Color, playerName: viewModel.team2Name, playerScore: viewModel.player2Score, isPlayerOne: false))
+                    TallyButtonView(viewModel: viewModel, isPlayerOne: false)
                     Spacer()
                 }
                 .padding()
