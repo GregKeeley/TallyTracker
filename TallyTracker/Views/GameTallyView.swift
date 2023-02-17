@@ -72,6 +72,15 @@ struct GameTallyView: View {
                 .padding()
             }
         }
+        .alert(isPresented: $viewModel.gameOver) {
+            let primaryButton = Alert.Button.default(Text("Confirm")) {
+                viewModel.resetGame()
+            }
+            let secondaryButton = Alert.Button.cancel(Text("No")) {
+                // dismiss view here.
+            }
+            return Alert(title: Text("Play Again?"), primaryButton: primaryButton, secondaryButton: secondaryButton)
+        }
     }
     
 }
@@ -88,6 +97,7 @@ struct ContentView_Previews: PreviewProvider {
                                       player2Color: .blue,
                                       isTeam1Serving: true,
                                       matchLimit: 5)
+        viewModel.gameOver = true
         return viewModel
     }
     
