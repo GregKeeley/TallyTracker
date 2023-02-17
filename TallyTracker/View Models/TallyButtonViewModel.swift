@@ -11,10 +11,12 @@ class TallyButtonViewModel: ObservableObject {
     @Published var color: Color
     @Published var playerName: String
     @Published var playerScore: Int
+    @Published var isPlayerOne: Bool
     
-    init(color: Color, playerName: String, playerScore: Int) {
+    init(color: Color, playerName: String, playerScore: Int, isPlayerOne: Bool) {
         self.color = color
         self.playerName = playerName
         self.playerScore = playerScore
+        self.isPlayerOne = isPlayerOne
     }
 }

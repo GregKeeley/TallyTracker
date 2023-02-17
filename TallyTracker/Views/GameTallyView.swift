@@ -15,12 +15,12 @@ struct GameTallyView: View {
         ZStack {
             VStack {
                 Spacer()
-                TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.player1Color, playerName: "", playerScore: 0))
+                TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.player1Color, playerName: "", playerScore: 0, isPlayerOne: true))
                 .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.9)
                 Spacer()
                 Divider()
                 Spacer()
-                TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.player2Color, playerName: "", playerScore: 0))
+                TallyButtonView(viewModel: TallyButtonViewModel(color: viewModel.player2Color, playerName: "", playerScore: 0, isPlayerOne: false))
                 .frame(width: UIScreen.main.bounds.width * 0.9, height: UIScreen.main.bounds.width * 0.9)
                 Spacer()
             }
