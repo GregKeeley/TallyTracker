@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct GameTallyView: View {
-    
+    @Environment(\.presentationMode) private var presentationMode
     @ObservedObject var viewModel: GameViewModel
     /// Height size class, used to determine available horizontal space available and handle layout on the device.
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
@@ -78,9 +78,11 @@ struct GameTallyView: View {
             }
             let secondaryButton = Alert.Button.cancel(Text("No")) {
                 // dismiss view here.
+                presentationMode.wrappedValue.dismiss()
             }
             return Alert(title: Text("Play Again?"), primaryButton: primaryButton, secondaryButton: secondaryButton)
         }
+        .navigationBarBackButtonHidden()
     }
     
 }
@@ -97,7 +99,7 @@ struct ContentView_Previews: PreviewProvider {
                                       player2Color: .blue,
                                       isTeam1Serving: true,
                                       matchLimit: 5)
-        viewModel.gameOver = true
+//        viewModel.gameOver = true
         return viewModel
     }
     
