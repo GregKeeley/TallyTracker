@@ -38,7 +38,7 @@ class GameViewModel: ObservableObject {
     /// Tracks when the end of the has been reached.
     @Published var gameOver: Bool = false
     ///
-    @Published var playerWins: [Color] = Array(repeating: .gray, count: 5) {
+    @Published var playerWins: [Color] = [.gray] {
         didSet {
             if !playerWins.contains(.gray) {
                 gameOver = true

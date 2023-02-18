@@ -98,7 +98,8 @@ struct ContentView_Previews: PreviewProvider {
                                       player1Color: .red,
                                       player2Color: .blue,
                                       isTeam1Serving: true,
-                                      matchLimit: 5)
+                                      matchLimit: 1)
+        viewModel.playerWins = Array(repeating: .gray, count: viewModel.matchLimit)
 //        viewModel.gameOver = true
         return viewModel
     }
