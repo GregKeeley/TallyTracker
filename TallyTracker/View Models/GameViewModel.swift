@@ -60,7 +60,7 @@ class GameViewModel: ObservableObject {
     }
     
     func resetGame() {
-        playerWins = Array(repeating: .gray, count: 5)
+        playerWins = Array(repeating: .gray, count: self.matchLimit)
         gameOver = false
         serveCount = 1
         player1Score = 0

@@ -15,7 +15,11 @@ struct CustomGameSetupView: View {
     
     @State var servesPerRotation: Int = 3
     
-    @State var matchLimit: Int = 1
+    @State var matchLimit: Int = 1 {
+        didSet {
+            print(matchLimit)
+        }
+    }
     
     @State var team1Color = Color.red
     

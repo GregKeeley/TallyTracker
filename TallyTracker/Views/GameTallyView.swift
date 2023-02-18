@@ -83,6 +83,9 @@ struct GameTallyView: View {
             return Alert(title: Text("Play Again?"), primaryButton: primaryButton, secondaryButton: secondaryButton)
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+//            viewModel.resetGame()
+        }
     }
     
 }
