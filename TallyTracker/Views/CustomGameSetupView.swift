@@ -11,15 +11,18 @@ struct CustomGameSetupView: View {
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
     
-    @State var maxScorePerGame: Int = 11
+    @State var maxScore: Int = 11
+    
     @State var servesPerRotation: Int = 3
-    @State var maxGamePerMatch: Int = 1
     
-    @State var player1Color = Color.red
+    @State var matchLimit: Int = 1
     
-    @State var player2Color = Color.blue
+    @State var team1Color = Color.red
+    
+    @State var team2Color = Color.blue
     
     @State var singlesModeSelected = true
+    
     
     // MARK: - Body
     var body: some View {
@@ -39,18 +42,18 @@ struct CustomGameSetupView: View {
                     Spacer()
                     Button {
                         // Decrement set points, 11 point minimum.
-                        if maxScorePerGame > 10 {
-                            maxScorePerGame -= 1
+                        if maxScore > 10 {
+                            maxScore -= 1
                         }
                     } label: {
                         Text("-")
                             .font(.system(size: 32, weight: .regular))
                     }
-                    Text(maxScorePerGame.description)
+                    Text(maxScore.description)
                         .font(.system(size: 32, weight: .regular))
                     Button {
                         // Increment set points, no maximum set.
-                        maxScorePerGame += 1
+                        maxScore += 1
                     } label: {
                         Text("+")
                             .font(.system(size: 32, weight: .regular))
@@ -90,7 +93,7 @@ struct CustomGameSetupView: View {
                 // Team color
                 HStack(alignment: .center) {
                     Spacer()
-                    ColorPicker("", selection: $player1Color)
+                    ColorPicker("", selection: $team1Color)
                         .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
                         .padding(.leading)
                     // TODO: Replace these text strings with text fields to allow for changing of the player names.
@@ -98,7 +101,7 @@ struct CustomGameSetupView: View {
                         .font(.system(size: 24, weight: .bold))
                         .padding(.leading)
                     Spacer()
-                    ColorPicker("", selection: $player2Color)
+                    ColorPicker("", selection: $team2Color)
                         .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
                         .padding(.leading)
                     Text("Player 2")
@@ -115,18 +118,18 @@ struct CustomGameSetupView: View {
                     Spacer()
                     Button {
                         // Decrement game per match. 1 game minimum.
-                        if maxGamePerMatch > 1 {
-                            maxGamePerMatch -= 1
+                        if matchLimit > 1 {
+                            matchLimit -= 1
                         }
                     } label: {
                         Text("-")
                             .font(.system(size: 32, weight: .regular))
                     }
-                    Text(maxGamePerMatch.description)
+                    Text(matchLimit.description)
                         .font(.system(size: 32, weight: .regular))
                     Button {
                         // Increment games per match, mo maxiumum.
-                        maxGamePerMatch += 1
+                        matchLimit += 1
                     } label: {
                         Text("+")
                             .font(.system(size: 32, weight: .regular))
@@ -178,11 +181,11 @@ struct CustomGameSetupView: View {
                     NavigationLink {
                         if servesPerRotation > 2 {
                             GameTallyView(viewModel: GameViewModel(serveLimit: servesPerRotation,
-                                                                   scoreLimit: maxScorePerGame,
-                                                                   player1Color: player1Color,
-                                                                   player2Color: player2Color,
+                                                                   scoreLimit: maxScore,
+                                                                   player1Color: team1Color,
+                                                                   player2Color: team2Color,
                                                                    isTeam1Serving: true,
-                                                                   matchLimit: 5))
+                                                                   matchLimit: matchLimit))
                         }
                     } label: {
                         Text("BEGIN")
