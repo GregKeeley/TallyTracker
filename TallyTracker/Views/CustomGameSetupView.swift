@@ -177,8 +177,7 @@ struct CustomGameSetupView: View {
                         .font(.system(size: 24, weight: .bold))
                     Spacer()
                 }
-                Spacer()
-                
+                Spacer(minLength: 32)
                 // Begin game button.
                 HStack {
                     Spacer()
@@ -201,7 +200,6 @@ struct CustomGameSetupView: View {
                     }
                     Spacer()
                 }
-                Spacer()
             }
         }
     }
