@@ -100,15 +100,15 @@ struct CustomGameSetupView: View {
                     ColorPicker("", selection: $team1Color)
                         .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
                         .padding(.leading)
-                    // TODO: Replace these text strings with text fields to allow for changing of the player names.
-                    Text("Player 1")
+                    // TODO: Replace these text strings with text fields to allow for changing of the  names.
+                    Text(" 1")
                         .font(.system(size: 24, weight: .bold))
                         .padding(.leading)
                     Spacer()
                     ColorPicker("", selection: $team2Color)
                         .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
                         .padding(.leading)
-                    Text("Player 2")
+                    Text(" 2")
                         .font(.system(size: 24, weight: .bold))
                         .padding(.leading)
                     Spacer()
@@ -185,8 +185,8 @@ struct CustomGameSetupView: View {
                         if servesPerRotation > 2 {
                             GameTallyView(viewModel: GameViewModel(serveLimit: servesPerRotation,
                                                                    scoreLimit: maxScore,
-                                                                   player1Color: team1Color,
-                                                                   player2Color: team2Color,
+                                                                   team1Color: team1Color,
+                                                                   team2Color: team2Color,
                                                                    isTeam1Serving: true,
                                                                    matchLimit: matchLimit))
                         }

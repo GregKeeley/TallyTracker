@@ -19,15 +19,15 @@ struct GameTallyView: View {
         ZStack {
             if heightSizeClass == .regular {
                 VStack {
-                    TallyButtonView(viewModel: viewModel, isPlayerOne: true)
+                    TallyButtonView(viewModel: viewModel, isTeamOne: true)
                         .disabled(viewModel.gameOver)
                     HStack {
                         ForEach(0..<viewModel.matchLimit, id:\.self) { index in
-                            if viewModel.playerWins[index] == viewModel.team1Color {
+                            if viewModel.teamWins[index] == viewModel.team1Color {
                                 Circle()
                                     .frame(width: 20)
                                     .foregroundColor(viewModel.team1Color)
-                            } else if viewModel.playerWins[index] == viewModel.team2Color {
+                            } else if viewModel.teamWins[index] == viewModel.team2Color {
                                 Circle()
                                     .frame(width: 20)
                                     .foregroundColor(viewModel.team2Color)
@@ -40,21 +40,21 @@ struct GameTallyView: View {
                             
                         }
                     }
-                    TallyButtonView(viewModel: viewModel, isPlayerOne: false)
+                    TallyButtonView(viewModel: viewModel, isTeamOne: false)
                         .disabled(viewModel.gameOver)
                 }
                 .padding()
             } else {
                 HStack {
-                    TallyButtonView(viewModel: viewModel, isPlayerOne: true)
+                    TallyButtonView(viewModel: viewModel, isTeamOne: true)
                         .disabled(viewModel.gameOver)
                     VStack {
                         ForEach(0..<viewModel.matchLimit, id:\.self) { index in
-                            if viewModel.playerWins[index] == viewModel.team1Color {
+                            if viewModel.teamWins[index] == viewModel.team1Color {
                                 Circle()
                                     .frame(width: 20)
                                     .foregroundColor(viewModel.team1Color)
-                            } else if viewModel.playerWins[index] == viewModel.team2Color {
+                            } else if viewModel.teamWins[index] == viewModel.team2Color {
                                 Circle()
                                     .frame(width: 20)
                                     .foregroundColor(viewModel.team2Color)
@@ -66,7 +66,7 @@ struct GameTallyView: View {
                             }
                         }
                     }
-                    TallyButtonView(viewModel: viewModel, isPlayerOne: false)
+                    TallyButtonView(viewModel: viewModel, isTeamOne: false)
                         .disabled(viewModel.gameOver)
                 }
                 .padding()
@@ -98,11 +98,11 @@ struct ContentView_Previews: PreviewProvider {
     static var viewModel:GameViewModel {
         let viewModel = GameViewModel(serveLimit: 5,
                                       scoreLimit: 11,
-                                      player1Color: .red,
-                                      player2Color: .blue,
+                                      team1Color: .red,
+                                      team2Color: .blue,
                                       isTeam1Serving: true,
                                       matchLimit: 1)
-        viewModel.playerWins = Array(repeating: .gray, count: viewModel.matchLimit)
+        viewModel.teamWins = Array(repeating: .gray, count: viewModel.matchLimit)
 //        viewModel.gameOver = true
         return viewModel
     }

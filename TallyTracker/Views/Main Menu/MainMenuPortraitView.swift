@@ -37,8 +37,8 @@ struct MainMenuPortraitView: View {
                     VStack {
                         NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 5,
                                                                                            scoreLimit: 11,
-                                                                                           player1Color: .red,
-                                                                                           player2Color: .blue,
+                                                                                           team1Color: .red,
+                                                                                           team2Color: .blue,
                                                                                            isTeam1Serving: true,
                                                                                            matchLimit: 5))) {
                             MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.")

@@ -9,14 +9,14 @@ import SwiftUI
 
 class TallyButtonViewModel: ObservableObject {
     @Published var color: Color
-    @Published var playerName: String
-    @Published var playerScore: Int
-    @Published var isPlayerOne: Bool
+    @Published var teamName: String
+    @Published var teamScore: Int
+    @Published var isTeamOne: Bool
     
-    init(color: Color, playerName: String, playerScore: Int, isPlayerOne: Bool) {
+    init(color: Color, teamName: String, teamScore: Int, isTeamOne: Bool) {
         self.color = color
-        self.playerName = playerName
-        self.playerScore = playerScore
-        self.isPlayerOne = isPlayerOne
+        self.teamName = teamName
+        self.teamScore = teamScore
+        self.isTeamOne = isTeamOne
     }
 }

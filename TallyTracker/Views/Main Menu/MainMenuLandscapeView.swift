@@ -37,8 +37,8 @@ struct MainMenuLandscapeView: View {
                         NavigationLink {
                             GameTallyView(viewModel: GameViewModel(serveLimit: 5,
                                                                    scoreLimit: 11,
-                                                                   player1Color: .red,
-                                                                   player2Color: .blue,
+                                                                   team1Color: .red,
+                                                                   team2Color: .blue,
                                                                    isTeam1Serving: true,
                                                                    matchLimit: 5))
                         } label: {

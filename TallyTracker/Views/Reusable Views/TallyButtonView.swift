@@ -10,7 +10,7 @@ import SwiftUI
 struct TallyButtonView: View {
     //    @StateObject var viewModel: TallyButtonViewModel
     @ObservedObject var viewModel: GameViewModel
-    @State var isPlayerOne: Bool
+    @State var isTeamOne: Bool
     
     // MARK: - Body
     var body: some View {
@@ -20,30 +20,30 @@ struct TallyButtonView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(lineWidth: 2)
                     .padding(8)
-                    .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
+                    .foregroundColor(isTeamOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
                 VStack {
                     HStack {
                         ForEach(0..<viewModel.serveLimit, id: \.self) { serveLimit in
-                            if viewModel.isTeam1Serving && isPlayerOne {
+                            if viewModel.isTeam1Serving && isTeamOne {
                                 if viewModel.serveCount > serveLimit {
                                     Circle()
-                                        .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
+                                        .foregroundColor(isTeamOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
                                         .frame(width: geo.size.width / 16)
                                 } else {
                                     Circle()
                                         .stroke()
-                                        .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
+                                        .foregroundColor(isTeamOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
                                         .frame(width: geo.size.width / 16)
                                 }
-                            } else if !viewModel.isTeam1Serving && !isPlayerOne {
+                            } else if !viewModel.isTeam1Serving && !isTeamOne {
                                 if viewModel.serveCount > serveLimit {
                                     Circle()
-                                        .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
+                                        .foregroundColor(isTeamOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
                                         .frame(width: geo.size.width / 16)
                                 } else {
                                     Circle()
                                         .stroke()
-                                        .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
+                                        .foregroundColor(isTeamOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
                                         .frame(width: geo.size.width / 16)
                                 }
                             }
@@ -54,19 +54,19 @@ struct TallyButtonView: View {
                 }
                 
                 VStack {
-                    // Player Score
-                    Text(isPlayerOne ? viewModel.player1Score.description : viewModel.player2Score.description)
+                    // Team Score
+                    Text(isTeamOne ? viewModel.team1Score.description : viewModel.team2Score.description)
                         .font(.system(size: 148, weight: .bold))
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(isPlayerOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
-                    // Player Name
+                        .foregroundColor(isTeamOne ? viewModel.team1Color.opacity(0.8) : viewModel.team2Color.opacity(0.8))
+                    // Team Name
                     if !viewModel.team1Name.isEmpty && !viewModel.team2Name.isEmpty {
-                        Text(isPlayerOne ? viewModel.team1Name.prefix(12) : viewModel.team2Name.prefix(12))
+                        Text(isTeamOne ? viewModel.team1Name.prefix(12) : viewModel.team2Name.prefix(12))
                             .font(.system(size: 32, weight: .regular))
                             .lineLimit(1)
                             .minimumScaleFactor(0.4)
                             .frame(maxWidth: .infinity)
-                            .background(isPlayerOne ?
+                            .background(isTeamOne ?
                                         viewModel.team1Color.opacity(0.8).colorInvert().frame(width: geo.size.width / 3).cornerRadius(8.0)
                                         : viewModel.team2Color.opacity(0.8).colorInvert().frame(width: geo.size.width / 3).cornerRadius(8.0))
                             .colorInvert()
@@ -85,41 +85,41 @@ struct TallyButtonView: View {
                         viewModel.isTeam1Serving.toggle()
                     }
                     // Increase score depending on which side pressed the button.
-                    if isPlayerOne {
-                        // Player score is below score limit, increment player score.
-                        if viewModel.player1Score < viewModel.scoreLimit {
-                            viewModel.player1Score += 1
+                    if isTeamOne {
+                        // Team score is below score limit, increment team score.
+                        if viewModel.team1Score < viewModel.scoreLimit {
+                            viewModel.team1Score += 1
                         } else {
-                            viewModel.player1Score = 0
-                            viewModel.player2Score = 0
-                            // Player 1 score has reached limit, winning the match.
-                            if let indexOfPreviousWinner = viewModel.playerWins.lastIndex(where: { $0 != .gray }) {
+                            viewModel.team1Score = 0
+                            viewModel.team2Score = 0
+                            // Team 1 score has reached limit, winning the match.
+                            if let indexOfPreviousWinner = viewModel.teamWins.lastIndex(where: { $0 != .gray }) {
                                 if (indexOfPreviousWinner + 1) < viewModel.matchLimit {
-                                    viewModel.playerWins[indexOfPreviousWinner + 1] = viewModel.team1Color
+                                    viewModel.teamWins[indexOfPreviousWinner + 1] = viewModel.team1Color
                                 } else {
-                                    // Game Over. Player 1 wins.
+                                    // Game Over. Team 1 wins.
                                     viewModel.gameOver = true
                                 }
                             } else {
-                                viewModel.playerWins[0] = viewModel.team1Color
+                                viewModel.teamWins[0] = viewModel.team1Color
                             }
                         }
                     } else {
-                        if viewModel.player2Score < viewModel.scoreLimit {
-                            viewModel.player2Score += 1
+                        if viewModel.team2Score < viewModel.scoreLimit {
+                            viewModel.team2Score += 1
                         } else {
-                            viewModel.player1Score = 0
-                            viewModel.player2Score = 0
-                            // Player 2 score has reached limit, winning the match.
-                            if let indexOfPreviousWinner = viewModel.playerWins.lastIndex(where: { $0 != .gray }) {
+                            viewModel.team1Score = 0
+                            viewModel.team2Score = 0
+                            // Team 2 score has reached limit, winning the match.
+                            if let indexOfPreviousWinner = viewModel.teamWins.lastIndex(where: { $0 != .gray }) {
                                 if (indexOfPreviousWinner + 1) < viewModel.matchLimit {
-                                    viewModel.playerWins[indexOfPreviousWinner + 1] = viewModel.team2Color
+                                    viewModel.teamWins[indexOfPreviousWinner + 1] = viewModel.team2Color
                                 } else {
-                                    // Game Over. Player 2 wins.
+                                    // Game Over. Team 2 wins.
                                     viewModel.gameOver = true
                                 }
                             } else {
-                                viewModel.playerWins[0] = viewModel.team2Color
+                                viewModel.teamWins[0] = viewModel.team2Color
                             }
                         }
                     }
@@ -131,10 +131,10 @@ struct TallyButtonView: View {
                     if viewModel.serveCount > 1 {
                         viewModel.serveCount -= 1
                     }
-                    if isPlayerOne {
-                        viewModel.player1Score -= 1
+                    if isTeamOne {
+                        viewModel.team1Score -= 1
                     } else {
-                        viewModel.player2Score -= 1
+                        viewModel.team2Score -= 1
                     }
                 }
             })
@@ -148,15 +148,15 @@ struct TallyButtonView: View {
 struct TallyButton_Previews: PreviewProvider {
     static let viewModel1 = GameViewModel(serveLimit: 5,
                                           scoreLimit: 11,
-                                          player1Color: .red,
-                                          player2Color: .blue,
+                                          team1Color: .red,
+                                          team2Color: .blue,
                                           isTeam1Serving: true,
                                           matchLimit: 5)
     static var viewModel2: GameViewModel {
         let viewModel = GameViewModel(serveLimit: 5,
                                       scoreLimit: 11,
-                                      player1Color: .red,
-                                      player2Color: .blue,
+                                      team1Color: .red,
+                                      team2Color: .blue,
                                       isTeam1Serving: false,
                                       matchLimit: 5)
         viewModel.team1Name = "Team1"
@@ -166,10 +166,10 @@ struct TallyButton_Previews: PreviewProvider {
         return viewModel
     }
     static var previews: some View {
-        TallyButtonView(viewModel: viewModel1, isPlayerOne: true)
+        TallyButtonView(viewModel: viewModel1, isTeamOne: true)
             .frame(width: 400, height: 400)
             .previewLayout(.sizeThatFits)
-        TallyButtonView(viewModel: viewModel2, isPlayerOne: false)
+        TallyButtonView(viewModel: viewModel2, isTeamOne: false)
             .frame(width: 400, height: 400)
             .previewLayout(.sizeThatFits)
     }
