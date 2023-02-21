@@ -19,4 +19,5 @@ class TallyButtonViewModel: ObservableObject {
         self.teamScore = teamScore
         self.isTeamOne = isTeamOne
     }
+    
 }

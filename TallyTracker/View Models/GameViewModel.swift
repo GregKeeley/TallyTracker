@@ -57,6 +57,7 @@ class GameViewModel: ObservableObject {
         self.team2Color = team2Color
         self.isTeam1Serving = isTeam1Serving
         self.matchLimit = matchLimit
+        self.teamWins = Array(repeating: .gray, count: matchLimit)
     }
     
     func resetGame() {
