@@ -43,7 +43,7 @@ struct MainMenuLandscapeView: View {
                                                                    matchLimit: 5))
                         } label: {
                             // TODO: Refactor this button view to not have a reference directly to GameViewModel.
-                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.")
+                            MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                         .isDetailLink(false)
@@ -51,7 +51,7 @@ struct MainMenuLandscapeView: View {
                         NavigationLink {
                             
                         } label: {
-                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.")
+                            MainMenuGameButtonView(gameTitle: "House Rules", description: "Custom game.")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }

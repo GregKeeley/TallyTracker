@@ -41,16 +41,14 @@ struct MainMenuPortraitView: View {
                                                                                            team2Color: .blue,
                                                                                            isTeam1Serving: true,
                                                                                            matchLimit: 5))) {
-                            MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.")
+                            MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
-                        .isDetailLink(false)
                         Spacer(minLength: 40)
                         NavigationLink {
                             CustomGameSetupView()
                         } label: {
-                            // TODO: Refactor this button view to not have a reference directly to GameViewModel.
-                            MainMenuGameButtonView(gameTitle: "House Rules", message: "Custom game.")
+                            MainMenuGameButtonView(gameTitle: "House Rules", description: "Custom game.")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
@@ -60,10 +58,12 @@ struct MainMenuPortraitView: View {
             }
         }
     }
+    
 }
 
 
 
+//MARK: - Previews
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         MainMenuPortraitView()

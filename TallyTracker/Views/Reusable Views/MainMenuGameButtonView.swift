@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct MainMenuGameButtonView: View {
-    
+    /// Main title of button. Displays name of the game style for the user to choose.
     @State var gameTitle: String
-    @State var message: String
+    /// Message displayed below the game title, to describer the rules of the games.
+    @State var description: String
     
     var body: some View {
         ZStack {
@@ -21,7 +22,7 @@ struct MainMenuGameButtonView: View {
                     Text(gameTitle)
                         .font(.system(size: 32, weight: .bold))
                         .minimumScaleFactor(0.4)
-                    Text(message)
+                    Text(description)
                         .font(.system(size: 24, weight: .regular))
                         .minimumScaleFactor(0.4)
                 }
@@ -32,21 +33,17 @@ struct MainMenuGameButtonView: View {
                     .aspectRatio(contentMode: .fit)
             }
         }
-        
     }
+    
 }
 
 
 
+//MARK: - Previews
 struct MainMenuGameButtonView_Previews: PreviewProvider {
-    static let viewModel = GameViewModel(serveLimit: 5,
-                                         scoreLimit: 11,
-                                         team1Color: .red,
-                                         team2Color: .blue,
-                                         isTeam1Serving: true,
-                                         matchLimit: 5)
+    
     static var previews: some View {
-        MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.")
+        MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")
             .previewLayout(.sizeThatFits)
     }
 }
