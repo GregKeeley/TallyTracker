@@ -42,7 +42,7 @@ struct MainMenuPortraitView: View {
                                                                                            isTeam1Serving: true,
                                                                                            matchLimit: 5))) {
                             MainMenuGameButtonView(gameTitle: "Official Rules", message: "Play to 11. Win by 2. Best of 5.")
-                                                                                                                                                      
+                                .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                         .isDetailLink(false)
                         Spacer(minLength: 40)
