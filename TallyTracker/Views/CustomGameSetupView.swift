@@ -101,14 +101,14 @@ struct CustomGameSetupView: View {
                         .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
                         .padding(.leading)
                     // TODO: Replace these text strings with text fields to allow for changing of the  names.
-                    Text(" 1")
+                    Text("Team 1")
                         .font(.system(size: 24, weight: .bold))
                         .padding(.leading)
                     Spacer()
                     ColorPicker("", selection: $team2Color)
                         .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
                         .padding(.leading)
-                    Text(" 2")
+                    Text("Team 2")
                         .font(.system(size: 24, weight: .bold))
                         .padding(.leading)
                     Spacer()
@@ -142,42 +142,44 @@ struct CustomGameSetupView: View {
                 .padding()
                 
                 // Singles/Doubles selection
-                HStack {
-                    Spacer()
-                    Button {
-                        singlesModeSelected.toggle()
-                    } label: {
-                        if singlesModeSelected {
-                            Image(systemName: "x.square")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-                        } else {
-                            Image(systemName: "square")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-                        }
-                    }
-                    Text("Singles")
-                        .font(.system(size: 24, weight: .bold))
-                    Spacer()
-                    Button {
-                        singlesModeSelected.toggle()
-                    } label: {
-                        if !singlesModeSelected {
-                            Image(systemName: "x.square")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-                        } else {
-                            Image(systemName: "square")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-                        }
-                    }
-                    Text("Doubles")
-                        .font(.system(size: 24, weight: .bold))
-                    Spacer()
-                }
-                Spacer(minLength: 32)
+                // ICEBOX Feature.
+//                HStack {
+//                    Spacer()
+//                    Button {
+//                        singlesModeSelected.toggle()
+//                    } label: {
+//                        if singlesModeSelected {
+//                            Image(systemName: "x.square")
+//                                .resizable()
+//                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
+//                        } else {
+//                            Image(systemName: "square")
+//                                .resizable()
+//                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
+//                        }
+//                    }
+//                    Text("Singles")
+//                        .font(.system(size: 24, weight: .bold))
+//                    Spacer()
+//                    Button {
+//                        singlesModeSelected.toggle()
+//                    } label: {
+//                        if !singlesModeSelected {
+//                            Image(systemName: "x.square")
+//                                .resizable()
+//                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
+//                        } else {
+//                            Image(systemName: "square")
+//                                .resizable()
+//                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
+//                        }
+//                    }
+//                    Text("Doubles")
+//                        .font(.system(size: 24, weight: .bold))
+//                    Spacer()
+//                }
+                .padding()
+                Spacer()
                 // Begin game button.
                 HStack {
                     Spacer()
@@ -194,12 +196,14 @@ struct CustomGameSetupView: View {
                         Text("BEGIN")
                             .font(.system(size: 48, weight: .bold))
                             .frame(maxWidth: UIScreen.main.bounds.size.width * 0.5)
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                             .background(colorScheme == .dark ? .black : .white)
                             .ignoresSafeArea()
                             .colorInvert()
                     }
                     Spacer()
                 }
+                .padding()
             }
         }
     }
