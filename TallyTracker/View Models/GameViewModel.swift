@@ -37,6 +37,8 @@ class GameViewModel: ObservableObject {
     @Published var matchLimit: Int
     /// Tracks when the end of the has been reached.
     @Published var gameOver: Bool = false
+    /// Tracks when an individual match is complete.
+    @Published var matchComplete: Bool = false
     ///
     @Published var teamWins: [Color] = [.gray] {
         didSet {

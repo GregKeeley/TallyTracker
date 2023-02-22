@@ -72,6 +72,7 @@ struct GameTallyView: View {
                 .padding()
             }
         }
+        // Game Over alert.
         .alert(isPresented: $viewModel.gameOver) {
             let primaryButton = Alert.Button.default(Text("Confirm")) {
                 viewModel.resetGame()
@@ -82,6 +83,17 @@ struct GameTallyView: View {
             }
             return Alert(title: Text("Play Again?"), primaryButton: primaryButton, secondaryButton: secondaryButton)
         }
+        .alert(isPresented: $viewModel.matchComplete, content: {
+            let primaryButton = Alert.Button.default(Text("Yes")) {
+                // Switch player sides on view, reset matchComplete variable.
+                // SWITCH HERE, How?
+                viewModel.matchComplete = false
+            }
+            let secondaryButton = Alert.Button.default(Text("No")) {
+                viewModel.matchComplete = false
+            }
+            return Alert(title: Text("Switch Sides?"), primaryButton: primaryButton, secondaryButton: secondaryButton)
+        })
         .navigationBarBackButtonHidden()
         .onAppear {
 //            viewModel.resetGame()
