@@ -19,7 +19,7 @@ struct GameTallyView: View {
         ZStack {
             if heightSizeClass == .regular {
                 VStack {
-                    TallyButtonView(viewModel: viewModel, isTeamOne: true)
+                    TallyButtonView(tallyButtonVM: viewModel, isTeamOne: true)
                         .disabled(viewModel.gameOver)
                     HStack {
                         ForEach(0..<viewModel.matchLimit, id:\.self) { index in
@@ -40,13 +40,13 @@ struct GameTallyView: View {
                             
                         }
                     }
-                    TallyButtonView(viewModel: viewModel, isTeamOne: false)
+                    TallyButtonView(tallyButtonVM: viewModel, isTeamOne: false)
                         .disabled(viewModel.gameOver)
                 }
                 .padding()
             } else {
                 HStack {
-                    TallyButtonView(viewModel: viewModel, isTeamOne: true)
+                    TallyButtonView(tallyButtonVM: viewModel, isTeamOne: true)
                         .disabled(viewModel.gameOver)
                     VStack {
                         ForEach(0..<viewModel.matchLimit, id:\.self) { index in
@@ -66,7 +66,7 @@ struct GameTallyView: View {
                             }
                         }
                     }
-                    TallyButtonView(viewModel: viewModel, isTeamOne: false)
+                    TallyButtonView(tallyButtonVM: viewModel, isTeamOne: false)
                         .disabled(viewModel.gameOver)
                 }
                 .padding()
