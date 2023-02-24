@@ -10,7 +10,7 @@ import SwiftUI
 struct TallyButtonView: View {
         @StateObject var tallyButtonVM: TallyButtonViewModel
 //    @ObservedObject var tallyButtonVM: GameViewModel
-    @State var isTeamOne: Bool
+//    @State var isTeamOne: Bool
     
     // MARK: - Body
     var body: some View {
@@ -62,7 +62,7 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
-                
+                tallyButtonVM.increaseScore()
 //                if !tallyButtonVM.gameOver {
                     // Serve count is below or at the limit, increment count and continue.
 //                    if tallyButtonVM.serveCount < tallyButtonVM.serveLimit {
@@ -123,19 +123,20 @@ struct TallyButtonView: View {
 //                }
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
-                if !tallyButtonVM.gameOver {
-                    // Decrement score, and serve count with a long press.
-                    if tallyButtonVM.serveCount > 1 {
-                        tallyButtonVM.serveCount -= 1
-                    }
-                    if isTeamOne {
-                        tallyButtonVM.team1Score -= 1
-                    } else {
-                        tallyButtonVM.team2Score -= 1
-                    }
-                }
+                tallyButtonVM.decrementTeamScoreAndServe()
+//                if !tallyButtonVM.gameOver {
+//                    // Decrement score, and serve count with a long press.
+//                    if tallyButtonVM.serveCount > 1 {
+//                        tallyButtonVM.serveCount -= 1
+//                    }
+//                    if isTeamOne {
+//                        tallyButtonVM.team1Score -= 1
+//                    } else {
+//                        tallyButtonVM.team2Score -= 1
+//                    }
+//                }
             })
-        }
+//        }
     }
     
 }
@@ -143,30 +144,36 @@ struct TallyButtonView: View {
 
 //MARK: - Previews
 struct TallyButton_Previews: PreviewProvider {
-    static let viewModel1 = GameViewModel(serveLimit: 5,
-                                          scoreLimit: 11,
-                                          team1Color: .red,
-                                          team2Color: .blue,
-                                          isTeam1Serving: true,
-                                          matchLimit: 5)
-    static var viewModel2: GameViewModel {
-        let viewModel = GameViewModel(serveLimit: 5,
-                                      scoreLimit: 11,
-                                      team1Color: .red,
-                                      team2Color: .blue,
-                                      isTeam1Serving: false,
-                                      matchLimit: 5)
-        viewModel.team1Name = "Team1"
-        viewModel.team2Name = "Greg"
-        viewModel.serveCount = 3
-        viewModel.serveLimit = 5
+    static let viewModel1 = TallyButtonViewModel(color: .red,
+                                                 teamName: "Greg",
+                                                 teamScore: 0,
+                                                 isTeamOne: true,
+                                                 serveLimit: 3,
+                                                 isCurrentlyServing: true,
+                                                 serveCount: 0,
+                                                 scoreLimit: 10,
+                                                 teamWins: [],
+                                                 gameOver: false,
+                                                 matchLimit: 3)
+    static var viewModel2: TallyButtonViewModel {
+        let viewModel = TallyButtonViewModel(color: .blue,
+                                             teamName: "Team2",
+                                             teamScore: 0,
+                                             isTeamOne: false,
+                                             serveLimit: 3,
+                                             isCurrentlyServing: false,
+                                             serveCount: 0,
+                                             scoreLimit: 10,
+                                             teamWins: [],
+                                             gameOver: false,
+                                             matchLimit: 3)
         return viewModel
     }
     static var previews: some View {
-        TallyButtonView(tallyButtonVM: viewModel1, isTeamOne: true)
+        TallyButtonView(tallyButtonVM: viewModel1)
             .frame(width: 400, height: 400)
             .previewLayout(.sizeThatFits)
-        TallyButtonView(tallyButtonVM: viewModel2, isTeamOne: false)
+        TallyButtonView(tallyButtonVM: viewModel2)
             .frame(width: 400, height: 400)
             .previewLayout(.sizeThatFits)
     }
