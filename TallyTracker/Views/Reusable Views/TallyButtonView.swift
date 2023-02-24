@@ -20,19 +20,19 @@ struct TallyButtonView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(lineWidth: 2)
                     .padding(8)
-                    .foregroundColor(tallyButtonVM.color.opacity(0.8))
+                    .foregroundColor(tallyButtonVM.teamColor.opacity(0.8))
                 VStack {
                     HStack {
                         ForEach(0..<tallyButtonVM.serveLimit, id: \.self) { serveLimit in
                             if tallyButtonVM.isCurrentlyServing {
                                 if tallyButtonVM.serveCount > tallyButtonVM.serveLimit {
                                     Circle()
-                                        .foregroundColor(tallyButtonVM.color.opacity(0.8))
+                                        .foregroundColor(tallyButtonVM.teamColor.opacity(0.8))
                                         .frame(width: geo.size.width / 16)
                                 } else {
                                     Circle()
                                         .stroke()
-                                        .foregroundColor(tallyButtonVM.color.opacity(0.8))
+                                        .foregroundColor(tallyButtonVM.teamColor.opacity(0.8))
                                         .frame(width: geo.size.width / 16)
                                 }
                             }
@@ -47,7 +47,7 @@ struct TallyButtonView: View {
                     Text(tallyButtonVM.teamScore.description)
                         .font(.system(size: 148, weight: .bold))
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(tallyButtonVM.color.opacity(0.8))
+                        .foregroundColor(tallyButtonVM.teamColor.opacity(0.8))
                     // Team Name
                     if !tallyButtonVM.teamName.isEmpty {
                         Text(tallyButtonVM.teamName.prefix(12))
@@ -55,7 +55,7 @@ struct TallyButtonView: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.4)
                             .frame(maxWidth: .infinity)
-                            .background(tallyButtonVM.color.opacity(0.8).colorInvert().frame(width: geo.size.width / 3).cornerRadius(8.0))
+                            .background(tallyButtonVM.teamColor.opacity(0.8).colorInvert().frame(width: geo.size.width / 3).cornerRadius(8.0))
                             .colorInvert()
                     }
                 }
@@ -65,37 +65,37 @@ struct TallyButtonView: View {
                 
 //                if !tallyButtonVM.gameOver {
                     // Serve count is below or at the limit, increment count and continue.
-                    if tallyButtonVM.serveCount < tallyButtonVM.serveLimit {
-                        tallyButtonVM.serveCount += 1
-                    } else {
-                        // Serve count is above the limit, reset the count and toggle which side is serving.
-                        tallyButtonVM.serveCount = 1
-                        tallyButtonVM.isCurrentlyServing.toggle()
-                    }
+//                    if tallyButtonVM.serveCount < tallyButtonVM.serveLimit {
+//                        tallyButtonVM.serveCount += 1
+//                    } else {
+//                        // Serve count is above the limit, reset the count and toggle which side is serving.
+//                        tallyButtonVM.serveCount = 1
+//                        tallyButtonVM.isCurrentlyServing.toggle()
+//                    }
                     
                     // TEAM 1 tapped.
                     
                     // Increase score depending on which side pressed the button.
 //                    if isTeamOne {
                         // Team score is below score limit, increment team score.
-                        if tallyButtonVM.teamScore <= tallyButtonVM.scoreLimit {
+//                        if tallyButtonVM.teamScore <= tallyButtonVM.scoreLimit {
 //                            if (viewModel.team1Score + 1) == viewModel.scoreLimit {
 //                                viewModel.matchComplete = true
 //                            }
-                            tallyButtonVM.teamScore += 1
-                        } else {
-                            tallyButtonVM.teamScore = 0
+//                            tallyButtonVM.teamScore += 1
+//                        } else {
+//                            tallyButtonVM.teamScore = 0
                             // Team 1 score has reached limit, winning the match.
-                            if let indexOfPreviousWinner = tallyButtonVM.teamWins.lastIndex(where: { $0 != .gray }) {
-                                if (indexOfPreviousWinner + 1) < tallyButtonVM.matchLimit {
-                                    tallyButtonVM.teamWins[indexOfPreviousWinner + 1] = tallyButtonVM.team1Color
-                                } else {
-                                    // Game Over. Team 1 wins.
-                                    tallyButtonVM.gameOver = true
-                                }
-                            } else {
-                                tallyButtonVM.teamWins[0] = tallyButtonVM.team1Color
-                            }
+//                            if let indexOfPreviousWinner = tallyButtonVM.teamWins.lastIndex(where: { $0 != .gray }) {
+//                                if (indexOfPreviousWinner + 1) < tallyButtonVM.matchLimit {
+//                                    tallyButtonVM.teamWins[indexOfPreviousWinner + 1] = tallyButtonVM.team1Color
+//                                } else {
+//                                    // Game Over. Team 1 wins.
+//                                    tallyButtonVM.gameOver = true
+//                                }
+//                            } else {
+//                                tallyButtonVM.teamWins[0] = tallyButtonVM.team1Color
+//                            }
                         }
                         
                         // TEAM 2 tapped.
