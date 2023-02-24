@@ -51,11 +51,9 @@ class TallyButtonViewModel: ObservableObject {
         if teamScore < scoreLimit {
             teamScore += 1
             incrementServe()
-        }
-        // Check score limit for win condition.
-        if teamScore >= scoreLimit {
+        } else if teamScore >= scoreLimit {
             // Add the teams color to the team wins array; Reset Score.
-            teamWins.append(teamColor)
+            incrementTeamWin()
             teamScore = 0
         }
     }
@@ -69,16 +67,25 @@ class TallyButtonViewModel: ObservableObject {
             }
         }
     }
+    
     func incrementTeamWin() {
         // Get index of the previous winner, if any.
         if let indexOfPreviousWinner = teamWins.lastIndex(where: { $0 != .gray }) {
+//            // Check the total wins for the team is less than half of the match limit.
             let totalTeamWins = teamWins.filter { $0 == teamColor }
-            // Check the total wins for the team is less than half of the match limit.
+//            print("totalTeamWins: \(totalTeamWins)")
+//            print((totalTeamWins.count / matchLimit))
             if (Double(totalTeamWins.count / matchLimit) < 0.5) {
-                teamWins.append(teamColor)
+                teamWins[indexOfPreviousWinner + 1] = teamColor
+            } else {
+                print("I win.")
+                gameOver = true
             }
+        } else {
+            teamWins[0] = teamColor
         }
     }
+    
     func decrementTeamScoreAndServe() {
         if serveCount > 1 {
             serveCount -= 1

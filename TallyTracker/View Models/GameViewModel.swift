@@ -62,23 +62,104 @@ class GameViewModel: ObservableObject {
         self.teamWins = Array(repeating: .gray, count: matchLimit)
     }
     
+    /// Resets the entire game.
     func resetGame() {
         teamWins = Array(repeating: .gray, count: self.matchLimit)
         gameOver = false
+        startNewMatch()
+    }
+    /// Resets scores to start a new match.
+    func startNewMatch() {
         serveCount = 1
         team1Score = 0
         team2Score = 0
     }
-    
-    func addToTeamScore(teamOne: Bool) {
-        if !gameOver { // Game still active.
-            if teamOne {
-                
-            } else {
-                
+    func increaseScore(isTeamOne: Bool) {
+        // Increase score.
+        if isTeamOne {
+            if team1Score < scoreLimit {
+                team1Score += 1
+                incrementServe()
+            } else if team1Score >= scoreLimit {
+                // Add the teams color to the team wins array; Reset Score.
+                incrementTeamWin(isTeamOne: true)
+                team1Score = 0
+            }
+        } else {
+            if team2Score < scoreLimit {
+                team2Score += 1
+                incrementServe()
+            } else if team2Score >= scoreLimit {
+                // Add the teams color to the team wins array; Reset Score.
+                incrementTeamWin(isTeamOne: false)
+                team2Score = 0
             }
         }
-        
+    }
+    func incrementServe() {
+        if serveCount < serveLimit {
+            serveCount += 1
+        } else {
+            serveCount = 1
+            isTeam1Serving.toggle()
+        }
+    }
+    
+    func checkTeamWinsForBestOf(teamWins: Int) -> Bool {
+        return (Double(teamWins) / Double(matchLimit) < 0.5)
+    }
+    
+    func incrementTeamWin(isTeamOne: Bool) {
+        // Get index of the previous winner, if any.
+        if let indexOfPreviousWinner = teamWins.lastIndex(where: { $0 != .gray }) {
+            if isTeamOne {
+                //            // Check the total wins for the team is less than half of the match limit.
+                let totalTeamWins = teamWins.filter { $0 == team1Color }
+                //            print("totalTeamWins: \(totalTeamWins)")
+                //            print((totalTeamWins.count / matchLimit))
+                if checkTeamWinsForBestOf(teamWins: totalTeamWins.count) {
+                    teamWins[indexOfPreviousWinner + 1] = team1Color
+                } else {
+                    print("I win.")
+                    gameOver = true
+                }
+            } else {
+                //            // Check the total wins for the team is less than half of the match limit.
+                let totalTeamWins = teamWins.filter { $0 == team1Color }
+                //            print("totalTeamWins: \(totalTeamWins)")
+                //            print((totalTeamWins.count / matchLimit))
+                if checkTeamWinsForBestOf(teamWins: totalTeamWins.count) {
+                    teamWins[indexOfPreviousWinner + 1] = team1Color
+                } else {
+                    print("I win.")
+                    gameOver = true
+                }
+            }
+        } else {
+            if isTeamOne {
+                teamWins[0] = team1Color
+            } else {
+                teamWins[0] = team2Color
+            }
+        }
+    }
+    
+    func decrementTeamScoreAndServe(isTeamOne: Bool) {
+        if isTeamOne {
+            if team1Score > 0 {
+                team1Score -= 1
+            }
+        } else {
+            if team2Score > 0 {
+                team2Score -= 1
+            }
+        }
+        if serveCount > 1 {
+            serveCount -= 1
+        } else {
+            serveCount = serveLimit
+            isTeam1Serving.toggle()
+        }
     }
     
 }
