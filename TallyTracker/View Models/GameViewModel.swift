@@ -8,7 +8,7 @@
 import SwiftUI
 
 class GameViewModel: ObservableObject {
-
+    
     @Environment(\.colorScheme) var colorScheme
     
     /// Tracks the score of team 1.
@@ -40,13 +40,7 @@ class GameViewModel: ObservableObject {
     /// Tracks when an individual match is complete.
     @Published var matchComplete: Bool = false
     ///
-    @Published var teamWins: [Color] = [.gray] {
-        didSet {
-            if !teamWins.contains(.gray) {
-                gameOver = true
-            }
-        }
-    }
+    @Published var teamWins: [Color]
     /// When to set to 'true', the user will start a game with standard rules.
     @Published var navigateToStandardGame: Bool = false
     /// When to set to 'true', the user will be navigated to the custome game view setup view.
@@ -106,40 +100,38 @@ class GameViewModel: ObservableObject {
     }
     
     func checkTeamWinsForBestOf(teamWins: Int) -> Bool {
-        return (Double(teamWins) / Double(matchLimit) < 0.5)
+        print("\(teamWins) / \(matchLimit) = \(Double(teamWins) / Double(matchLimit))")
+//        print(Double(teamWins) / Double(matchLimit))
+        return (Double(teamWins) / Double(matchLimit) < 0.51)
     }
     
     func incrementTeamWin(isTeamOne: Bool) {
-        // Get index of the previous winner, if any.
+        // Check for who won the last match and get the index, if available.
         if let indexOfPreviousWinner = teamWins.lastIndex(where: { $0 != .gray }) {
             if isTeamOne {
-                //            // Check the total wins for the team is less than half of the match limit.
+                teamWins[indexOfPreviousWinner + 1] = team1Color
                 let totalTeamWins = teamWins.filter { $0 == team1Color }
-                //            print("totalTeamWins: \(totalTeamWins)")
-                //            print((totalTeamWins.count / matchLimit))
-                if checkTeamWinsForBestOf(teamWins: totalTeamWins.count) {
-                    teamWins[indexOfPreviousWinner + 1] = team1Color
-                } else {
-                    print("I win.")
+                if !checkTeamWinsForBestOf(teamWins: totalTeamWins.count) {
                     gameOver = true
                 }
             } else {
-                //            // Check the total wins for the team is less than half of the match limit.
-                let totalTeamWins = teamWins.filter { $0 == team1Color }
-                //            print("totalTeamWins: \(totalTeamWins)")
-                //            print((totalTeamWins.count / matchLimit))
-                if checkTeamWinsForBestOf(teamWins: totalTeamWins.count) {
-                    teamWins[indexOfPreviousWinner + 1] = team1Color
-                } else {
-                    print("I win.")
+                teamWins[indexOfPreviousWinner + 1] = team2Color
+                let totalTeamWins = teamWins.filter { $0 == team2Color }
+                if !checkTeamWinsForBestOf(teamWins: totalTeamWins.count) {
                     gameOver = true
                 }
             }
         } else {
             if isTeamOne {
                 teamWins[0] = team1Color
+                if !checkTeamWinsForBestOf(teamWins: (teamWins.filter { $0 == team1Color }).count ) {
+                    gameOver = true
+                }
             } else {
                 teamWins[0] = team2Color
+                if !checkTeamWinsForBestOf(teamWins: (teamWins.filter { $0 == team2Color }).count ) {
+                    gameOver = true
+                }
             }
         }
     }
