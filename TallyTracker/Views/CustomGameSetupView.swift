@@ -180,15 +180,14 @@ struct CustomGameSetupView: View {
                 HStack {
                     Spacer()
                     NavigationLink {
-                        if servesPerRotation > 2 {
-                            GameTallyView(viewModel: GameViewModel(serveLimit: servesPerRotation,
-                                                                   scoreLimit: maxScore,
-                                                                   team1Color: team1Color,
-                                                                   team2Color: team2Color,
-                                                                   isTeam1Serving: true,
-                                                                   matchLimit: matchLimit,
-                                                                   automaticallySwitchSides: automaticallySwitchSides))
-                        }
+                        let viewModel = GameViewModel(serveLimit: servesPerRotation,
+                                                      scoreLimit: maxScore,
+                                                      team1Color: team1Color,
+                                                      team2Color: team2Color,
+                                                      isTeam1Serving: true,
+                                                      matchLimit: matchLimit,
+                                                      automaticallySwitchSides: automaticallySwitchSides)
+                        GameTallyView(viewModel: viewModel)
                     } label: {
                         Text("BEGIN")
                             .font(.system(size: 48, weight: .bold))
