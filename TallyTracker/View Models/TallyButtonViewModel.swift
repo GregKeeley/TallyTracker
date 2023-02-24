@@ -23,7 +23,7 @@ class TallyButtonViewModel: ObservableObject {
     @Published var serveLimit: Int
     ///
     @Published var matchLimit: Int
-    ///
+    /// Tracks the current serve. Starts on 1; The first serve.
     @Published var serveCount: Int
     ///
     @Published var isCurrentlyServing: Bool
@@ -46,6 +46,19 @@ class TallyButtonViewModel: ObservableObject {
         self.matchLimit = matchLimit
     }
     
+    func increaseScore() {
+        // Increase score.
+        if teamScore < scoreLimit {
+            teamScore += 1
+            incrementServe()
+        }
+        // Check score limit for win condition.
+        if teamScore >= scoreLimit {
+            // Add the teams color to the team wins array; Reset Score.
+            teamWins.append(teamColor)
+            teamScore = 0
+        }
+    }
     func incrementServe() {
         if isCurrentlyServing {
             if serveCount < serveLimit {
@@ -54,17 +67,6 @@ class TallyButtonViewModel: ObservableObject {
                 serveCount = 1
                 isCurrentlyServing.toggle()
             }
-        }
-    }
-    func increaseScore() {
-        // Increase score.
-        teamScore += 1
-        incrementServe()
-        // Check score limit for win condition.
-        if teamScore >= scoreLimit {
-            // Add the teams color to the team wins array; Reset Score.
-            teamWins.append(teamColor)
-            teamScore = 0
         }
     }
     func incrementTeamWin() {
@@ -78,10 +80,14 @@ class TallyButtonViewModel: ObservableObject {
         }
     }
     func decrementTeamScoreAndServe() {
-        if serveCount > 0 {
+        if serveCount > 1 {
             serveCount -= 1
+        } else {
+            isCurrentlyServing = false
         }
-        teamScore -= 1
+        if teamScore > 0 {
+            teamScore -= 1
+        }
     }
     
 }

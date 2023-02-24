@@ -26,7 +26,7 @@ struct GameTallyView: View {
                                                                         serveLimit: viewModel.serveLimit,
                                                                         isCurrentlyServing: viewModel.isTeam1Serving,
                                                                         serveCount: viewModel.serveCount,
-                                                                        scoreLimit: viewModel.serveLimit,
+                                                                        scoreLimit: viewModel.scoreLimit,
                                                                         teamWins: viewModel.teamWins,
                                                                         gameOver: viewModel.gameOver,
                                                                         matchLimit: viewModel.matchLimit))
@@ -57,7 +57,7 @@ struct GameTallyView: View {
                                                                         serveLimit: viewModel.serveLimit,
                                                                         isCurrentlyServing: !viewModel.isTeam1Serving,
                                                                         serveCount: viewModel.serveCount,
-                                                                        scoreLimit: viewModel.serveLimit,
+                                                                        scoreLimit: viewModel.scoreLimit,
                                                                         teamWins: viewModel.teamWins,
                                                                         gameOver: viewModel.gameOver,
                                                                         matchLimit: viewModel.matchLimit))
@@ -73,7 +73,7 @@ struct GameTallyView: View {
                                                                         serveLimit: viewModel.serveLimit,
                                                                         isCurrentlyServing: viewModel.isTeam1Serving,
                                                                         serveCount: viewModel.serveCount,
-                                                                        scoreLimit: viewModel.serveLimit,
+                                                                        scoreLimit: viewModel.scoreLimit,
                                                                         teamWins: viewModel.teamWins,
                                                                         gameOver: viewModel.gameOver,
                                                                         matchLimit: viewModel.matchLimit))
@@ -103,7 +103,7 @@ struct GameTallyView: View {
                                                                         serveLimit: viewModel.serveLimit,
                                                                         isCurrentlyServing: !viewModel.isTeam1Serving,
                                                                         serveCount: viewModel.serveCount,
-                                                                        scoreLimit: viewModel.serveLimit,
+                                                                        scoreLimit: viewModel.scoreLimit,
                                                                         teamWins: viewModel.teamWins,
                                                                         gameOver: viewModel.gameOver,
                                                                         matchLimit: viewModel.matchLimit))
