@@ -10,22 +10,20 @@ import SwiftUI
 struct CustomGameSetupView: View {
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
-    
+    /// Stores the maximum score for the game
+    // TODO: Establisha a sensible range.
+    /// Range: 11 - ?
     @State var maxScore: Int = 11
-    
+    /// Amount of time a player serves in a row before the alternate player serves.
     @State var servesPerRotation: Int = 3
-    
-    @State var matchLimit: Int = 1 {
-        didSet {
-            print(matchLimit)
-        }
-    }
-    
+    /// The amount of matches in a game. eg: 5 (Best of 5)
+    @State var matchLimit: Int = 1
+    /// The color used to represent team 1.
     @State var team1Color = Color.red
-    
+    /// The color used to represent team 2.
     @State var team2Color = Color.blue
-    
-    @State var singlesModeSelected = true
+    /// Determines if singles mode is selected. Set to 'true' for singles; 'false' for doubles.
+    //    @State var singlesModeSelected = true
     
     
     // MARK: - Body
@@ -93,14 +91,12 @@ struct CustomGameSetupView: View {
                 }
                 .padding()
                 
-                
                 // Team color
                 HStack(alignment: .center) {
                     Spacer()
                     ColorPicker("", selection: $team1Color)
                         .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
                         .padding(.leading)
-                    // TODO: Replace these text strings with text fields to allow for changing of the  names.
                     Text("Team 1")
                         .font(.system(size: 24, weight: .bold))
                         .padding(.leading)
@@ -143,41 +139,41 @@ struct CustomGameSetupView: View {
                 
                 // Singles/Doubles selection
                 // ICEBOX Feature.
-//                HStack {
-//                    Spacer()
-//                    Button {
-//                        singlesModeSelected.toggle()
-//                    } label: {
-//                        if singlesModeSelected {
-//                            Image(systemName: "x.square")
-//                                .resizable()
-//                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-//                        } else {
-//                            Image(systemName: "square")
-//                                .resizable()
-//                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-//                        }
-//                    }
-//                    Text("Singles")
-//                        .font(.system(size: 24, weight: .bold))
-//                    Spacer()
-//                    Button {
-//                        singlesModeSelected.toggle()
-//                    } label: {
-//                        if !singlesModeSelected {
-//                            Image(systemName: "x.square")
-//                                .resizable()
-//                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-//                        } else {
-//                            Image(systemName: "square")
-//                                .resizable()
-//                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-//                        }
-//                    }
-//                    Text("Doubles")
-//                        .font(.system(size: 24, weight: .bold))
-//                    Spacer()
-//                }
+                //                HStack {
+                //                    Spacer()
+                //                    Button {
+                //                        singlesModeSelected.toggle()
+                //                    } label: {
+                //                        if singlesModeSelected {
+                //                            Image(systemName: "x.square")
+                //                                .resizable()
+                //                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
+                //                        } else {
+                //                            Image(systemName: "square")
+                //                                .resizable()
+                //                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
+                //                        }
+                //                    }
+                //                    Text("Singles")
+                //                        .font(.system(size: 24, weight: .bold))
+                //                    Spacer()
+                //                    Button {
+                //                        singlesModeSelected.toggle()
+                //                    } label: {
+                //                        if !singlesModeSelected {
+                //                            Image(systemName: "x.square")
+                //                                .resizable()
+                //                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
+                //                        } else {
+                //                            Image(systemName: "square")
+                //                                .resizable()
+                //                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
+                //                        }
+                //                    }
+                //                    Text("Doubles")
+                //                        .font(.system(size: 24, weight: .bold))
+                //                    Spacer()
+                //                }
                 .padding()
                 Spacer()
                 // Begin game button.

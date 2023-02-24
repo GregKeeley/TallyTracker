@@ -70,4 +70,15 @@ class GameViewModel: ObservableObject {
         team2Score = 0
     }
     
+    func addToTeamScore(teamOne: Bool) {
+        if !gameOver { // Game still active.
+            if teamOne {
+                
+            } else {
+                
+            }
+        }
+        
+    }
+    
 }

@@ -75,6 +75,7 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
+                
                 if !viewModel.gameOver {
                     // Serve count is below or at the limit, increment count and continue.
                     if viewModel.serveCount < viewModel.serveLimit {
@@ -84,14 +85,16 @@ struct TallyButtonView: View {
                         viewModel.serveCount = 1
                         viewModel.isTeam1Serving.toggle()
                     }
+                    
                     // TEAM 1 tapped.
+                    
                     // Increase score depending on which side pressed the button.
                     if isTeamOne {
                         // Team score is below score limit, increment team score.
                         if viewModel.team1Score <= viewModel.scoreLimit {
-                            if (viewModel.team1Score + 1) == viewModel.scoreLimit {
-                                viewModel.matchComplete = true
-                            }
+//                            if (viewModel.team1Score + 1) == viewModel.scoreLimit {
+//                                viewModel.matchComplete = true
+//                            }
                             viewModel.team1Score += 1
                         } else {
                             viewModel.team1Score = 0
@@ -105,12 +108,11 @@ struct TallyButtonView: View {
                                     viewModel.gameOver = true
                                 }
                             } else {
-                                viewModel.matchComplete = true
                                 viewModel.teamWins[0] = viewModel.team1Color
                             }
                         }
-                      
-                    // TEAM 2 tapped.
+                        
+                        // TEAM 2 tapped.
                     } else {
                         if viewModel.team2Score < viewModel.scoreLimit {
                             viewModel.team2Score += 1
