@@ -24,7 +24,7 @@ struct CustomGameSetupView: View {
     @State var team2Color = Color.blue
     /// Determines if singles mode is selected. Set to 'true' for singles; 'false' for doubles.
     //    @State var singlesModeSelected = true
-    
+    @State var automaticallySwitchSides = false
     
     // MARK: - Body
     var body: some View {
@@ -186,7 +186,8 @@ struct CustomGameSetupView: View {
                                                                    team1Color: team1Color,
                                                                    team2Color: team2Color,
                                                                    isTeam1Serving: true,
-                                                                   matchLimit: matchLimit))
+                                                                   matchLimit: matchLimit,
+                                                                   automaticallySwitchSides: automaticallySwitchSides))
                         }
                     } label: {
                         Text("BEGIN")

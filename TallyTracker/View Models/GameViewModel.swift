@@ -45,8 +45,10 @@ class GameViewModel: ObservableObject {
     @Published var navigateToStandardGame: Bool = false
     /// When to set to 'true', the user will be navigated to the custome game view setup view.
     @Published var navigateToCustomGame: Bool = false
+    @Published var automaticallySwitchSides: Bool = false
+    @Published var hasSwitchedSides: Bool = false
     
-    init(serveLimit: Int, scoreLimit: Int, team1Color: Color, team2Color: Color, isTeam1Serving: Bool, matchLimit: Int) {
+    init(serveLimit: Int, scoreLimit: Int, team1Color: Color, team2Color: Color, isTeam1Serving: Bool, matchLimit: Int, automaticallySwitchSides: Bool) {
         self.serveLimit = serveLimit
         self.scoreLimit = scoreLimit
         self.team1Color = team1Color
@@ -54,6 +56,7 @@ class GameViewModel: ObservableObject {
         self.isTeam1Serving = isTeam1Serving
         self.matchLimit = matchLimit
         self.teamWins = Array(repeating: .gray, count: matchLimit)
+        self.automaticallySwitchSides = automaticallySwitchSides
     }
     
     /// Resets the entire game.
@@ -64,32 +67,33 @@ class GameViewModel: ObservableObject {
     }
     /// Resets scores to start a new match.
     func startNewMatch() {
+        matchComplete = false
         serveCount = 1
         team1Score = 0
         team2Score = 0
     }
+    
     func increaseScore(isTeamOne: Bool) {
         // Increase score.
         if isTeamOne {
-            if team1Score < scoreLimit {
+            if team1Score < scoreLimit  {
                 team1Score += 1
                 incrementServe()
-            } else if team1Score >= scoreLimit {
+            } else {
                 // Add the teams color to the team wins array; Reset Score.
                 incrementTeamWin(isTeamOne: true)
-                team1Score = 0
             }
         } else {
             if team2Score < scoreLimit {
                 team2Score += 1
                 incrementServe()
-            } else if team2Score >= scoreLimit {
+            } else {
                 // Add the teams color to the team wins array; Reset Score.
                 incrementTeamWin(isTeamOne: false)
-                team2Score = 0
             }
         }
     }
+    
     func incrementServe() {
         if serveCount < serveLimit {
             serveCount += 1
@@ -99,38 +103,47 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    func checkTeamWinsForBestOf(teamWins: Int) -> Bool {
+    func didTeamwinMatch(teamWins: Int) -> Bool {
         print("\(teamWins) / \(matchLimit) = \(Double(teamWins) / Double(matchLimit))")
-//        print(Double(teamWins) / Double(matchLimit))
-        return (Double(teamWins) / Double(matchLimit) < 0.51)
+        return (Double(teamWins) / Double(matchLimit) > 0.51)
     }
     
     func incrementTeamWin(isTeamOne: Bool) {
         // Check for who won the last match and get the index, if available.
+        matchComplete = true
+        hasSwitchedSides.toggle()
         if let indexOfPreviousWinner = teamWins.lastIndex(where: { $0 != .gray }) {
             if isTeamOne {
                 teamWins[indexOfPreviousWinner + 1] = team1Color
                 let totalTeamWins = teamWins.filter { $0 == team1Color }
-                if !checkTeamWinsForBestOf(teamWins: totalTeamWins.count) {
+                if didTeamwinMatch(teamWins: totalTeamWins.count) {
                     gameOver = true
+                } else {
+                    startNewMatch()
                 }
             } else {
                 teamWins[indexOfPreviousWinner + 1] = team2Color
                 let totalTeamWins = teamWins.filter { $0 == team2Color }
-                if !checkTeamWinsForBestOf(teamWins: totalTeamWins.count) {
+                if didTeamwinMatch(teamWins: totalTeamWins.count) {
                     gameOver = true
+                } else {
+                    startNewMatch()
                 }
             }
         } else {
             if isTeamOne {
                 teamWins[0] = team1Color
-                if !checkTeamWinsForBestOf(teamWins: (teamWins.filter { $0 == team1Color }).count ) {
+                if didTeamwinMatch(teamWins: (teamWins.filter { $0 == team1Color }).count ) {
                     gameOver = true
+                } else {
+                    startNewMatch()
                 }
             } else {
                 teamWins[0] = team2Color
-                if !checkTeamWinsForBestOf(teamWins: (teamWins.filter { $0 == team2Color }).count ) {
+                if didTeamwinMatch(teamWins: (teamWins.filter { $0 == team2Color }).count ) {
                     gameOver = true
+                } else {
+                    startNewMatch()
                 }
             }
         }
