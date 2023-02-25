@@ -117,20 +117,25 @@ struct CustomGameSetupView: View {
                 HStack {
                     Spacer()
                     VStack {
-                        Spacer()
                         ColorPicker("", selection: $team1Color)
                             .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
-                        //                        .padding(.leading)
-                        Text("Team 1")
-                            .font(.system(size: 24, weight: .bold))
-                        //                        .padding(.leading)
-                        Spacer()
+                        Button {
+                            // Set team 1 name here.
+                        } label: {
+                            Text("Team 1")
+                                .font(.system(size: 32, weight: .bold))
+                                .foregroundColor(team1Color)
+                        }
+                        Spacer(minLength: 24)
                         ColorPicker("", selection: $team2Color)
                             .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
-                        //                        .padding(.leading)
-                        Text("Team 2")
-                            .font(.system(size: 24, weight: .bold))
-                        //                        .padding(.leading)
+                        Button {
+                            // Set team 2 name here.
+                        } label: {
+                            Text("Team 2")
+                                .font(.system(size: 32, weight: .bold))
+                                .foregroundColor(team2Color)
+                        }
                         Spacer()
                     }
                     .padding()
