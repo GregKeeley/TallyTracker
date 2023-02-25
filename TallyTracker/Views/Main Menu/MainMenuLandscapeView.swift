@@ -41,7 +41,9 @@ struct MainMenuLandscapeView: View {
                                                                    team2Color: .blue,
                                                                    isTeam1Serving: true,
                                                                    matchLimit: 5,
-                                                                   automaticallySwitchSides: true))
+                                                                   automaticallySwitchSides: true,
+                                                                  team1Name: "",
+                                                                  team2Name: ""))
                         } label: {
                             // TODO: Refactor this button view to not have a reference directly to GameViewModel.
                             MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")

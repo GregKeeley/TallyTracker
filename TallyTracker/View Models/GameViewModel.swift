@@ -16,9 +16,9 @@ class GameViewModel: ObservableObject {
     /// Track the score of team 2.
     @Published var team2Score: Int = 0
     /// Store the names for team 1.
-    @Published var team1Name: String = ""
+    @Published var team1Name: String
     /// Stores the name for team 2.
-    @Published var team2Name: String = ""
+    @Published var team2Name: String
     /// Store the names for team 1.
     @Published var team1Color: Color
     /// Stores the name for team 2.
@@ -48,7 +48,7 @@ class GameViewModel: ObservableObject {
     @Published var automaticallySwitchSides: Bool = false
     @Published var hasSwitchedSides: Bool = false
     
-    init(serveLimit: Int, scoreLimit: Int, team1Color: Color, team2Color: Color, isTeam1Serving: Bool, matchLimit: Int, automaticallySwitchSides: Bool) {
+    init(serveLimit: Int, scoreLimit: Int, team1Color: Color, team2Color: Color, isTeam1Serving: Bool, matchLimit: Int, automaticallySwitchSides: Bool, team1Name: String, team2Name: String) {
         self.serveLimit = serveLimit
         self.scoreLimit = scoreLimit
         self.team1Color = team1Color
@@ -57,6 +57,8 @@ class GameViewModel: ObservableObject {
         self.matchLimit = matchLimit
         self.teamWins = Array(repeating: .gray, count: matchLimit)
         self.automaticallySwitchSides = automaticallySwitchSides
+        self.team1Name = team1Name
+        self.team2Name = team2Name
     }
     
     /// Resets the entire game.

@@ -41,7 +41,9 @@ struct MainMenuPortraitView: View {
                                                                                            team2Color: .blue,
                                                                                            isTeam1Serving: true,
                                                                                            matchLimit: 5,
-                                                                                           automaticallySwitchSides: true))) {
+                                                                                           automaticallySwitchSides: true,
+                                                                                          team1Name: "Team 1",
+                                                                                          team2Name: "Team 2"))) {
                             MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }

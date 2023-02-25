@@ -106,15 +106,9 @@ struct CustomGameSetupView: View {
                         Button {
                             automaticallySwitchSides.toggle()
                         } label: {
-                            if automaticallySwitchSides {
-                                Image(systemName: "square")
-                                    .resizable()
-                                    .frame(width: UIScreen.main.bounds.size.width * 0.07, height: UIScreen.main.bounds.size.width * 0.07)
-                            } else {
-                                Image(systemName: "x.square")
-                                    .resizable()
-                                    .frame(width: UIScreen.main.bounds.size.width * 0.07, height: UIScreen.main.bounds.size.width * 0.07)
-                            }
+                            Image(systemName: automaticallySwitchSides ? "x.square" : "square")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.size.width * 0.07, height: UIScreen.main.bounds.size.width * 0.07)
                         }
                         .padding(.horizontal, 24)
                     }
@@ -234,7 +228,9 @@ struct CustomGameSetupView: View {
                                                           team2Color: team2Color,
                                                           isTeam1Serving: true,
                                                           matchLimit: matchLimit,
-                                                          automaticallySwitchSides: automaticallySwitchSides)
+                                                          automaticallySwitchSides: automaticallySwitchSides,
+                                                          team1Name: team1Name,
+                                                          team2Name: team2Name)
                             GameTallyView(viewModel: viewModel)
                         } label: {
                             Text("BEGIN")
