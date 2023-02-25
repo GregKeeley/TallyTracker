@@ -11,7 +11,7 @@ struct CustomGameSetupView: View {
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
     /// Stores the maximum score for the game
-    // TODO: Establisha a sensible range.
+    // TODO: Establish a sensible range.
     /// Range: 11 - ?
     @State var maxScore: Int = 11
     /// Amount of time a player serves in a row before the alternate player serves.
@@ -90,26 +90,52 @@ struct CustomGameSetupView: View {
                     }
                 }
                 .padding()
-                
-                // Team color
-                HStack(alignment: .center) {
-                    Spacer()
-                    ColorPicker("", selection: $team1Color)
-                        .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
-                        .padding(.leading)
-                    Text("Team 1")
+                HStack {
+                    Text("Auto Switch")
+                        .lineLimit(2)
+                        .minimumScaleFactor(0.4)
                         .font(.system(size: 24, weight: .bold))
-                        .padding(.leading)
                     Spacer()
-                    ColorPicker("", selection: $team2Color)
-                        .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
-                        .padding(.leading)
-                    Text("Team 2")
-                        .font(.system(size: 24, weight: .bold))
-                        .padding(.leading)
-                    Spacer()
+                    Button {
+                        automaticallySwitchSides.toggle()
+                    } label: {
+                        if automaticallySwitchSides {
+                            Image(systemName: "square")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.size.width * 0.07, height: UIScreen.main.bounds.size.width * 0.07)
+                        } else {
+                            Image(systemName: "x.square")
+                                .resizable()
+                                .frame(width: UIScreen.main.bounds.size.width * 0.07, height: UIScreen.main.bounds.size.width * 0.07)
+                        }
+                    }
+                    .padding(.horizontal, 24)
                 }
                 .padding()
+                
+                // Team color
+                HStack {
+                    Spacer()
+                    VStack {
+                        Spacer()
+                        ColorPicker("", selection: $team1Color)
+                            .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
+                        //                        .padding(.leading)
+                        Text("Team 1")
+                            .font(.system(size: 24, weight: .bold))
+                        //                        .padding(.leading)
+                        Spacer()
+                        ColorPicker("", selection: $team2Color)
+                            .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
+                        //                        .padding(.leading)
+                        Text("Team 2")
+                            .font(.system(size: 24, weight: .bold))
+                        //                        .padding(.leading)
+                        Spacer()
+                    }
+                    .padding()
+                    Spacer()
+                }
                 
                 // Games Per Match
                 HStack {
