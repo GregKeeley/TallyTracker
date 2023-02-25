@@ -12,6 +12,7 @@
 		370A87842997E68E00CAB1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370A87832997E68E00CAB1E2 /* Assets.xcassets */; };
 		370A87872997E68E00CAB1E2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 370A87862997E68E00CAB1E2 /* Preview Assets.xcassets */; };
 		370F633C299EBBA70045ADE3 /* CustomGameSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F633B299EBBA70045ADE3 /* CustomGameSetupView.swift */; };
+		371796FC29AA66FC00DDFB9D /* EditNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371796FB29AA66FC00DDFB9D /* EditNameView.swift */; };
 		375A11B7299C468400830277 /* MainMenuPortraitView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11B6299C468400830277 /* MainMenuPortraitView.swift */; };
 		375A11B9299C484900830277 /* MainMenuGameButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11B8299C484900830277 /* MainMenuGameButtonView.swift */; };
 		375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */; };
@@ -27,6 +28,7 @@
 		370A87832997E68E00CAB1E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		370A87862997E68E00CAB1E2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		370F633B299EBBA70045ADE3 /* CustomGameSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomGameSetupView.swift; sourceTree = "<group>"; };
+		371796FB29AA66FC00DDFB9D /* EditNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditNameView.swift; sourceTree = "<group>"; };
 		375A11B6299C468400830277 /* MainMenuPortraitView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuPortraitView.swift; sourceTree = "<group>"; };
 		375A11B8299C484900830277 /* MainMenuGameButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuGameButtonView.swift; sourceTree = "<group>"; };
 		375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOrientationView.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				370A87812997E68D00CAB1E2 /* GameTallyView.swift */,
 				37D9FFEF299D9270009E6729 /* Reusable Views */,
 				370F633B299EBBA70045ADE3 /* CustomGameSetupView.swift */,
+				371796FB29AA66FC00DDFB9D /* EditNameView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -195,6 +198,7 @@
 				375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */,
 				375A11B7299C468400830277 /* MainMenuPortraitView.swift in Sources */,
 				376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */,
+				371796FC29AA66FC00DDFB9D /* EditNameView.swift in Sources */,
 				370A87822997E68D00CAB1E2 /* GameTallyView.swift in Sources */,
 				37D9FFEC299D8D31009E6729 /* GameViewModel.swift in Sources */,
 				370A87802997E68D00CAB1E2 /* TallyTrackerApp.swift in Sources */,
