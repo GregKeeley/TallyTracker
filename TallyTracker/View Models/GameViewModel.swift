@@ -76,22 +76,21 @@ class GameViewModel: ObservableObject {
     }
     
     func increaseScore(isTeamOne: Bool) {
-        // Increase score.
         if isTeamOne {
             if team1Score < scoreLimit  {
                 team1Score += 1
+                if team1Score >= scoreLimit {
+                    incrementTeamWin(isTeamOne: true)
+                }
                 incrementServe()
-            } else {
-                // Add the teams color to the team wins array; Reset Score.
-                incrementTeamWin(isTeamOne: true)
             }
         } else {
             if team2Score < scoreLimit {
                 team2Score += 1
+                if team2Score >= scoreLimit {
+                    incrementTeamWin(isTeamOne: false)
+                }
                 incrementServe()
-            } else {
-                // Add the teams color to the team wins array; Reset Score.
-                incrementTeamWin(isTeamOne: false)
             }
         }
     }
