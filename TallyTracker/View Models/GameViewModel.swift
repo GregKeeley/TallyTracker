@@ -8,6 +8,7 @@
 import SwiftUI
 
 class GameViewModel: ObservableObject {
+    // MARK: - Properties and Variables
     /// Used to determine the color scheme of the users device for layout/color purposes.
     @Environment(\.colorScheme) var colorScheme
     /// Tracks the score of team 1.
@@ -54,6 +55,7 @@ class GameViewModel: ObservableObject {
     /// Set to 'false' for default layout, set to 'true' to switch team positions.
     @Published var hasSwitchedSides: Bool = false
     
+    // MARK: - Init
     init(serveLimit: Int, scoreLimit: Int, team1Color: Color, team2Color: Color, isTeam1Serving: Bool, matchLimit: Int, automaticallySwitchSides: Bool, team1Name: String, team2Name: String) {
         self.serveLimit = serveLimit
         self.scoreLimit = scoreLimit
@@ -67,6 +69,7 @@ class GameViewModel: ObservableObject {
         self.team2Name = team2Name
     }
     
+    // MARK: - Functions
     /// Resets the entire game.
     func resetGame() {
         teamWins = Array(repeating: .gray, count: self.matchLimit)
@@ -82,7 +85,7 @@ class GameViewModel: ObservableObject {
     }
     
     /// Increases a teams score depending on the caller.
-    /// - Parameter isTeamOne: Set to 'true' when team one is calling the function to increase 
+    /// - Parameter isTeamOne: Set to 'true' when team one is calling the function to increase
     func increaseScore(isTeamOne: Bool) {
         if isTeamOne {
             if team1Score < scoreLimit  {
@@ -103,6 +106,8 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    
+    /// Increments the serve count, if it is below the serve limit for the match. If it is equal or greater to the serve limit, the team that is serving is toggled and the serve count resets to '1' (the first serve).
     func incrementServe() {
         if serveCount < serveLimit {
             serveCount += 1
@@ -112,18 +117,26 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    /// Checks if the current amount of wins a player has achieved is the "best of" the matches limit (matchLimit).
+    /// - Parameter teamWins: Integer describing the amount of wins a team has accomplished.
+    /// - Returns: 'true' if the team wins account for more than 50% of the match limit set by the user.
     func didTeamwinMatch(teamWins: Int) -> Bool {
         print("\(teamWins) / \(matchLimit) = \(Double(teamWins) / Double(matchLimit))")
         return (Double(teamWins) / Double(matchLimit) > 0.51)
     }
     
+    /// When a team has been determined as having won a match, this method is called to increment their wins.
+    /// - Parameter isTeamOne: Set to 'true' when called by team 1, to add the appropriate color to the 'teamWins' array.
     func incrementTeamWin(isTeamOne: Bool) {
-        // Check for who won the last match and get the index, if available.
+        // Match is complete, switch sides.
         matchComplete = true
         hasSwitchedSides.toggle()
+        // Get index of the previous winner, if available.
         if let indexOfPreviousWinner = teamWins.lastIndex(where: { $0 != .gray }) {
             if isTeamOne {
+                // Using the index of the previous winner, we can set the newest winners color in the array.
                 teamWins[indexOfPreviousWinner + 1] = team1Color
+                // Get the total wins for the team and check if the team won. If they won, set 'gameOver' to 'true', otherwise start a new match.
                 let totalTeamWins = teamWins.filter { $0 == team1Color }
                 if didTeamwinMatch(teamWins: totalTeamWins.count) {
                     gameOver = true
@@ -131,6 +144,7 @@ class GameViewModel: ObservableObject {
                     startNewMatch()
                 }
             } else {
+                // Same as above, for team two.
                 teamWins[indexOfPreviousWinner + 1] = team2Color
                 let totalTeamWins = teamWins.filter { $0 == team2Color }
                 if didTeamwinMatch(teamWins: totalTeamWins.count) {
@@ -140,8 +154,10 @@ class GameViewModel: ObservableObject {
                 }
             }
         } else {
+            // No previous winner has been found, set the first index in the array to the winning teams color.
             if isTeamOne {
                 teamWins[0] = team1Color
+                // Check if this team won (if they have 1 match per game, this would be a win), and set 'gameOver' to 'true', otherwise start a new match.
                 if didTeamwinMatch(teamWins: (teamWins.filter { $0 == team1Color }).count ) {
                     gameOver = true
                 } else {
@@ -158,6 +174,8 @@ class GameViewModel: ObservableObject {
         }
     }
     
+    /// Decrements the calling teams score by one. Used when a button has been accidentally tapped to correct the score.
+    /// - Parameter isTeamOne: Set to 'true' when team one is calling the function to increase
     func decrementTeamScoreAndServe(isTeamOne: Bool) {
         if isTeamOne {
             if team1Score > 0 {

@@ -90,7 +90,7 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
-                gameVM.increaseScore(isTeamOne: isTeamOne)
+                gameVM.increaseScore(teamScore: isTeamOne)
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
                 gameVM.decrementTeamScoreAndServe(isTeamOne: isTeamOne)
