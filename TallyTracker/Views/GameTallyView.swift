@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct GameTallyView: View {
+    /// Used to dismiss this view.
     @Environment(\.presentationMode) private var presentationMode
+    /// View model for the UI. 
     @StateObject var viewModel: GameViewModel
     /// Height size class, used to determine available horizontal space available and handle layout on the device.
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
@@ -175,9 +177,6 @@ struct GameTallyView: View {
             return Alert(title: Text("Play Again?"), primaryButton: primaryButton, secondaryButton: secondaryButton)
         })
         .navigationBarBackButtonHidden()
-        .onAppear {
-            //            viewModel.resetGame()
-        }
     }
     
 }

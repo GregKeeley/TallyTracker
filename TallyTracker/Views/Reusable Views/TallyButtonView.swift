@@ -90,7 +90,7 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
-                gameVM.increaseScore(teamScore: isTeamOne)
+                gameVM.increaseScore(isTeamOne: isTeamOne)
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
                 gameVM.decrementTeamScoreAndServe(isTeamOne: isTeamOne)
@@ -100,40 +100,45 @@ struct TallyButtonView: View {
     }
     
     
+    
     //MARK: - Previews
-//    struct TallyButton_Previews: PreviewProvider {
-//        static let viewModel1 = TallyButtonViewModel(color: .red,
-//                                                     teamName: "Greg",
-//                                                     teamScore: 0,
-//                                                     isTeamOne: true,
-//                                                     serveLimit: 3,
-//                                                     isCurrentlyServing: true,
-//                                                     serveCount: 0,
-//                                                     scoreLimit: 10,
-//                                                     teamWins: [],
-//                                                     gameOver: false,
-//                                                     matchLimit: 3)
-//        static var viewModel2: TallyButtonViewModel {
-//            let viewModel = TallyButtonViewModel(color: .blue,
-//                                                 teamName: "Team2",
-//                                                 teamScore: 0,
-//                                                 isTeamOne: false,
-//                                                 serveLimit: 3,
-//                                                 isCurrentlyServing: false,
-//                                                 serveCount: 0,
-//                                                 scoreLimit: 10,
-//                                                 teamWins: [],
-//                                                 gameOver: false,
-//                                                 matchLimit: 3)
-//            return viewModel
-//        }
-//        static var previews: some View {
-//            TallyButtonView(tallyButtonVM: viewModel1)
-//                .frame(width: 400, height: 400)
-//                .previewLayout(.sizeThatFits)
-//            TallyButtonView(tallyButtonVM: viewModel2)
-//                .frame(width: 400, height: 400)
-//                .previewLayout(.sizeThatFits)
-//        }
-//    }
+    struct TallyButton_Previews: PreviewProvider {
+        static let buttonPreviewVM = GameViewModel(serveLimit: 5,
+                                              scoreLimit: 15,
+                                              team1Color: .red,
+                                              team2Color: .blue,
+                                              isTeam1Serving: true,
+                                              matchLimit: 5,
+                                              automaticallySwitchSides: true,
+                                              team1Name: "Team 1",
+                                              team2Name: "Team 2")
+        static var previews: some View {
+            // Team 1
+            TallyButtonView(gameVM: buttonPreviewVM,
+                            teamColor: buttonPreviewVM.team1Color,
+                            teamName: buttonPreviewVM.team1Name,
+                            teamScore: .constant(buttonPreviewVM.team1Score),
+                            isTeamOne: true,
+                            serveLimit: buttonPreviewVM.serveLimit,
+                            serveCount: .constant(buttonPreviewVM.serveCount),
+                            isPlayer1Serving: .constant(buttonPreviewVM.isTeam1Serving),
+                            teamWins: .constant(buttonPreviewVM.teamWins),
+                            gameOver: .constant(buttonPreviewVM.gameOver))
+                .frame(width: 400, height: 400)
+                .previewLayout(.sizeThatFits)
+            // Team 2
+            TallyButtonView(gameVM: buttonPreviewVM,
+                            teamColor: buttonPreviewVM.team2Color,
+                            teamName: buttonPreviewVM.team2Name,
+                            teamScore: .constant(buttonPreviewVM.team2Score),
+                            isTeamOne: true,
+                            serveLimit: buttonPreviewVM.serveLimit,
+                            serveCount: .constant(buttonPreviewVM.serveCount),
+                            isPlayer1Serving: .constant(buttonPreviewVM.isTeam1Serving),
+                            teamWins: .constant(buttonPreviewVM.teamWins),
+                            gameOver: .constant(buttonPreviewVM.gameOver))
+                .frame(width: 400, height: 400)
+                .previewLayout(.sizeThatFits)
+        }
+    }
 }
