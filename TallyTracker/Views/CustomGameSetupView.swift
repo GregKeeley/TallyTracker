@@ -224,13 +224,13 @@ struct CustomGameSetupView: View {
                         NavigationLink {
                             let viewModel = GameViewModel(serveLimit: servesPerRotation,
                                                           scoreLimit: maxScore,
-                                                          team1Color: team1Color,
-                                                          team2Color: team2Color,
-                                                          isTeam1Serving: true,
+                                                          firstTeamColor: team1Color,
+                                                          secondTeamColor: team2Color,
+                                                          firstTeamName: team1Name,
+                                                          secondTeamName: team2Name,
+                                                          firstTeamIsServing: true,
                                                           matchLimit: matchLimit,
-                                                          automaticallySwitchSides: automaticallySwitchSides,
-                                                          team1Name: team1Name,
-                                                          team2Name: team2Name)
+                                                          teamsAutomaticallySwitchSides: automaticallySwitchSides)
                             GameTallyView(viewModel: viewModel)
                         } label: {
                             Text("BEGIN")

@@ -37,13 +37,13 @@ struct MainMenuPortraitView: View {
                     VStack {
                         NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 5,
                                                                                            scoreLimit: 11,
-                                                                                           team1Color: .red,
-                                                                                           team2Color: .blue,
-                                                                                           isTeam1Serving: true,
+                                                                                           firstTeamColor: .red,
+                                                                                           secondTeamColor: .blue,
+                                                                                           firstTeamName: "team1",
+                                                                                           secondTeamName: "team2",
+                                                                                           firstTeamIsServing: true,
                                                                                            matchLimit: 5,
-                                                                                           automaticallySwitchSides: true,
-                                                                                          team1Name: "Team 1",
-                                                                                          team2Name: "Team 2"))) {
+                                                                                           teamsAutomaticallySwitchSides: true))) {
                             MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }

@@ -22,26 +22,26 @@ struct GameTallyView: View {
             if heightSizeClass == .regular {
                 VStack {
                     TallyButtonView(gameVM: viewModel,
-                                    teamColor: viewModel.team1Color,
-                                    teamName: viewModel.team1Name,
-                                    teamScore: $viewModel.team1Score,
+                                    teamColor: viewModel.firstTeamColor,
+                                    teamName: viewModel.firstTeamName,
+                                    teamScore: $viewModel.firstTeamScore,
                                     isTeamOne: true,
                                     serveLimit: viewModel.serveLimit,
                                     serveCount:  $viewModel.serveCount,
-                                    isPlayer1Serving: $viewModel.isTeam1Serving,
-                                    teamWins: $viewModel.teamWins,
+                                    isPlayer1Serving: $viewModel.isFirstTeamServing,
+                                    teamWins: $viewModel.totalTeamWinColors,
                                     gameOver: $viewModel.gameOver)
                     .disabled(viewModel.gameOver)
                     HStack {
                         ForEach(0..<viewModel.matchLimit, id:\.self) { index in
-                            if viewModel.teamWins[index] == viewModel.team1Color {
+                            if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
                                 Circle()
                                     .frame(width: 20)
-                                    .foregroundColor(viewModel.team1Color)
-                            } else if viewModel.teamWins[index] == viewModel.team2Color {
+                                    .foregroundColor(viewModel.firstTeamColor)
+                            } else if viewModel.totalTeamWinColors[index] == viewModel.secondTeamColor {
                                 Circle()
                                     .frame(width: 20)
-                                    .foregroundColor(viewModel.team2Color)
+                                    .foregroundColor(viewModel.secondTeamColor)
                             } else {
                                 Circle()
                                     .stroke()
@@ -52,14 +52,14 @@ struct GameTallyView: View {
                         }
                     }
                     TallyButtonView(gameVM: viewModel,
-                                    teamColor: viewModel.team2Color,
-                                    teamName: viewModel.team2Name,
-                                    teamScore: $viewModel.team2Score,
+                                    teamColor: viewModel.secondTeamColor,
+                                    teamName: viewModel.secondTeamName,
+                                    teamScore: $viewModel.secondTeamScore,
                                     isTeamOne: false,
                                     serveLimit: viewModel.serveLimit,
                                     serveCount:  $viewModel.serveCount,
-                                    isPlayer1Serving: $viewModel.isTeam1Serving,
-                                    teamWins: $viewModel.teamWins,
+                                    isPlayer1Serving: $viewModel.isFirstTeamServing,
+                                    teamWins: $viewModel.totalTeamWinColors,
                                     gameOver: $viewModel.gameOver)
                     .disabled(viewModel.gameOver)
                 }
@@ -77,28 +77,69 @@ struct GameTallyView: View {
                 .padding()
             } else {
                 HStack {
-                    if viewModel.automaticallySwitchSides && viewModel.hasSwitchedSides {
+//                    if viewModel.automaticallySwitchSides && viewModel.hasSwitchedSides {
+//                        TallyButtonView(gameVM: viewModel,
+//                                        teamColor: viewModel.team1Color,
+//                                        teamName: viewModel.team1Name,
+//                                        teamScore: $viewModel.team1Score,
+//                                        isTeamOne: true,
+//                                        serveLimit: viewModel.serveLimit,
+//                                        serveCount:  $viewModel.serveCount,
+//                                        isPlayer1Serving: $viewModel.isTeam1Serving,
+//                                        teamWins: $viewModel.teamWins,
+//                                        gameOver: $viewModel.gameOver)
+//                        .disabled(viewModel.gameOver)
+//                        VStack {
+//                            ForEach(0..<viewModel.matchLimit, id:\.self) { index in
+//                                if viewModel.teamWins[index] == viewModel.team1Color {
+//                                    Circle()
+//                                        .frame(width: 20)
+//                                        .foregroundColor(viewModel.team1Color)
+//                                } else if viewModel.teamWins[index] == viewModel.team2Color {
+//                                    Circle()
+//                                        .frame(width: 20)
+//                                        .foregroundColor(viewModel.team2Color)
+//                                } else {
+//                                    Circle()
+//                                        .stroke()
+//                                        .frame(width: 20)
+//                                        .foregroundColor(.gray)
+//                                }
+//                            }
+//                        }
+//                        TallyButtonView(gameVM: viewModel,
+//                                        teamColor: viewModel.team2Color,
+//                                        teamName: viewModel.team2Name,
+//                                        teamScore: $viewModel.team2Score,
+//                                        isTeamOne: false,
+//                                        serveLimit: viewModel.serveLimit,
+//                                        serveCount:  $viewModel.serveCount,
+//                                        isPlayer1Serving: $viewModel.isTeam1Serving,
+//                                        teamWins: $viewModel.teamWins,
+//                                        gameOver: $viewModel.gameOver)
+//                        .disabled(viewModel.gameOver)
+//                    } else {
                         TallyButtonView(gameVM: viewModel,
-                                        teamColor: viewModel.team1Color,
-                                        teamName: viewModel.team1Name,
-                                        teamScore: $viewModel.team1Score,
-                                        isTeamOne: true,
+                                        teamColor: viewModel.secondTeamColor,
+                                        teamName: viewModel.secondTeamName,
+                                        teamScore: $viewModel.secondTeamScore,
+                                        isTeamOne: false,
                                         serveLimit: viewModel.serveLimit,
                                         serveCount:  $viewModel.serveCount,
-                                        isPlayer1Serving: $viewModel.isTeam1Serving,
-                                        teamWins: $viewModel.teamWins,
+                                        isPlayer1Serving: $viewModel.isFirstTeamServing,
+                                        teamWins: $viewModel.totalTeamWinColors,
                                         gameOver: $viewModel.gameOver)
                         .disabled(viewModel.gameOver)
                         VStack {
                             ForEach(0..<viewModel.matchLimit, id:\.self) { index in
-                                if viewModel.teamWins[index] == viewModel.team1Color {
+                                if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
                                     Circle()
                                         .frame(width: 20)
-                                        .foregroundColor(viewModel.team1Color)
-                                } else if viewModel.teamWins[index] == viewModel.team2Color {
+                                        .foregroundColor(viewModel.firstTeamColor)
+                                } else if viewModel.totalTeamWinColors[index] == viewModel.secondTeamColor {
                                     Circle()
                                         .frame(width: 20)
-                                        .foregroundColor(viewModel.team2Color)
+                                        .foregroundColor(viewModel.secondTeamColor)
                                 } else {
                                     Circle()
                                         .stroke()
@@ -108,58 +149,17 @@ struct GameTallyView: View {
                             }
                         }
                         TallyButtonView(gameVM: viewModel,
-                                        teamColor: viewModel.team2Color,
-                                        teamName: viewModel.team2Name,
-                                        teamScore: $viewModel.team2Score,
-                                        isTeamOne: false,
-                                        serveLimit: viewModel.serveLimit,
-                                        serveCount:  $viewModel.serveCount,
-                                        isPlayer1Serving: $viewModel.isTeam1Serving,
-                                        teamWins: $viewModel.teamWins,
-                                        gameOver: $viewModel.gameOver)
-                        .disabled(viewModel.gameOver)
-                    } else {
-                        TallyButtonView(gameVM: viewModel,
-                                        teamColor: viewModel.team2Color,
-                                        teamName: viewModel.team2Name,
-                                        teamScore: $viewModel.team2Score,
-                                        isTeamOne: false,
-                                        serveLimit: viewModel.serveLimit,
-                                        serveCount:  $viewModel.serveCount,
-                                        isPlayer1Serving: $viewModel.isTeam1Serving,
-                                        teamWins: $viewModel.teamWins,
-                                        gameOver: $viewModel.gameOver)
-                        .disabled(viewModel.gameOver)
-                        VStack {
-                            ForEach(0..<viewModel.matchLimit, id:\.self) { index in
-                                if viewModel.teamWins[index] == viewModel.team1Color {
-                                    Circle()
-                                        .frame(width: 20)
-                                        .foregroundColor(viewModel.team1Color)
-                                } else if viewModel.teamWins[index] == viewModel.team2Color {
-                                    Circle()
-                                        .frame(width: 20)
-                                        .foregroundColor(viewModel.team2Color)
-                                } else {
-                                    Circle()
-                                        .stroke()
-                                        .frame(width: 20)
-                                        .foregroundColor(.gray)
-                                }
-                            }
-                        }
-                        TallyButtonView(gameVM: viewModel,
-                                        teamColor: viewModel.team1Color,
-                                        teamName: viewModel.team1Name,
-                                        teamScore: $viewModel.team1Score,
+                                        teamColor: viewModel.firstTeamColor,
+                                        teamName: viewModel.firstTeamName,
+                                        teamScore: $viewModel.firstTeamScore,
                                         isTeamOne: true,
                                         serveLimit: viewModel.serveLimit,
                                         serveCount:  $viewModel.serveCount,
-                                        isPlayer1Serving: $viewModel.isTeam1Serving,
-                                        teamWins: $viewModel.teamWins,
+                                        isPlayer1Serving: $viewModel.isFirstTeamServing,
+                                        teamWins: $viewModel.totalTeamWinColors,
                                         gameOver: $viewModel.gameOver)
                         .disabled(viewModel.gameOver)
-                    }
+//                    }
                 }
                 .padding()
             }
@@ -188,15 +188,15 @@ struct ContentView_Previews: PreviewProvider {
     
     static var viewModel:GameViewModel {
         let viewModel = GameViewModel(serveLimit: 5,
-                                      scoreLimit: 11,
-                                      team1Color: .red,
-                                      team2Color: .blue,
-                                      isTeam1Serving: true,
-                                      matchLimit: 1,
-                                      automaticallySwitchSides: true,
-                                      team1Name: "Greg",
-                                      team2Name: "Terry")
-        viewModel.teamWins = Array(repeating: .gray, count: viewModel.matchLimit)
+                                      scoreLimit: 15,
+                                      firstTeamColor: .red,
+                                      secondTeamColor: .blue,
+                                      firstTeamName: "Greg",
+                                      secondTeamName: "Terry",
+                                      firstTeamIsServing: true,
+                                      matchLimit: 5,
+                                      teamsAutomaticallySwitchSides: true)
+        viewModel.totalTeamWinColors = Array(repeating: .gray, count: viewModel.matchLimit)
         //        viewModel.gameOver = true
         return viewModel
     }

@@ -37,13 +37,13 @@ struct MainMenuLandscapeView: View {
                         NavigationLink {
                             GameTallyView(viewModel: GameViewModel(serveLimit: 5,
                                                                    scoreLimit: 11,
-                                                                   team1Color: .red,
-                                                                   team2Color: .blue,
-                                                                   isTeam1Serving: true,
+                                                                   firstTeamColor: .red,
+                                                                   secondTeamColor: .blue,
+                                                                   firstTeamName: "",
+                                                                   secondTeamName: "",
+                                                                   firstTeamIsServing: true,
                                                                    matchLimit: 5,
-                                                                   automaticallySwitchSides: true,
-                                                                  team1Name: "",
-                                                                  team2Name: ""))
+                                                                   teamsAutomaticallySwitchSides: true))
                         } label: {
                             // TODO: Refactor this button view to not have a reference directly to GameViewModel.
                             MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")

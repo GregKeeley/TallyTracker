@@ -90,10 +90,10 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
-                gameVM.increaseScore(isTeamOne: isTeamOne)
+                gameVM.increaseScore(isFirstTeam: isTeamOne)
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
-                gameVM.decrementTeamScoreAndServe(isTeamOne: isTeamOne)
+                gameVM.decrementTeamScoreAndServe(isFirstTeam: isTeamOne)
             })
         }
         
@@ -104,38 +104,38 @@ struct TallyButtonView: View {
     //MARK: - Previews
     struct TallyButton_Previews: PreviewProvider {
         static let buttonPreviewVM = GameViewModel(serveLimit: 5,
-                                              scoreLimit: 15,
-                                              team1Color: .red,
-                                              team2Color: .blue,
-                                              isTeam1Serving: true,
-                                              matchLimit: 5,
-                                              automaticallySwitchSides: true,
-                                              team1Name: "Team 1",
-                                              team2Name: "Team 2")
+                                                   scoreLimit: 15,
+                                                   firstTeamColor: .red,
+                                                   secondTeamColor: .blue,
+                                                   firstTeamName: "Team 1",
+                                                   secondTeamName: "Team 2",
+                                                   firstTeamIsServing: true,
+                                                   matchLimit: 5,
+                                                   teamsAutomaticallySwitchSides: true)
         static var previews: some View {
-            // Team 1
+            // First Team
             TallyButtonView(gameVM: buttonPreviewVM,
-                            teamColor: buttonPreviewVM.team1Color,
-                            teamName: buttonPreviewVM.team1Name,
-                            teamScore: .constant(buttonPreviewVM.team1Score),
+                            teamColor: buttonPreviewVM.firstTeamColor,
+                            teamName: buttonPreviewVM.firstTeamName,
+                            teamScore: .constant(buttonPreviewVM.firstTeamScore),
                             isTeamOne: true,
                             serveLimit: buttonPreviewVM.serveLimit,
                             serveCount: .constant(buttonPreviewVM.serveCount),
-                            isPlayer1Serving: .constant(buttonPreviewVM.isTeam1Serving),
-                            teamWins: .constant(buttonPreviewVM.teamWins),
+                            isPlayer1Serving: .constant(buttonPreviewVM.isFirstTeamServing),
+                            teamWins: .constant(buttonPreviewVM.totalTeamWinColors),
                             gameOver: .constant(buttonPreviewVM.gameOver))
                 .frame(width: 400, height: 400)
                 .previewLayout(.sizeThatFits)
-            // Team 2
+            // Second Team
             TallyButtonView(gameVM: buttonPreviewVM,
-                            teamColor: buttonPreviewVM.team2Color,
-                            teamName: buttonPreviewVM.team2Name,
-                            teamScore: .constant(buttonPreviewVM.team2Score),
+                            teamColor: buttonPreviewVM.secondTeamColor,
+                            teamName: buttonPreviewVM.secondTeamName,
+                            teamScore: .constant(buttonPreviewVM.secondTeamScore),
                             isTeamOne: true,
                             serveLimit: buttonPreviewVM.serveLimit,
                             serveCount: .constant(buttonPreviewVM.serveCount),
-                            isPlayer1Serving: .constant(buttonPreviewVM.isTeam1Serving),
-                            teamWins: .constant(buttonPreviewVM.teamWins),
+                            isPlayer1Serving: .constant(buttonPreviewVM.isFirstTeamServing),
+                            teamWins: .constant(buttonPreviewVM.totalTeamWinColors),
                             gameOver: .constant(buttonPreviewVM.gameOver))
                 .frame(width: 400, height: 400)
                 .previewLayout(.sizeThatFits)
