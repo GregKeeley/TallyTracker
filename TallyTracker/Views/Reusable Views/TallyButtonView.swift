@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TallyButtonView: View {
+    /// Used to determine the color scheme of the users device for layout/color purposes.
+    @Environment(\.colorScheme) var colorScheme
     /// View model for the button to display the teams score and intercept gestures during a game.
     @StateObject var gameVM: GameViewModel
     /// Represents the team color.
@@ -35,7 +37,7 @@ struct TallyButtonView: View {
             ZStack {
                 // Border
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(gameVM.colorScheme == .dark ? .black : .white)
+                    .foregroundColor(colorScheme == .dark ? .black : .white)
                     .padding(8)
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(lineWidth: 2)

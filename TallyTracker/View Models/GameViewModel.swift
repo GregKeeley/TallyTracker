@@ -11,7 +11,6 @@ class GameViewModel: ObservableObject {
     // MARK: - Properties and Variables
     /// Used to determine the color scheme of the users device for layout/color purposes.
     @Environment(\.colorScheme) var colorScheme
-    
     // TODO: Extract relevant team properties and create a model to support those support those properties.
     /// Store the names for the first team.
     @Published var firstTeamName: String
@@ -86,6 +85,7 @@ class GameViewModel: ObservableObject {
     /// Resets scores to start a new match.
     func startNewMatch() {
         matchComplete = false
+//        isFirstTeamServing.toggle()
         serveCount = 1
         firstTeamScore = 0
         secondTeamScore = 0
@@ -113,7 +113,6 @@ class GameViewModel: ObservableObject {
         }
     }
     
-    
     /// Increments the serve count, if it is below the serve limit for the match. If it is equal or greater to the serve limit, the team that is serving is toggled and the serve count resets to '1' (the first serve).
     func incrementServe() {
         if serveCount < serveLimit {
@@ -129,7 +128,6 @@ class GameViewModel: ObservableObject {
     /// - Parameter matchLimit: Maximum number of matches played per game.
     /// - Returns: 'true' if the team wins account for more than 50% of the match limit set by the user.
     func didTeamWinGame(totalTeamWins: Double, matchLimit: Double) -> Bool {
-        print("\(totalTeamWins) / \(matchLimit) = \(totalTeamWins / matchLimit)")
         return (totalTeamWins / matchLimit) > 0.51
     }
     
