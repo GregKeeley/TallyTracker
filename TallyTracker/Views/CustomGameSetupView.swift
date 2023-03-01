@@ -32,7 +32,6 @@ struct CustomGameSetupView: View {
     
     // MARK: - Body
     var body: some View {
-        
         ScrollView {
             ZStack {
                 VStack(alignment: .leading) {

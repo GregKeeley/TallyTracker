@@ -35,6 +35,9 @@ struct TallyButtonView: View {
             ZStack {
                 // Border
                 RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(gameVM.colorScheme == .dark ? .black : .white)
+                    .padding(8)
+                RoundedRectangle(cornerRadius: 8)
                     .stroke(lineWidth: 2)
                     .padding(8)
                     .foregroundColor(teamColor.opacity(0.8))
