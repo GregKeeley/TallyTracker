@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TallyButtonView: View {
+    // MARK: - Variables/Properties
     /// Used to determine the color scheme of the users device for layout/color purposes.
     @Environment(\.colorScheme) var colorScheme
     /// View model for the button to display the teams score and intercept gestures during a game.
@@ -19,17 +20,15 @@ struct TallyButtonView: View {
     /// Tracks the score of the team.
     @Binding var teamScore: Int
     /// Used to determine if this view model belongs to team 1.
-    @State var isTeamOne: Bool
-    ///
+    @State var isFirstTeam: Bool
+    /// The maximum numbers of serves before switching which team serves the ball.
     @State var serveLimit: Int
     /// Tracks the current serve. Starts on 1; The first serve.
     @Binding var serveCount: Int
-    ///
-    @Binding var isPlayer1Serving: Bool
-    ///
-//    @Binding var teamWins: [Color]
-    
-//    @Binding var gameOver: Bool
+    /// Determines if the first team is currently serving.
+    /// Set to 'true' when the first team is currently serving to display the UI related to the current for that team.
+    /// Set to 'false' when the second team is serving.
+    @Binding var isfirstTeamServing: Bool
     
     // MARK: - Body
     var body: some View {
@@ -46,7 +45,7 @@ struct TallyButtonView: View {
                 VStack {
                     HStack {
                         ForEach(0..<serveLimit, id: \.self) { serveLimit in
-                            if isPlayer1Serving && isTeamOne {
+                            if isfirstTeamServing && isFirstTeam {
                                 if serveCount > serveLimit {
                                     Circle()
                                         .foregroundColor(teamColor.opacity(0.8))
@@ -57,7 +56,7 @@ struct TallyButtonView: View {
                                         .foregroundColor(teamColor.opacity(0.8))
                                         .frame(width: geo.size.width / 16)
                                 }
-                            } else if !isPlayer1Serving && !isTeamOne {
+                            } else if !isfirstTeamServing && !isFirstTeam {
                                 if serveCount > serveLimit {
                                     Circle()
                                         .foregroundColor(teamColor.opacity(0.8))
@@ -95,10 +94,10 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
-                gameVM.increaseScore(isFirstTeam: isTeamOne)
+                gameVM.increaseScore(isFirstTeam: isFirstTeam)
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
-                gameVM.decrementTeamScoreAndServe(isFirstTeam: isTeamOne)
+                gameVM.decrementTeamScoreAndServe(isFirstTeam: isFirstTeam)
             })
         }
         
@@ -123,10 +122,10 @@ struct TallyButtonView: View {
                             teamColor: buttonPreviewVM.firstTeamColor,
                             teamName: buttonPreviewVM.firstTeamName,
                             teamScore: .constant(buttonPreviewVM.firstTeamScore),
-                            isTeamOne: true,
+                            isFirstTeam: true,
                             serveLimit: buttonPreviewVM.serveLimit,
                             serveCount: .constant(buttonPreviewVM.serveCount),
-                            isPlayer1Serving: .constant(buttonPreviewVM.isFirstTeamServing))
+                            isfirstTeamServing: .constant(buttonPreviewVM.isFirstTeamServing))
                 .frame(width: 400, height: 400)
                 .previewLayout(.sizeThatFits)
             // Second Team
@@ -134,10 +133,10 @@ struct TallyButtonView: View {
                             teamColor: buttonPreviewVM.secondTeamColor,
                             teamName: buttonPreviewVM.secondTeamName,
                             teamScore: .constant(buttonPreviewVM.secondTeamScore),
-                            isTeamOne: true,
+                            isFirstTeam: true,
                             serveLimit: buttonPreviewVM.serveLimit,
                             serveCount: .constant(buttonPreviewVM.serveCount),
-                            isPlayer1Serving: .constant(buttonPreviewVM.isFirstTeamServing))
+                            isfirstTeamServing: .constant(buttonPreviewVM.isFirstTeamServing))
                 .frame(width: 400, height: 400)
                 .previewLayout(.sizeThatFits)
         }
