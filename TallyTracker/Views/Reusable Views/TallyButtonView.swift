@@ -27,9 +27,9 @@ struct TallyButtonView: View {
     ///
     @Binding var isPlayer1Serving: Bool
     ///
-    @Binding var teamWins: [Color]
+//    @Binding var teamWins: [Color]
     
-    @Binding var gameOver: Bool
+//    @Binding var gameOver: Bool
     
     // MARK: - Body
     var body: some View {
@@ -126,9 +126,7 @@ struct TallyButtonView: View {
                             isTeamOne: true,
                             serveLimit: buttonPreviewVM.serveLimit,
                             serveCount: .constant(buttonPreviewVM.serveCount),
-                            isPlayer1Serving: .constant(buttonPreviewVM.isFirstTeamServing),
-                            teamWins: .constant(buttonPreviewVM.totalTeamWinColors),
-                            gameOver: .constant(buttonPreviewVM.gameOver))
+                            isPlayer1Serving: .constant(buttonPreviewVM.isFirstTeamServing))
                 .frame(width: 400, height: 400)
                 .previewLayout(.sizeThatFits)
             // Second Team
@@ -139,9 +137,7 @@ struct TallyButtonView: View {
                             isTeamOne: true,
                             serveLimit: buttonPreviewVM.serveLimit,
                             serveCount: .constant(buttonPreviewVM.serveCount),
-                            isPlayer1Serving: .constant(buttonPreviewVM.isFirstTeamServing),
-                            teamWins: .constant(buttonPreviewVM.totalTeamWinColors),
-                            gameOver: .constant(buttonPreviewVM.gameOver))
+                            isPlayer1Serving: .constant(buttonPreviewVM.isFirstTeamServing))
                 .frame(width: 400, height: 400)
                 .previewLayout(.sizeThatFits)
         }

@@ -29,9 +29,7 @@ struct GameTallyView: View {
                                         isTeamOne: true,
                                         serveLimit: viewModel.serveLimit,
                                         serveCount:  $viewModel.serveCount,
-                                        isPlayer1Serving: $viewModel.isFirstTeamServing,
-                                        teamWins: $viewModel.totalTeamWinColors,
-                                        gameOver: $viewModel.gameOver)
+                                        isPlayer1Serving: $viewModel.isFirstTeamServing)
                         .disabled(viewModel.gameOver)
                         HStack {
                             ForEach(0..<viewModel.matchLimit, id:\.self) { index in
@@ -59,9 +57,7 @@ struct GameTallyView: View {
                                         isTeamOne: false,
                                         serveLimit: viewModel.serveLimit,
                                         serveCount:  $viewModel.serveCount,
-                                        isPlayer1Serving: $viewModel.isFirstTeamServing,
-                                        teamWins: $viewModel.totalTeamWinColors,
-                                        gameOver: $viewModel.gameOver)
+                                        isPlayer1Serving: $viewModel.isFirstTeamServing)
                         .disabled(viewModel.gameOver)
                     }
                     .alert(isPresented: $viewModel.matchComplete, content: {
@@ -85,9 +81,7 @@ struct GameTallyView: View {
                                         isTeamOne: false,
                                         serveLimit: viewModel.serveLimit,
                                         serveCount:  $viewModel.serveCount,
-                                        isPlayer1Serving: $viewModel.isFirstTeamServing,
-                                        teamWins: $viewModel.totalTeamWinColors,
-                                        gameOver: $viewModel.gameOver)
+                                        isPlayer1Serving: $viewModel.isFirstTeamServing)
                         .offset(x: viewModel.teamsSwitchedSides ?  (geo.size.width) / 2 : 0, y: 0)
                         .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                         .disabled(viewModel.gameOver)
@@ -116,9 +110,7 @@ struct GameTallyView: View {
                                         isTeamOne: true,
                                         serveLimit: viewModel.serveLimit,
                                         serveCount:  $viewModel.serveCount,
-                                        isPlayer1Serving: $viewModel.isFirstTeamServing,
-                                        teamWins: $viewModel.totalTeamWinColors,
-                                        gameOver: $viewModel.gameOver)
+                                        isPlayer1Serving: $viewModel.isFirstTeamServing)
                         .offset(x: viewModel.teamsSwitchedSides ?  (-geo.size.width / 2) : 0, y: 0)
                         .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                         .disabled(viewModel.gameOver)
@@ -160,7 +152,6 @@ struct ContentView_Previews: PreviewProvider {
                                       matchLimit: 5,
                                       teamsAutomaticallySwitchSides: true)
         viewModel.totalTeamWinColors = Array(repeating: .gray, count: viewModel.matchLimit)
-        //        viewModel.gameOver = true
         return viewModel
     }
     
