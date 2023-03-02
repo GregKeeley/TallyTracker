@@ -85,7 +85,7 @@ class GameViewModel: ObservableObject {
     /// Resets scores to start a new match.
     func startNewMatch() {
         matchComplete = false
-//        isFirstTeamServing.toggle()
+        //        isFirstTeamServing.toggle()
         serveCount = 1
         firstTeamScore = 0
         secondTeamScore = 0

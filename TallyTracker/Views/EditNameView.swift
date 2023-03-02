@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct EditNameView: View {
+    // MARK: - Variables/Properties
+    /// Determines if this view is currently being displayed to the user.
+    /// Set to 'true' to make the view appear.
+    /// Set to 'false' to hide the view.
     @Binding var isViewShown: Bool
+    /// String representing the name of the team used to call this view.
     @Binding var teamName: String
     
+    // MARK: - Body
     var body: some View {
         ZStack(alignment: .center) {
             // Opaque background to obscure view that will be behind this.
@@ -62,8 +68,12 @@ struct EditNameView: View {
             }
         }
     }
+    
 }
 
+
+
+//MARK: - Previews
 struct EditNameView_Previews: PreviewProvider {
     static var previews: some View {
         EditNameView(isViewShown: .constant(true), teamName: .constant("Greg"))

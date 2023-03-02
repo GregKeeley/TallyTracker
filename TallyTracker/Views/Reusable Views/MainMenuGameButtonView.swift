@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainMenuGameButtonView: View {
+    // MARK: - Variables/Properties
     /// Main title of button. Displays name of the game style for the user to choose.
     @State var gameTitle: String
     /// Message displayed below the game title, to describer the rules of the games.

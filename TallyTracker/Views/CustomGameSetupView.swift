@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CustomGameSetupView: View {
+    // MARK: - Variables/Properties
     /// Stores the users current color scheme (dark/light) to determine style in the view.
     @Environment(\.colorScheme) var colorScheme
     /// Stores the maximum score for the game
@@ -24,10 +25,17 @@ struct CustomGameSetupView: View {
     @State var team2Color = Color.blue
     /// Determines if singles mode is selected. Set to 'true' for singles; 'false' for doubles.
     //    @State var singlesModeSelected = true
+    /// Determines if each match in the game should end with the players "switching sides", both IRL and in the UI.
+    /// Set to 'true' to have the TallyButtonViews automatically rearrange themselves at the end of each match.
+    /// Set to 'false' to keep the button views staticly placed.
     @State var automaticallySwitchSides = false
+    /// Set to 'true' to display the view for editing the first teams name.
     @State var isEditingTeam1Name: Bool = false
+    /// Set to 'true' to display the view for editing the second teams name.
     @State var isEditingTeam2Name: Bool = false
+    /// String representing the first teams name.
     @State var team1Name: String = "Team 1"
+    /// String representing the second teams name.
     @State var team2Name: String = "Team 2"
     
     // MARK: - Body
@@ -254,6 +262,7 @@ struct CustomGameSetupView: View {
     }
     
 }
+
 
 
 //MARK: - Previews
