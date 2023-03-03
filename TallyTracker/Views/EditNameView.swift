@@ -30,6 +30,10 @@ struct EditNameView: View {
                         VStack {
                             TextField("Enter Team Name", text: $teamName)
                                 .padding()
+                                .background(
+                                    RoundedRectangle(cornerRadius: 8.0)
+                                        .foregroundColor(Color.gray.opacity(0.2))
+                                        .frame(width: (viewGeometry.size.width * 0.95), height: (viewGeometry.size.height * 0.25)))
                         }
                         GeometryReader { buttonGeometry in
                             Spacer()
