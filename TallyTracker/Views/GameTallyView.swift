@@ -60,17 +60,6 @@ struct GameTallyView: View {
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
                         .disabled(viewModel.gameOver)
                     }
-                    .alert(isPresented: $viewModel.matchComplete, content: {
-                        let primaryButton = Alert.Button.default(Text("Yes")) {
-                            // Switch player sides on view, reset matchComplete variable.
-                            // SWITCH HERE, How?
-                            viewModel.startNewMatch()
-                        }
-                        let secondaryButton = Alert.Button.default(Text("No")) {
-                            viewModel.startNewMatch()
-                        }
-                        return Alert(title: Text("Switch Sides?"), primaryButton: primaryButton, secondaryButton: secondaryButton)
-                    })
                     .padding()
                 } else {
                     HStack {
@@ -83,6 +72,7 @@ struct GameTallyView: View {
                                         serveCount:  $viewModel.serveCount,
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
                         .offset(x: viewModel.teamsSwitchedSides ?  (geo.size.width) / 2 : 0, y: 0)
+                        .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360: 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
                         .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                         .disabled(viewModel.gameOver)
                         VStack {
@@ -112,6 +102,7 @@ struct GameTallyView: View {
                                         serveCount:  $viewModel.serveCount,
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
                         .offset(x: viewModel.teamsSwitchedSides ?  (-geo.size.width / 2) : 0, y: 0)
+                        .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360 : 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
                         .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                         .disabled(viewModel.gameOver)
                     }
