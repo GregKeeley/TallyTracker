@@ -61,52 +61,74 @@ struct GameTallyView: View {
                         .disabled(viewModel.gameOver)
                     }
                     .padding()
+                    if viewModel.gameOver {
+                        Circle()
+                            .fill(Color.blue)
+                            .frame(width: 20, height: 20)
+                            .modifier(ParticlesModifier())
+                        Circle()
+                            .fill(Color.red)
+                            .frame(width: 12, height: 12)
+                            .modifier(ParticlesModifier())
+                    }
                 } else {
-                    HStack {
-                        TallyButtonView(gameVM: viewModel,
-                                        teamColor: viewModel.secondTeamColor,
-                                        teamName: viewModel.secondTeamName,
-                                        teamScore: $viewModel.secondTeamScore,
-                                        isFirstTeam: false,
-                                        serveLimit: viewModel.serveLimit,
-                                        serveCount:  $viewModel.serveCount,
-                                        isfirstTeamServing: $viewModel.isFirstTeamServing)
-                        .offset(x: viewModel.teamsSwitchedSides ?  (geo.size.width) / 2 : 0, y: 0)
-                        .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360: 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
-                        .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
-                        .disabled(viewModel.gameOver)
-                        VStack {
-                            ForEach(0..<viewModel.matchLimit, id:\.self) { index in
-                                if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
-                                    Circle()
-                                        .frame(width: 20)
-                                        .foregroundColor(viewModel.firstTeamColor)
-                                } else if viewModel.totalTeamWinColors[index] == viewModel.secondTeamColor {
-                                    Circle()
-                                        .frame(width: 20)
-                                        .foregroundColor(viewModel.secondTeamColor)
-                                } else {
-                                    Circle()
-                                        .stroke()
-                                        .frame(width: 20)
-                                        .foregroundColor(.gray)
+                    ZStack {
+                        HStack {
+                            TallyButtonView(gameVM: viewModel,
+                                            teamColor: viewModel.secondTeamColor,
+                                            teamName: viewModel.secondTeamName,
+                                            teamScore: $viewModel.secondTeamScore,
+                                            isFirstTeam: false,
+                                            serveLimit: viewModel.serveLimit,
+                                            serveCount:  $viewModel.serveCount,
+                                            isfirstTeamServing: $viewModel.isFirstTeamServing)
+                            .offset(x: viewModel.teamsSwitchedSides ?  (geo.size.width) / 2 : 0, y: 0)
+                            .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360: 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
+                            .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
+                            .disabled(viewModel.gameOver)
+                            VStack {
+                                ForEach(0..<viewModel.matchLimit, id:\.self) { index in
+                                    if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
+                                        Circle()
+                                            .frame(width: 20)
+                                            .foregroundColor(viewModel.firstTeamColor)
+                                    } else if viewModel.totalTeamWinColors[index] == viewModel.secondTeamColor {
+                                        Circle()
+                                            .frame(width: 20)
+                                            .foregroundColor(viewModel.secondTeamColor)
+                                    } else {
+                                        Circle()
+                                            .stroke()
+                                            .frame(width: 20)
+                                            .foregroundColor(.gray)
+                                    }
                                 }
                             }
+                            TallyButtonView(gameVM: viewModel,
+                                            teamColor: viewModel.firstTeamColor,
+                                            teamName: viewModel.firstTeamName,
+                                            teamScore: $viewModel.firstTeamScore,
+                                            isFirstTeam: true,
+                                            serveLimit: viewModel.serveLimit,
+                                            serveCount:  $viewModel.serveCount,
+                                            isfirstTeamServing: $viewModel.isFirstTeamServing)
+                            .offset(x: viewModel.teamsSwitchedSides ?  (-geo.size.width / 2) : 0, y: 0)
+                            .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360 : 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
+                            .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
+                            .disabled(viewModel.gameOver)
                         }
-                        TallyButtonView(gameVM: viewModel,
-                                        teamColor: viewModel.firstTeamColor,
-                                        teamName: viewModel.firstTeamName,
-                                        teamScore: $viewModel.firstTeamScore,
-                                        isFirstTeam: true,
-                                        serveLimit: viewModel.serveLimit,
-                                        serveCount:  $viewModel.serveCount,
-                                        isfirstTeamServing: $viewModel.isFirstTeamServing)
-                        .offset(x: viewModel.teamsSwitchedSides ?  (-geo.size.width / 2) : 0, y: 0)
-                        .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360 : 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
-                        .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
-                        .disabled(viewModel.gameOver)
+                        .padding()
+                        if viewModel.gameOver {
+                            Circle()
+                                .fill(Color.blue)
+                                .frame(width: 20, height: 20)
+                                .modifier(ParticlesModifier())
+                            Circle()
+                                .fill(Color.red)
+                                .frame(width: 12, height: 12)
+                                .modifier(ParticlesModifier())
+                        }
                     }
-                    .padding()
                 }
             }
         }

@@ -18,6 +18,8 @@
 		375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */; };
 		375A11BD299C517100830277 /* MainMenuLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BC299C517100830277 /* MainMenuLandscapeView.swift */; };
 		376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48DB299AF2FA00801CBA /* TallyButtonView.swift */; };
+		37C980E329B4F04E0069B7B7 /* GeometryEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C980E229B4F04E0069B7B7 /* GeometryEffect.swift */; };
+		37C980E529B4F96E0069B7B7 /* ParticlesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */; };
 		37D9FFEC299D8D31009E6729 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9FFEB299D8D31009E6729 /* GameViewModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +37,8 @@
 		375A11BC299C517100830277 /* MainMenuLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuLandscapeView.swift; sourceTree = "<group>"; };
 		3764845F29B398EF0056C409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		376C48DB299AF2FA00801CBA /* TallyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonView.swift; sourceTree = "<group>"; };
+		37C980E229B4F04E0069B7B7 /* GeometryEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryEffect.swift; sourceTree = "<group>"; };
+		37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesModifier.swift; sourceTree = "<group>"; };
 		37D9FFEB299D8D31009E6729 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +74,8 @@
 			children = (
 				3764845F29B398EF0056C409 /* Info.plist */,
 				370A877F2997E68D00CAB1E2 /* TallyTrackerApp.swift */,
+				37C980E229B4F04E0069B7B7 /* GeometryEffect.swift */,
+				37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */,
 				37D9FFF0299D92A8009E6729 /* View Models */,
 				37D9FFED299D91E2009E6729 /* Views */,
 				370A87832997E68E00CAB1E2 /* Assets.xcassets */,
@@ -195,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37C980E529B4F96E0069B7B7 /* ParticlesModifier.swift in Sources */,
 				375A11BD299C517100830277 /* MainMenuLandscapeView.swift in Sources */,
 				375A11B9299C484900830277 /* MainMenuGameButtonView.swift in Sources */,
 				375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */,
@@ -202,6 +209,7 @@
 				376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */,
 				371796FC29AA66FC00DDFB9D /* EditNameView.swift in Sources */,
 				370A87822997E68D00CAB1E2 /* GameTallyView.swift in Sources */,
+				37C980E329B4F04E0069B7B7 /* GeometryEffect.swift in Sources */,
 				37D9FFEC299D8D31009E6729 /* GameViewModel.swift in Sources */,
 				370A87802997E68D00CAB1E2 /* TallyTrackerApp.swift in Sources */,
 				370F633C299EBBA70045ADE3 /* CustomGameSetupView.swift in Sources */,
