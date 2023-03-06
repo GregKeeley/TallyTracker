@@ -36,12 +36,14 @@ struct TallyButtonView: View {
             ZStack {
                 // Border
                 RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(colorScheme == .dark ? .black : .white)
-                    .padding(8)
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(lineWidth: 2)
+                    .stroke(lineWidth: 8)
                     .padding(8)
                     .foregroundColor(teamColor.opacity(0.8))
+                // Background for the whole button so it is not transparent.
+                RoundedRectangle(cornerRadius: 8)
+                    .foregroundColor(colorScheme == .dark ? .black : .white)
+                    .offset(x: -2, y: -2)
+                    .padding(8)
                 VStack {
                     HStack {
                         ForEach(0..<serveLimit, id: \.self) { serveLimit in
