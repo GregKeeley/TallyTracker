@@ -38,7 +38,7 @@ struct TallyButtonView: View {
                 RoundedRectangle(cornerRadius: 8)
                     .stroke(lineWidth: 8)
                     .padding(8)
-                    .foregroundColor(teamColor.opacity(0.8))
+                    .foregroundColor(teamColor)
                 // Background for the whole button so it is not transparent.
                 RoundedRectangle(cornerRadius: 8)
                     .foregroundColor(colorScheme == .dark ? .black : .white)
@@ -49,25 +49,43 @@ struct TallyButtonView: View {
                         ForEach(0..<serveLimit, id: \.self) { serveLimit in
                             if isfirstTeamServing && isFirstTeam {
                                 if serveCount > serveLimit {
-                                    Circle()
-                                        .foregroundColor(teamColor.opacity(0.8))
-                                        .frame(width: geo.size.width / 16)
+                                    ZStack {
+                                        Circle()
+                                            .frame(width: 28)
+                                        Circle()
+                                            .foregroundColor(teamColor)
+                                            .frame(width: geo.size.width / 16)
+                                            .offset(x: -0.5, y: -0.5)
+                                    }
                                 } else {
-                                    Circle()
-                                        .stroke()
-                                        .foregroundColor(teamColor.opacity(0.8))
-                                        .frame(width: geo.size.width / 16)
+                                    ZStack {
+                                        Circle()
+                                            .frame(width: 28)
+                                        Circle()
+                                            .foregroundColor(colorScheme == .dark ? .black : .white)
+                                            .frame(width: geo.size.width / 16)
+                                            .offset(x: -0.5, y: -0.5)
+                                    }
                                 }
                             } else if !isfirstTeamServing && !isFirstTeam {
                                 if serveCount > serveLimit {
-                                    Circle()
-                                        .foregroundColor(teamColor.opacity(0.8))
-                                        .frame(width: geo.size.width / 16)
+                                    ZStack {
+                                        Circle()
+                                            .frame(width: 28)
+                                        Circle()
+                                            .foregroundColor(teamColor.opacity(0.8))
+                                            .frame(width: geo.size.width / 16)
+                                            .offset(x: -0.5, y: -0.5)
+                                    }
                                 } else {
-                                    Circle()
-                                        .stroke()
-                                        .foregroundColor(teamColor.opacity(0.8))
-                                        .frame(width: geo.size.width / 16)
+                                    ZStack {
+                                        Circle()
+                                            .frame(width: 28)
+                                        Circle()
+                                            .foregroundColor(colorScheme == .dark ? .black : .white)
+                                            .frame(width: geo.size.width / 16)
+                                            .offset(x: -0.5, y: -0.5)
+                                    }
                                 }
                             }
                         }
@@ -81,16 +99,17 @@ struct TallyButtonView: View {
                     Text(teamScore.description)
                         .font(.system(size: 148, weight: .bold))
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(teamColor.opacity(0.8))
+                        .foregroundColor(teamColor)
                     // Team Name
                     if !teamName.isEmpty {
                         Text(teamName.prefix(12))
-                            .font(.system(size: 32, weight: .regular))
+                            .font(.system(size: 32, weight: .bold))
                             .lineLimit(1)
                             .minimumScaleFactor(0.4)
                             .frame(maxWidth: .infinity)
-                            .background(teamColor.opacity(0.8).colorInvert().frame(width: geo.size.width / 3).cornerRadius(8.0))
-                            .colorInvert()
+                            .foregroundColor(teamColor)
+//                            .background(teamColor.colorInvert().frame(width: geo.size.width / 3).cornerRadius(8.0))
+//                            .colorInvert()
                     }
                 }
             }
@@ -128,8 +147,8 @@ struct TallyButtonView: View {
                             serveLimit: buttonPreviewVM.serveLimit,
                             serveCount: .constant(buttonPreviewVM.serveCount),
                             isfirstTeamServing: .constant(buttonPreviewVM.isFirstTeamServing))
-                .frame(width: 400, height: 400)
-                .previewLayout(.sizeThatFits)
+            .frame(width: 400, height: 400)
+            .previewLayout(.sizeThatFits)
             // Second Team
             TallyButtonView(gameVM: buttonPreviewVM,
                             teamColor: buttonPreviewVM.secondTeamColor,
@@ -139,8 +158,8 @@ struct TallyButtonView: View {
                             serveLimit: buttonPreviewVM.serveLimit,
                             serveCount: .constant(buttonPreviewVM.serveCount),
                             isfirstTeamServing: .constant(buttonPreviewVM.isFirstTeamServing))
-                .frame(width: 400, height: 400)
-                .previewLayout(.sizeThatFits)
+            .frame(width: 400, height: 400)
+            .previewLayout(.sizeThatFits)
         }
     }
 }
