@@ -10,6 +10,8 @@ import SwiftUI
 struct GameTallyView: View {
     /// Used to dismiss this view.
     @Environment(\.presentationMode) private var presentationMode
+    /// Used to determine the color scheme of the users device for layout/color purposes.
+    @Environment(\.colorScheme) var colorScheme
     /// View model for the UI.
     @StateObject var viewModel: GameViewModel
     /// Height size class, used to determine available horizontal space available and handle layout on the device.
@@ -34,18 +36,32 @@ struct GameTallyView: View {
                         HStack {
                             ForEach(0..<viewModel.matchLimit, id:\.self) { index in
                                 if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
-                                    Circle()
-                                        .frame(width: 20)
-                                        .foregroundColor(viewModel.firstTeamColor)
+                                    ZStack {
+                                        Circle()
+                                            .frame(width: 28)
+                                        Circle()
+                                            .frame(width: 24)
+                                            .foregroundColor(viewModel.firstTeamColor)
+                                            .offset(x: -0.5, y: -0.5)
+                                    }
                                 } else if viewModel.totalTeamWinColors[index] == viewModel.secondTeamColor {
-                                    Circle()
-                                        .frame(width: 20)
-                                        .foregroundColor(viewModel.secondTeamColor)
+                                    ZStack {
+                                        Circle()
+                                        .frame(width: 28)
+                                        Circle()
+                                            .frame(width: 24)
+                                            .foregroundColor(viewModel.secondTeamColor)
+                                            .offset(x: -0.5, y: -0.5)
+                                    }
                                 } else {
-                                    Circle()
-                                        .stroke()
-                                        .frame(width: 20)
-                                        .foregroundColor(.gray)
+                                    ZStack {
+                                        Circle()
+                                        .frame(width: 28)
+                                        Circle()
+                                        .frame(width: 24)
+                                        .foregroundColor(colorScheme == .dark ? .black : .white)
+                                        .offset(x: -0.5, y: -0.5)
+                                    }
                                 }
                                 
                             }
@@ -165,7 +181,8 @@ struct ContentView_Previews: PreviewProvider {
                                       matchLimit: 5,
                                       teamsAutomaticallySwitchSides: true)
         viewModel.gameOver = false
-        viewModel.totalTeamWinColors = Array(repeating: .gray, count: viewModel.matchLimit)
+        viewModel.totalTeamWinColors = [.red, .blue, .gray, .gray, .gray]
+//        viewModel.totalTeamWinColors = Array(repeating: .gray, count: viewModel.matchLimit)
         return viewModel
     }
     
