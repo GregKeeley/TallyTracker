@@ -164,6 +164,7 @@ struct ContentView_Previews: PreviewProvider {
                                       firstTeamIsServing: true,
                                       matchLimit: 5,
                                       teamsAutomaticallySwitchSides: true)
+        viewModel.gameOver = true
         viewModel.totalTeamWinColors = Array(repeating: .gray, count: viewModel.matchLimit)
         return viewModel
     }
