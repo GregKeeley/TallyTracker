@@ -18,13 +18,8 @@ struct ChangeValueButtonView: View {
                     .stroke()
                 HStack {
                     ZStack {
-                        Circle()
-                            .stroke()
+                        Image(systemName: "minus.circle")
                             .foregroundColor(.red)
-                        Image(systemName: "minus")
-                            .resizable()
-                            .foregroundColor(.red)
-                            .frame(width: geo.size.width / 5, height: geo.size.width / 18)
                     }
                     .onTapGesture {
                         currentValue -= 1
@@ -34,13 +29,8 @@ struct ChangeValueButtonView: View {
                         .foregroundColor(.red)
                     Spacer()
                     ZStack {
-                        Circle()
-                            .stroke()
+                        Image(systemName: "plus.circle")
                             .foregroundColor(.red)
-                        Image(systemName: "plus")
-                            .resizable()
-                            .foregroundColor(.red)
-                        .frame(width: geo.size.width / 5, height: geo.size.width / 5)
                     }
                     .onTapGesture {
                         currentValue += 1
@@ -54,7 +44,7 @@ struct ChangeValueButtonView: View {
 struct ChangeValueButtonView_Previews: PreviewProvider {
     static var previews: some View {
         ChangeValueButtonView(currentValue: 0)
-//            .previewLayout(.sizeThatFits)
+            .previewLayout(.sizeThatFits)
             .frame(width: 80, height: 20)
     }
 }
