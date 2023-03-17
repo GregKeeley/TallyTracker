@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct TallyButtonView: View {
     // MARK: - Variables/Properties
@@ -29,6 +30,21 @@ struct TallyButtonView: View {
     /// Set to 'true' when the first team is currently serving to display the UI related to the current for that team.
     /// Set to 'false' when the second team is serving.
     @Binding var isfirstTeamServing: Bool
+    
+    @State var audioPlayer: AVAudioPlayer!
+    
+    func playSounds(_ soundFileName : String) {
+            guard let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else {
+                fatalError("Unable to find \(soundFileName) in bundle")
+            }
+
+            do {
+                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            } catch {
+                print(error.localizedDescription)
+            }
+            audioPlayer.play()
+        }
     
     // MARK: - Body
     var body: some View {
@@ -118,6 +134,7 @@ struct TallyButtonView: View {
                 let impact = UIImpactFeedbackGenerator(style: .rigid)
                 impact.impactOccurred()
                 gameVM.increaseScore(isFirstTeam: isFirstTeam)
+                playSounds("pop")
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
                 gameVM.decrementTeamScoreAndServe(isFirstTeam: isFirstTeam)
