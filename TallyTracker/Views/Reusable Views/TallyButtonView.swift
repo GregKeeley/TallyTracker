@@ -115,6 +115,8 @@ struct TallyButtonView: View {
             }
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
+                let impact = UIImpactFeedbackGenerator(style: .rigid)
+                impact.impactOccurred()
                 gameVM.increaseScore(isFirstTeam: isFirstTeam)
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
