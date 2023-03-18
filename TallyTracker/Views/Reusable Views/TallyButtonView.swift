@@ -43,7 +43,7 @@ struct TallyButtonView: View {
             } catch {
                 print(error.localizedDescription)
             }
-            audioPlayer.play()
+        audioPlayer.play()
         }
     
     // MARK: - Body
@@ -138,6 +138,8 @@ struct TallyButtonView: View {
             }
             .onLongPressGesture(minimumDuration: 1.0, perform: {
                 gameVM.decrementTeamScoreAndServe(isFirstTeam: isFirstTeam)
+                let impact = UIImpactFeedbackGenerator(style: .heavy)
+                impact.impactOccurred()
             })
         }
         
