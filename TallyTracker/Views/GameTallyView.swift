@@ -34,6 +34,14 @@ struct GameTallyView: View {
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
                         .disabled(viewModel.gameOver)
                         HStack {
+//                            Image(systemName: "line.3.horizontal.circle")
+                            Image(systemName: "arrow.backward.circle")
+                                .resizable()
+                                .frame(width: 28, height: 28)
+                                .onTapGesture {
+                                    presentationMode.wrappedValue.dismiss()
+                                }
+                            Spacer()
                             ForEach(0..<viewModel.matchLimit, id:\.self) { index in
                                 if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
                                     ZStack {
@@ -65,6 +73,7 @@ struct GameTallyView: View {
                                 }
                                 
                             }
+                            Spacer()
                         }
                         TallyButtonView(gameVM: viewModel,
                                         teamColor: viewModel.secondTeamColor,
@@ -103,6 +112,14 @@ struct GameTallyView: View {
                             .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                             .disabled(viewModel.gameOver)
                             VStack {
+//                                Image(systemName: "line.3.horizontal.circle")
+                                                            Image(systemName: "arrow.backward.circle")
+                                                                .resizable()
+                                                                .frame(width: 28, height: 28)
+                                                                .onTapGesture {
+                                                                    presentationMode.wrappedValue.dismiss()
+                                                                }
+                                Spacer()
                                 ForEach(0..<viewModel.matchLimit, id:\.self) { index in
                                     if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
                                         Circle()
@@ -119,6 +136,7 @@ struct GameTallyView: View {
                                             .foregroundColor(.gray)
                                     }
                                 }
+                                Spacer()
                             }
                             TallyButtonView(gameVM: viewModel,
                                             teamColor: viewModel.firstTeamColor,
