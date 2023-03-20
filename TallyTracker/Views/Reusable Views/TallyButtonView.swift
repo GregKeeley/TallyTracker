@@ -50,16 +50,19 @@ struct TallyButtonView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
+//                teamColor
+//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+//                    .edgesIgnoringSafeArea(.all)
                 // Border
-                RoundedRectangle(cornerRadius: 8)
-                    .stroke(lineWidth: 8)
-                    .padding(8)
-                    .foregroundColor(teamColor)
-                // Background for the whole button so it is not transparent.
-                RoundedRectangle(cornerRadius: 8)
-                    .foregroundColor(colorScheme == .dark ? .black : .white)
-                    .offset(x: -2, y: -2)
-                    .padding(8)
+//                RoundedRectangle(cornerRadius: 8)
+//                    .stroke(lineWidth: 8)
+//                    .padding(8)
+//                    .foregroundColor(teamColor)
+//                // Background for the whole button so it is not transparent.
+//                RoundedRectangle(cornerRadius: 8)
+//                    .foregroundColor(colorScheme == .dark ? .black : .white)
+//                    .offset(x: -2, y: -2)
+//                    .padding(8)
                 VStack {
                     Spacer()
                     // Team Name
@@ -69,13 +72,13 @@ struct TallyButtonView: View {
                             .lineLimit(1)
                             .minimumScaleFactor(0.4)
                             .frame(maxWidth: .infinity)
-                            .foregroundColor(teamColor)
+                            .foregroundColor(colorScheme == .dark ? .black : .white)
                     }
                     // Team Score
                     Text(teamScore.description)
                         .font(.system(size: 148, weight: .bold))
                         .minimumScaleFactor(0.5)
-                        .foregroundColor(teamColor)
+                        .foregroundColor(colorScheme == .dark ? .black : .white)
                     ZStack {
                         ServeCounterView(gameVM: gameVM, serveCount: $serveCount, teamColor: $gameVM.firstTeamColor)
                             .opacity(isFirstTeam && isfirstTeamServing ? 1.0 : 0)
@@ -86,6 +89,7 @@ struct TallyButtonView: View {
                     }
                 }
             }
+            .background(teamColor)
             .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
                 let impact = UIImpactFeedbackGenerator(style: .rigid)

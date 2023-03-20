@@ -27,7 +27,8 @@ struct ServeCounterView: View {
                             Circle()
                                 .frame(width: 28)
                             Circle()
-                                .foregroundColor(teamColor)
+                                
+                                .foregroundColor(colorScheme == .dark ? .black : .white)
                                 .frame(width: geo.size.width / 16)
                                 .offset(x: -0.5, y: -0.5)
                         }
@@ -36,7 +37,7 @@ struct ServeCounterView: View {
                             Circle()
                                 .frame(width: 28)
                             Circle()
-                                .foregroundColor(colorScheme == .dark ? .black : .white)
+                                .foregroundColor(teamColor)
                                 .frame(width: geo.size.width / 16)
                                 .offset(x: -0.5, y: -0.5)
                         }

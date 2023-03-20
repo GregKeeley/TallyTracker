@@ -32,6 +32,8 @@ struct GameTallyView: View {
                                         serveLimit: viewModel.serveLimit,
                                         serveCount:  $viewModel.serveCount,
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
+//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                        .edgesIgnoringSafeArea(.all)
                         .disabled(viewModel.gameOver)
                         HStack {
                             //                            Image(systemName: "line.3.horizontal.circle")
