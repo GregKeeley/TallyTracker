@@ -34,7 +34,7 @@ struct GameTallyView: View {
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
                         .disabled(viewModel.gameOver)
                         HStack {
-//                            Image(systemName: "line.3.horizontal.circle")
+                            //                            Image(systemName: "line.3.horizontal.circle")
                             Image(systemName: "arrow.backward.circle")
                                 .resizable()
                                 .frame(width: 28, height: 28)
@@ -55,7 +55,7 @@ struct GameTallyView: View {
                                 } else if viewModel.totalTeamWinColors[index] == viewModel.secondTeamColor {
                                     ZStack {
                                         Circle()
-                                        .frame(width: 28)
+                                            .frame(width: 28)
                                         Circle()
                                             .frame(width: 24)
                                             .foregroundColor(viewModel.secondTeamColor)
@@ -64,11 +64,11 @@ struct GameTallyView: View {
                                 } else {
                                     ZStack {
                                         Circle()
-                                        .frame(width: 28)
+                                            .frame(width: 28)
                                         Circle()
-                                        .frame(width: 24)
-                                        .foregroundColor(colorScheme == .dark ? .black : .white)
-                                        .offset(x: -0.5, y: -0.5)
+                                            .frame(width: 24)
+                                            .foregroundColor(colorScheme == .dark ? .black : .white)
+                                            .offset(x: -0.5, y: -0.5)
                                     }
                                 }
                                 
@@ -112,13 +112,13 @@ struct GameTallyView: View {
                             .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                             .disabled(viewModel.gameOver)
                             VStack {
-//                                Image(systemName: "line.3.horizontal.circle")
-                                                            Image(systemName: "arrow.backward.circle")
-                                                                .resizable()
-                                                                .frame(width: 28, height: 28)
-                                                                .onTapGesture {
-                                                                    presentationMode.wrappedValue.dismiss()
-                                                                }
+                                //                                Image(systemName: "line.3.horizontal.circle")
+                                Image(systemName: "arrow.backward.circle")
+                                    .resizable()
+                                    .frame(width: 28, height: 28)
+                                    .onTapGesture {
+                                        presentationMode.wrappedValue.dismiss()
+                                    }
                                 Spacer()
                                 ForEach(0..<viewModel.matchLimit, id:\.self) { index in
                                     if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
@@ -200,7 +200,6 @@ struct ContentView_Previews: PreviewProvider {
                                       teamsAutomaticallySwitchSides: true)
         viewModel.gameOver = false
         viewModel.totalTeamWinColors = [.red, .blue, .gray, .gray, .gray]
-//        viewModel.totalTeamWinColors = Array(repeating: .gray, count: viewModel.matchLimit)
         return viewModel
     }
     

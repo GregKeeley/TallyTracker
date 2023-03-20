@@ -34,17 +34,17 @@ struct TallyButtonView: View {
     @State var audioPlayer: AVAudioPlayer!
     
     func playSounds(_ soundFileName : String) {
-            guard let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else {
-                fatalError("Unable to find \(soundFileName) in bundle")
-            }
-
-            do {
-                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
-            } catch {
-                print(error.localizedDescription)
-            }
-        audioPlayer.play()
+        guard let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else {
+            fatalError("Unable to find \(soundFileName) in bundle")
         }
+        
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+        } catch {
+            print(error.localizedDescription)
+        }
+        audioPlayer.play()
+    }
     
     // MARK: - Body
     var body: some View {
@@ -61,61 +61,7 @@ struct TallyButtonView: View {
                     .offset(x: -2, y: -2)
                     .padding(8)
                 VStack {
-                    HStack {
-                        ForEach(0..<serveLimit, id: \.self) { serveLimit in
-                            if isfirstTeamServing && isFirstTeam {
-                                if serveCount > serveLimit {
-                                    ZStack {
-                                        Circle()
-                                            .frame(width: 28)
-                                        Circle()
-                                            .foregroundColor(teamColor)
-                                            .frame(width: geo.size.width / 16)
-                                            .offset(x: -0.5, y: -0.5)
-                                    }
-                                } else {
-                                    ZStack {
-                                        Circle()
-                                            .frame(width: 28)
-                                        Circle()
-                                            .foregroundColor(colorScheme == .dark ? .black : .white)
-                                            .frame(width: geo.size.width / 16)
-                                            .offset(x: -0.5, y: -0.5)
-                                    }
-                                }
-                            } else if !isfirstTeamServing && !isFirstTeam {
-                                if serveCount > serveLimit {
-                                    ZStack {
-                                        Circle()
-                                            .frame(width: 28)
-                                        Circle()
-                                            .foregroundColor(teamColor.opacity(0.8))
-                                            .frame(width: geo.size.width / 16)
-                                            .offset(x: -0.5, y: -0.5)
-                                    }
-                                } else {
-                                    ZStack {
-                                        Circle()
-                                            .frame(width: 28)
-                                        Circle()
-                                            .foregroundColor(colorScheme == .dark ? .black : .white)
-                                            .frame(width: geo.size.width / 16)
-                                            .offset(x: -0.5, y: -0.5)
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .padding(.top, geo.size.height * 0.1)
                     Spacer()
-                }
-                
-                VStack {
-                    // Team Score
-                    Text(teamScore.description)
-                        .font(.system(size: 148, weight: .bold))
-                        .minimumScaleFactor(0.5)
-                        .foregroundColor(teamColor)
                     // Team Name
                     if !teamName.isEmpty {
                         Text(teamName.prefix(12))
@@ -124,8 +70,15 @@ struct TallyButtonView: View {
                             .minimumScaleFactor(0.4)
                             .frame(maxWidth: .infinity)
                             .foregroundColor(teamColor)
-//                            .background(teamColor.colorInvert().frame(width: geo.size.width / 3).cornerRadius(8.0))
-//                            .colorInvert()
+                    }
+                    // Team Score
+                    Text(teamScore.description)
+                        .font(.system(size: 148, weight: .bold))
+                        .minimumScaleFactor(0.5)
+                        .foregroundColor(teamColor)
+                    ZStack {
+                        ServeCounterView(gameVM: gameVM, serveCount: $serveCount, teamColor: $gameVM.firstTeamColor)
+                        ServeCounterView(gameVM: gameVM, serveCount: $serveCount, teamColor: $gameVM.secondTeamColor)
                     }
                 }
             }
