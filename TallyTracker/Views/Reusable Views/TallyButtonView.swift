@@ -78,7 +78,11 @@ struct TallyButtonView: View {
                         .foregroundColor(teamColor)
                     ZStack {
                         ServeCounterView(gameVM: gameVM, serveCount: $serveCount, teamColor: $gameVM.firstTeamColor)
+                            .opacity(isFirstTeam && isfirstTeamServing ? 1.0 : 0)
+                            .frame(height: geo.size.height * 0.15)
                         ServeCounterView(gameVM: gameVM, serveCount: $serveCount, teamColor: $gameVM.secondTeamColor)
+                            .opacity(!isFirstTeam && !isfirstTeamServing ? 1.0 : 0)
+                            .frame(height: geo.size.height * 0.15)
                     }
                 }
             }
