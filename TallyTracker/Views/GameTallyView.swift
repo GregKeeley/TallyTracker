@@ -33,6 +33,7 @@ struct GameTallyView: View {
                                         serveCount:  $viewModel.serveCount,
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
                         .disabled(viewModel.gameOver)
+                        // TODO: Separate this HStack to a smaller view.
                         HStack {
                             //                            Image(systemName: "line.3.horizontal.circle")
                             Image(systemName: "arrow.backward.circle")
@@ -75,6 +76,7 @@ struct GameTallyView: View {
                             }
                             Spacer()
                         }
+                        .padding()
                         TallyButtonView(gameVM: viewModel,
                                         teamColor: viewModel.secondTeamColor,
                                         teamName: viewModel.secondTeamName,
@@ -85,7 +87,8 @@ struct GameTallyView: View {
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
                         .disabled(viewModel.gameOver)
                     }
-                    .padding()
+                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+                    .ignoresSafeArea(.all)
                     if viewModel.gameOver {
                         Circle()
                             .fill(Color.blue)
@@ -165,7 +168,7 @@ struct GameTallyView: View {
                     }
                 }
             }
-            .edgesIgnoringSafeArea(.all)
+            .ignoresSafeArea(.all)
         }
         // Game Over alert.
         .alert(isPresented: $viewModel.gameOver, content: {
