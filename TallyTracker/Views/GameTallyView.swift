@@ -32,8 +32,6 @@ struct GameTallyView: View {
                                         serveLimit: viewModel.serveLimit,
                                         serveCount:  $viewModel.serveCount,
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
-//                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                        .edgesIgnoringSafeArea(.all)
                         .disabled(viewModel.gameOver)
                         HStack {
                             //                            Image(systemName: "line.3.horizontal.circle")
@@ -109,7 +107,7 @@ struct GameTallyView: View {
                                             serveLimit: viewModel.serveLimit,
                                             serveCount:  $viewModel.serveCount,
                                             isfirstTeamServing: $viewModel.isFirstTeamServing)
-                            .offset(x: viewModel.teamsSwitchedSides ?  (geo.size.width) / 2 : 0, y: 0)
+                            .offset(x: viewModel.teamsSwitchedSides ? (geo.size.width) / 2 : 0, y: 0)
                             .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360: 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
                             .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                             .disabled(viewModel.gameOver)
@@ -148,7 +146,7 @@ struct GameTallyView: View {
                                             serveLimit: viewModel.serveLimit,
                                             serveCount:  $viewModel.serveCount,
                                             isfirstTeamServing: $viewModel.isFirstTeamServing)
-                            .offset(x: viewModel.teamsSwitchedSides ?  (-geo.size.width / 2) : 0, y: 0)
+                            .offset(x: viewModel.teamsSwitchedSides ? (-geo.size.width / 2) : 0, y: 0)
                             .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360 : 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
                             .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                             .disabled(viewModel.gameOver)
@@ -167,6 +165,7 @@ struct GameTallyView: View {
                     }
                 }
             }
+            .edgesIgnoringSafeArea(.all)
         }
         // Game Over alert.
         .alert(isPresented: $viewModel.gameOver, content: {
