@@ -39,6 +39,7 @@ struct GameTallyView: View {
                             Image(systemName: "arrow.backward.circle")
                                 .resizable()
                                 .frame(width: 28, height: 28)
+                                .padding(.leading)
                                 .onTapGesture {
                                     presentationMode.wrappedValue.dismiss()
                                 }
@@ -72,11 +73,9 @@ struct GameTallyView: View {
                                             .offset(x: -0.5, y: -0.5)
                                     }
                                 }
-                                
                             }
                             Spacer()
                         }
-                        .padding()
                         TallyButtonView(gameVM: viewModel,
                                         teamColor: viewModel.secondTeamColor,
                                         teamName: viewModel.secondTeamName,
@@ -118,7 +117,8 @@ struct GameTallyView: View {
                                 //                                Image(systemName: "line.3.horizontal.circle")
                                 Image(systemName: "arrow.backward.circle")
                                     .resizable()
-                                    .frame(width: 28, height: 28)
+                                    .frame(width: geo.size.width * 0.03, height: geo.size.width * 0.03)
+                                    .padding(.top)
                                     .onTapGesture {
                                         presentationMode.wrappedValue.dismiss()
                                     }
@@ -126,16 +126,16 @@ struct GameTallyView: View {
                                 ForEach(0..<viewModel.matchLimit, id:\.self) { index in
                                     if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
                                         Circle()
-                                            .frame(width: 20)
+                                            .frame(width: geo.size.width * 0.03)
                                             .foregroundColor(viewModel.firstTeamColor)
                                     } else if viewModel.totalTeamWinColors[index] == viewModel.secondTeamColor {
                                         Circle()
-                                            .frame(width: 20)
+                                            .frame(width: geo.size.width * 0.03)
                                             .foregroundColor(viewModel.secondTeamColor)
                                     } else {
                                         Circle()
                                             .stroke()
-                                            .frame(width: 20)
+                                            .frame(width: geo.size.width * 0.03)
                                             .foregroundColor(.gray)
                                     }
                                 }
@@ -154,7 +154,6 @@ struct GameTallyView: View {
                             .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                             .disabled(viewModel.gameOver)
                         }
-                        .padding()
                         if viewModel.gameOver {
                             Circle()
                                 .fill(Color.blue)
