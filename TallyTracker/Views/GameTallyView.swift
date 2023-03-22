@@ -34,46 +34,20 @@ struct GameTallyView: View {
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
                         .disabled(viewModel.gameOver)
                         // TODO: Separate this HStack to a smaller view.
-                        HStack {
-                            //                            Image(systemName: "line.3.horizontal.circle")
-                            Image(systemName: "arrow.backward.circle")
-                                .resizable()
-                                .frame(width: 28, height: 28)
-                                .padding(.leading)
-                                .onTapGesture {
-                                    presentationMode.wrappedValue.dismiss()
-                                }
-                            Spacer()
-                            ForEach(0..<viewModel.matchLimit, id:\.self) { index in
-                                if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
-                                    ZStack {
-                                        Circle()
-                                            .frame(width: 28)
-                                        Circle()
-                                            .frame(width: 24)
-                                            .foregroundColor(viewModel.firstTeamColor)
-                                            .offset(x: -0.5, y: -0.5)
+                        ZStack {
+                            HStack {
+                                //                            Image(systemName: "line.3.horizontal.circle")
+                                Image(systemName: "arrow.backward.circle")
+                                    .resizable()
+                                    .frame(width: 28, height: 28)
+                                    .padding(.leading)
+                                    .onTapGesture {
+                                        presentationMode.wrappedValue.dismiss()
                                     }
-                                } else if viewModel.totalTeamWinColors[index] == viewModel.secondTeamColor {
-                                    ZStack {
-                                        Circle()
-                                            .frame(width: 28)
-                                        Circle()
-                                            .frame(width: 24)
-                                            .foregroundColor(viewModel.secondTeamColor)
-                                            .offset(x: -0.5, y: -0.5)
-                                    }
-                                } else {
-                                    ZStack {
-                                        Circle()
-                                            .frame(width: 28)
-                                        Circle()
-                                            .frame(width: 24)
-                                            .foregroundColor(colorScheme == .dark ? .black : .white)
-                                            .offset(x: -0.5, y: -0.5)
-                                    }
-                                }
+                                Spacer()
                             }
+                            Spacer()
+                            MatchWinsCounterView(gameVM: viewModel)
                             Spacer()
                         }
                         TallyButtonView(gameVM: viewModel,
