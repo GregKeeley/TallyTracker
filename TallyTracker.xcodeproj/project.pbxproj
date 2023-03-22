@@ -19,6 +19,7 @@
 		375A11B9299C484900830277 /* MainMenuGameButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11B8299C484900830277 /* MainMenuGameButtonView.swift */; };
 		375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */; };
 		375A11BD299C517100830277 /* MainMenuLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BC299C517100830277 /* MainMenuLandscapeView.swift */; };
+		3767899129CB54C000E89721 /* MatchWinsCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3767899029CB54C000E89721 /* MatchWinsCounterView.swift */; };
 		376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48DB299AF2FA00801CBA /* TallyButtonView.swift */; };
 		37C980E329B4F04E0069B7B7 /* GeometryEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C980E229B4F04E0069B7B7 /* GeometryEffect.swift */; };
 		37C980E529B4F96E0069B7B7 /* ParticlesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */; };
@@ -41,6 +42,7 @@
 		375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOrientationView.swift; sourceTree = "<group>"; };
 		375A11BC299C517100830277 /* MainMenuLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuLandscapeView.swift; sourceTree = "<group>"; };
 		3764845F29B398EF0056C409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		3767899029CB54C000E89721 /* MatchWinsCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchWinsCounterView.swift; sourceTree = "<group>"; };
 		376C48DB299AF2FA00801CBA /* TallyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonView.swift; sourceTree = "<group>"; };
 		37C980E229B4F04E0069B7B7 /* GeometryEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryEffect.swift; sourceTree = "<group>"; };
 		37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesModifier.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 			children = (
 				37D9FFEE299D925D009E6729 /* Main Menu */,
 				370A87812997E68D00CAB1E2 /* GameTallyView.swift */,
+				3767899029CB54C000E89721 /* MatchWinsCounterView.swift */,
 				37D9FFEF299D9270009E6729 /* Reusable Views */,
 				370F633B299EBBA70045ADE3 /* CustomGameSetupView.swift */,
 				371796FB29AA66FC00DDFB9D /* EditNameView.swift */,
@@ -224,6 +227,7 @@
 				37D9FFEC299D8D31009E6729 /* GameViewModel.swift in Sources */,
 				370A87802997E68D00CAB1E2 /* TallyTrackerApp.swift in Sources */,
 				370F633C299EBBA70045ADE3 /* CustomGameSetupView.swift in Sources */,
+				3767899129CB54C000E89721 /* MatchWinsCounterView.swift in Sources */,
 				37343DE229C8A825005810CA /* ServeCounterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
