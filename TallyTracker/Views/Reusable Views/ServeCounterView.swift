@@ -25,9 +25,8 @@ struct ServeCounterView: View {
                     if serveCount > serveLimit {
                         ZStack {
                             Circle()
-                                .frame(width: 28)
+                                .frame(width: geo.size.width * 0.07)
                             Circle()
-                                
                                 .foregroundColor(colorScheme == .dark ? .black : .white)
                                 .frame(width: geo.size.width / 16)
                                 .offset(x: -0.5, y: -0.5)
@@ -35,7 +34,7 @@ struct ServeCounterView: View {
                     } else {
                         ZStack {
                             Circle()
-                                .frame(width: 28)
+                                .frame(width: geo.size.width * 0.07)
                             Circle()
                                 .foregroundColor(teamColor)
                                 .frame(width: geo.size.width / 16)
