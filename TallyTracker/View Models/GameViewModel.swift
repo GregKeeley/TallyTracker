@@ -60,6 +60,8 @@ class GameViewModel: ObservableObject {
     @Published var navigateToStandardGame: Bool = false
     /// When to set to 'true', the user will be navigated to the custome game view setup view.
     @Published var navigateToCustomGame: Bool = false
+    /// When to set to 'true' the current game will be cancelled, as the user is navigated back to the previos view they originated from.
+    @Published var presentAlert: Bool = false
     
     // MARK: - Init
     init(serveLimit: Int, scoreLimit: Int, firstTeamColor: Color, secondTeamColor: Color, firstTeamName: String, secondTeamName: String, firstTeamIsServing: Bool, matchLimit: Int, teamsAutomaticallySwitchSides: Bool) {

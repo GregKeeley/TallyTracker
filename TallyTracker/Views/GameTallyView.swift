@@ -33,16 +33,15 @@ struct GameTallyView: View {
                                         serveCount:  $viewModel.serveCount,
                                         isfirstTeamServing: $viewModel.isFirstTeamServing)
                         .disabled(viewModel.gameOver)
-                        // TODO: Separate this HStack to a smaller view.
                         ZStack {
                             HStack {
                                 //                            Image(systemName: "line.3.horizontal.circle")
-                                Image(systemName: "arrow.backward.circle")
+                                Image(systemName: "x.circle")
                                     .resizable()
                                     .frame(width: 28, height: 28)
                                     .padding(.leading)
                                     .onTapGesture {
-                                        presentationMode.wrappedValue.dismiss()
+                                        viewModel.presentAlert.toggle()
                                     }
                                 Spacer()
                             }
@@ -94,7 +93,7 @@ struct GameTallyView: View {
                                     .frame(width: geo.size.width * 0.03, height: geo.size.width * 0.03)
                                     .padding(.top)
                                     .onTapGesture {
-                                        presentationMode.wrappedValue.dismiss()
+                                        viewModel.presentAlert.toggle()
                                     }
                                 Spacer()
                                 ForEach(0..<viewModel.matchLimit, id:\.self) { index in
@@ -143,17 +142,23 @@ struct GameTallyView: View {
             }
             .ignoresSafeArea(.all)
         }
-        // Game Over alert.
-        .alert(isPresented: $viewModel.gameOver, content: {
-            let primaryButton = Alert.Button.default(Text("Confirm")) {
-                viewModel.resetGame()
+        .alert(isPresented: $viewModel.presentAlert, content: {
+            if viewModel.gameOver {
+                let primaryButton = Alert.Button.default(Text("Yes")) {
+                    viewModel.resetGame()
+                }
+                let secondaryButton = Alert.Button.cancel(Text("No")) {
+                    // dismiss view here.
+                    viewModel.resetGame()
+                    presentationMode.wrappedValue.dismiss()
+                }
+                return Alert(title: Text("Play Again?"), primaryButton: primaryButton, secondaryButton: secondaryButton)
+            } else {
+                let primaryButton = Alert.Button.default(Text("Yes")) {
+                    presentationMode.wrappedValue.dismiss()
+                }
+                return Alert(title: Text("You are about to exit the game."), message: Text("Are you sure?"), primaryButton: primaryButton, secondaryButton: .cancel())
             }
-            let secondaryButton = Alert.Button.cancel(Text("No")) {
-                // dismiss view here.
-                viewModel.resetGame()
-                presentationMode.wrappedValue.dismiss()
-            }
-            return Alert(title: Text("Play Again?"), primaryButton: primaryButton, secondaryButton: secondaryButton)
         })
         .navigationBarBackButtonHidden()
     }
