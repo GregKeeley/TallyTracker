@@ -96,6 +96,7 @@ struct GameTallyView: View {
                                         viewModel.presentAlert.toggle()
                                     }
                                 Spacer()
+                                // TODO: Replace with ServeCounterView after support for different size classes has been added.
                                 ForEach(0..<viewModel.matchLimit, id:\.self) { index in
                                     if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
                                         Circle()

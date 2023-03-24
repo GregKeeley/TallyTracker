@@ -18,6 +18,7 @@ struct ServeCounterView: View {
     @Binding var teamColor: Color
     
     var body: some View {
+        // TODO: Account for size classes and orientation (landscape).
         GeometryReader { geo in
             HStack {
                 Spacer()
