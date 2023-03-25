@@ -21,6 +21,7 @@
 		375A11BD299C517100830277 /* MainMenuLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BC299C517100830277 /* MainMenuLandscapeView.swift */; };
 		3767899129CB54C000E89721 /* MatchWinsCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3767899029CB54C000E89721 /* MatchWinsCounterView.swift */; };
 		376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48DB299AF2FA00801CBA /* TallyButtonView.swift */; };
+		377C210F29CF361D00DFAC58 /* OffsetCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */; };
 		37C980E329B4F04E0069B7B7 /* GeometryEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C980E229B4F04E0069B7B7 /* GeometryEffect.swift */; };
 		37C980E529B4F96E0069B7B7 /* ParticlesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */; };
 		37CDBF7429C21E3500D59B28 /* ChangeValueButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CDBF7329C21E3500D59B28 /* ChangeValueButtonView.swift */; };
@@ -44,6 +45,7 @@
 		3764845F29B398EF0056C409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3767899029CB54C000E89721 /* MatchWinsCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchWinsCounterView.swift; sourceTree = "<group>"; };
 		376C48DB299AF2FA00801CBA /* TallyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonView.swift; sourceTree = "<group>"; };
+		377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetCircleView.swift; sourceTree = "<group>"; };
 		37C980E229B4F04E0069B7B7 /* GeometryEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryEffect.swift; sourceTree = "<group>"; };
 		37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesModifier.swift; sourceTree = "<group>"; };
 		37CDBF7329C21E3500D59B28 /* ChangeValueButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeValueButtonView.swift; sourceTree = "<group>"; };
@@ -106,10 +108,8 @@
 			children = (
 				37D9FFEE299D925D009E6729 /* Main Menu */,
 				370A87812997E68D00CAB1E2 /* GameTallyView.swift */,
-				3767899029CB54C000E89721 /* MatchWinsCounterView.swift */,
-				37D9FFEF299D9270009E6729 /* Reusable Views */,
 				370F633B299EBBA70045ADE3 /* CustomGameSetupView.swift */,
-				371796FB29AA66FC00DDFB9D /* EditNameView.swift */,
+				37D9FFEF299D9270009E6729 /* Reusable Views */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,10 +127,13 @@
 		37D9FFEF299D9270009E6729 /* Reusable Views */ = {
 			isa = PBXGroup;
 			children = (
+				371796FB29AA66FC00DDFB9D /* EditNameView.swift */,
+				3767899029CB54C000E89721 /* MatchWinsCounterView.swift */,
 				376C48DB299AF2FA00801CBA /* TallyButtonView.swift */,
 				375A11B8299C484900830277 /* MainMenuGameButtonView.swift */,
 				37CDBF7329C21E3500D59B28 /* ChangeValueButtonView.swift */,
 				37343DE129C8A825005810CA /* ServeCounterView.swift */,
+				377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				375A11B9299C484900830277 /* MainMenuGameButtonView.swift in Sources */,
 				37CDBF7429C21E3500D59B28 /* ChangeValueButtonView.swift in Sources */,
 				375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */,
+				377C210F29CF361D00DFAC58 /* OffsetCircleView.swift in Sources */,
 				375A11B7299C468400830277 /* MainMenuPortraitView.swift in Sources */,
 				376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */,
 				371796FC29AA66FC00DDFB9D /* EditNameView.swift in Sources */,

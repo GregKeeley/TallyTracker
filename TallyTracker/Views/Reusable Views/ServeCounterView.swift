@@ -19,34 +19,17 @@ struct ServeCounterView: View {
     
     var body: some View {
         // TODO: Account for size classes and orientation (landscape).
-        GeometryReader { geo in
+//        GeometryReader { geo in
             HStack {
-                Spacer()
                 ForEach(0..<gameVM.serveLimit, id: \.self) { serveLimit in
                     if serveCount > serveLimit {
-                        ZStack {
-                            Circle()
-                                .frame(width: geo.size.width * 0.07)
-                            Circle()
-                                .foregroundColor(colorScheme == .dark ? .black : .white)
-                                .frame(width: geo.size.width / 16)
-                                .offset(x: -0.5, y: -0.5)
-                        }
+                        OffsetCircleView(color: .white)
                     } else {
-                        ZStack {
-                            Circle()
-                                .frame(width: geo.size.width * 0.07)
-                            Circle()
-                                .foregroundColor(teamColor)
-                                .frame(width: geo.size.width / 16)
-                                .offset(x: -0.5, y: -0.5)
-                        }
+                        OffsetCircleView(color: teamColor)
                     }
-                    
                 }
-                Spacer()
             }
-        }
+//        }
     }
 }
 

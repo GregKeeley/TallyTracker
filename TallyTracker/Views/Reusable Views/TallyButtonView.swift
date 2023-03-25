@@ -50,19 +50,6 @@ struct TallyButtonView: View {
     var body: some View {
         GeometryReader { geo in
             ZStack {
-//                teamColor
-//                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-//                    .edgesIgnoringSafeArea(.all)
-                // Border
-//                RoundedRectangle(cornerRadius: 8)
-//                    .stroke(lineWidth: 8)
-//                    .padding(8)
-//                    .foregroundColor(teamColor)
-//                // Background for the whole button so it is not transparent.
-//                RoundedRectangle(cornerRadius: 8)
-//                    .foregroundColor(colorScheme == .dark ? .black : .white)
-//                    .offset(x: -2, y: -2)
-//                    .padding(8)
                 VStack {
                     Spacer()
                     // Team Name
@@ -82,11 +69,12 @@ struct TallyButtonView: View {
                     ZStack {
                         ServeCounterView(gameVM: gameVM, serveCount: $serveCount, teamColor: $gameVM.firstTeamColor)
                             .opacity(isFirstTeam && isfirstTeamServing ? 1.0 : 0)
-                            .frame(height: geo.size.height * 0.15)
+                            .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.1)
                         ServeCounterView(gameVM: gameVM, serveCount: $serveCount, teamColor: $gameVM.secondTeamColor)
                             .opacity(!isFirstTeam && !isfirstTeamServing ? 1.0 : 0)
-                            .frame(height: geo.size.height * 0.15)
+                            .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.1)
                     }
+                    Spacer()
                 }
             }
             .background(teamColor)
