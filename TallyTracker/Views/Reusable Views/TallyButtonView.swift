@@ -30,14 +30,17 @@ struct TallyButtonView: View {
     /// Set to 'true' when the first team is currently serving to display the UI related to the current for that team.
     /// Set to 'false' when the second team is serving.
     @Binding var isfirstTeamServing: Bool
-    
+    /// AVPlayer to play back the ping pong sound when tapping to increment a players score.
     @State var audioPlayer: AVAudioPlayer!
     
+    
+    /// Plays an .mp3 formatted sound file.
+    /// - Parameter soundFileName: The name of the file, do not include the .mp3 extension
     func playSounds(_ soundFileName : String) {
+        // Check to see if the file name exists.
         guard let soundURL = Bundle.main.url(forResource: soundFileName, withExtension: "mp3") else {
             fatalError("Unable to find \(soundFileName) in bundle")
         }
-        
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
         } catch {
