@@ -19,22 +19,21 @@ struct ServeCounterView: View {
     
     var body: some View {
         // TODO: Account for size classes and orientation (landscape).
-//        GeometryReader { geo in
-            HStack {
-                ForEach(0..<gameVM.serveLimit, id: \.self) { serveLimit in
-                    if serveCount > serveLimit {
-                        OffsetCircleView(color: .white)
-                    } else {
-                        OffsetCircleView(color: teamColor)
-                    }
+        HStack {
+            ForEach(0..<gameVM.serveLimit, id: \.self) { serveLimit in
+                if serveCount > serveLimit {
+                    OffsetCircleView(color: .white)
+                } else {
+                    OffsetCircleView(color: teamColor)
                 }
             }
-//        }
+        }
     }
 }
 
 
 
+//MARK: - Previews
 struct ServeCounterView_Previews: PreviewProvider {
     static let buttonPreviewVM = GameViewModel(serveLimit: 5,
                                                scoreLimit: 15,

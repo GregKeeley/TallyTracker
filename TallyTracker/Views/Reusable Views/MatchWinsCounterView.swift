@@ -49,17 +49,19 @@ struct MatchWinsCounterView: View {
     }
 }
 
+
+//MARK: - Previews
 struct MatchWinsCounterView_Previews: PreviewProvider {
     static let previewVM: GameViewModel = {
         let viewModel = GameViewModel(serveLimit: 5,
-                                                   scoreLimit: 15,
-                                                   firstTeamColor: .red,
-                                                   secondTeamColor: .blue,
-                                                   firstTeamName: "Team 1",
-                                                   secondTeamName: "Team 2",
-                                                   firstTeamIsServing: true,
-                                                   matchLimit: 5,
-                                             teamsAutomaticallySwitchSides: true)
+                                      scoreLimit: 15,
+                                      firstTeamColor: .red,
+                                      secondTeamColor: .blue,
+                                      firstTeamName: "Team 1",
+                                      secondTeamName: "Team 2",
+                                      firstTeamIsServing: true,
+                                      matchLimit: 5,
+                                      teamsAutomaticallySwitchSides: true)
         viewModel.totalTeamWinColors = [.red, .blue, .gray, .gray, .gray]
         return viewModel
     }()

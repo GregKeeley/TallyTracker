@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct OffsetCircleView: View {
+    /// Color used in the foreground of the overlay circle.
     @State var color: Color
+    
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 Circle()
-//                    .frame(width: geo.size.width * 0.55)
                 Circle()
                     .foregroundColor(color)
                     .frame(width: geo.size.width * 0.9)
@@ -21,10 +22,17 @@ struct OffsetCircleView: View {
             }
         }
     }
+    
 }
 
+
+
+//MARK: - Previews
 struct OffsetCircleView_Previews: PreviewProvider {
+    static let color: Color = .white
     static var previews: some View {
-        OffsetCircleView(color: .white)
+        OffsetCircleView(color: color)
+            .frame(width: 24, height: 24)
+            .previewLayout(.sizeThatFits)
     }
 }

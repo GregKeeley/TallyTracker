@@ -96,43 +96,43 @@ struct TallyButtonView: View {
         }
         
     }
-    
-    
-    
-    //MARK: - Previews
-    struct TallyButton_Previews: PreviewProvider {
-        static let buttonPreviewVM = GameViewModel(serveLimit: 5,
-                                                   scoreLimit: 15,
-                                                   firstTeamColor: .red,
-                                                   secondTeamColor: .blue,
-                                                   firstTeamName: "Team 1",
-                                                   secondTeamName: "Team 2",
-                                                   firstTeamIsServing: true,
-                                                   matchLimit: 5,
-                                                   teamsAutomaticallySwitchSides: true)
-        static var previews: some View {
-            // First Team
-            TallyButtonView(gameVM: buttonPreviewVM,
-                            teamColor: buttonPreviewVM.firstTeamColor,
-                            teamName: buttonPreviewVM.firstTeamName,
-                            teamScore: .constant(buttonPreviewVM.firstTeamScore),
-                            isFirstTeam: true,
-                            serveLimit: buttonPreviewVM.serveLimit,
-                            serveCount: .constant(buttonPreviewVM.serveCount),
-                            isfirstTeamServing: .constant(buttonPreviewVM.isFirstTeamServing))
-            .frame(width: 400, height: 400)
-            .previewLayout(.sizeThatFits)
-            // Second Team
-            TallyButtonView(gameVM: buttonPreviewVM,
-                            teamColor: buttonPreviewVM.secondTeamColor,
-                            teamName: buttonPreviewVM.secondTeamName,
-                            teamScore: .constant(buttonPreviewVM.secondTeamScore),
-                            isFirstTeam: true,
-                            serveLimit: buttonPreviewVM.serveLimit,
-                            serveCount: .constant(buttonPreviewVM.serveCount),
-                            isfirstTeamServing: .constant(buttonPreviewVM.isFirstTeamServing))
-            .frame(width: 400, height: 400)
-            .previewLayout(.sizeThatFits)
-        }
+}
+
+
+
+//MARK: - Previews
+struct TallyButton_Previews: PreviewProvider {
+    static let buttonPreviewVM = GameViewModel(serveLimit: 5,
+                                               scoreLimit: 15,
+                                               firstTeamColor: .red,
+                                               secondTeamColor: .blue,
+                                               firstTeamName: "Team 1",
+                                               secondTeamName: "Team 2",
+                                               firstTeamIsServing: true,
+                                               matchLimit: 5,
+                                               teamsAutomaticallySwitchSides: true)
+    static var previews: some View {
+        // First Team
+        TallyButtonView(gameVM: buttonPreviewVM,
+                        teamColor: buttonPreviewVM.firstTeamColor,
+                        teamName: buttonPreviewVM.firstTeamName,
+                        teamScore: .constant(buttonPreviewVM.firstTeamScore),
+                        isFirstTeam: true,
+                        serveLimit: buttonPreviewVM.serveLimit,
+                        serveCount: .constant(buttonPreviewVM.serveCount),
+                        isfirstTeamServing: .constant(buttonPreviewVM.isFirstTeamServing))
+        .frame(width: 400, height: 400)
+        .previewLayout(.sizeThatFits)
+        // Second Team
+        TallyButtonView(gameVM: buttonPreviewVM,
+                        teamColor: buttonPreviewVM.secondTeamColor,
+                        teamName: buttonPreviewVM.secondTeamName,
+                        teamScore: .constant(buttonPreviewVM.secondTeamScore),
+                        isFirstTeam: true,
+                        serveLimit: buttonPreviewVM.serveLimit,
+                        serveCount: .constant(buttonPreviewVM.serveCount),
+                        isfirstTeamServing: .constant(buttonPreviewVM.isFirstTeamServing))
+        .frame(width: 400, height: 400)
+        .previewLayout(.sizeThatFits)
     }
 }
