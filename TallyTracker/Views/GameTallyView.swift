@@ -173,7 +173,7 @@ struct ContentView_Previews: PreviewProvider {
     
     static var viewModel:GameViewModel {
         let viewModel = GameViewModel(serveLimit: 5,
-                                      scoreLimit: 15,
+                                      scoreLimit: 2,
                                       firstTeamColor: .red,
                                       secondTeamColor: .blue,
                                       firstTeamName: "Greg",
@@ -182,7 +182,7 @@ struct ContentView_Previews: PreviewProvider {
                                       matchLimit: 5,
                                       teamsAutomaticallySwitchSides: true)
         viewModel.gameOver = false
-        viewModel.totalTeamWinColors = [.red, .blue, .gray, .gray, .gray]
+        viewModel.totalTeamWinColors = [.red, .blue, .red, .gray, .gray]
         return viewModel
     }
     
