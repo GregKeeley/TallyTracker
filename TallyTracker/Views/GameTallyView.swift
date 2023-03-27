@@ -43,7 +43,7 @@ struct GameTallyView: View {
                                     .onTapGesture {
                                         viewModel.presentAlert.toggle()
                                     }
-                                MatchWinsCounterView(gameVM: viewModel)
+                                MatchWinsCounterView(gameVM: viewModel, teamWinColors: $viewModel.totalTeamWinColors)
                                     .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.075)
                                 Spacer()
                             }
@@ -95,7 +95,7 @@ struct GameTallyView: View {
                                         viewModel.presentAlert.toggle()
                                     }
                                 Spacer()
-                                MatchWinsCounterView(gameVM: viewModel)
+                                MatchWinsCounterView(gameVM: viewModel, teamWinColors: $viewModel.totalTeamWinColors)
                                     .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.7)
                                 Spacer()
                             }

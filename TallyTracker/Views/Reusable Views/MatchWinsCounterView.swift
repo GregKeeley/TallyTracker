@@ -11,7 +11,8 @@ struct MatchWinsCounterView: View {
     /// Used to determine the color scheme of the users device for layout/color purposes.
     @Environment(\.colorScheme) var colorScheme
     /// View model for the button to display the teams score and intercept gestures during a game.
-    @StateObject var gameVM: GameViewModel
+    @ObservedObject var gameVM: GameViewModel
+    @Binding var teamWinColors: [Color]
     /// Height size class, used to determine available horizontal space available and handle layout on the device.
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     /// Width size class, used to determine available vertical space available and handle layout on the device.
@@ -20,14 +21,14 @@ struct MatchWinsCounterView: View {
     var body: some View {
         if heightSizeClass == .regular && widthSizeClass == .compact {
             HStack {
-                ForEach(0..<gameVM.matchLimit, id:\.self) { index in
-                    OffsetCircleView(color: gameVM.totalTeamWinColors[index])
+                ForEach(0..<teamWinColors.count, id:\.self) { index in
+                    OffsetCircleView(color: teamWinColors[index])
                 }
             }
         } else {
             VStack {
-                ForEach(0..<gameVM.matchLimit, id:\.self) { index in
-                    OffsetCircleView(color: gameVM.totalTeamWinColors[index])
+                ForEach(0..<teamWinColors.count, id:\.self) { index in
+                    OffsetCircleView(color: teamWinColors[index])
                 }
             }
         }
@@ -52,7 +53,7 @@ struct MatchWinsCounterView_Previews: PreviewProvider {
     }()
     
     static var previews: some View {
-        MatchWinsCounterView(gameVM: previewVM)
+        MatchWinsCounterView(gameVM: previewVM, teamWinColors: .constant(previewVM.totalTeamWinColors))
             .previewLayout(.sizeThatFits)
     }
 }
