@@ -140,7 +140,7 @@ class GameViewModel: ObservableObject {
         matchComplete = true
         teamsSwitchedSides.toggle()
         // Get index of the previous winner, if available.
-        if let indexOfPreviousWinner = totalTeamWinColors.lastIndex(where: { $0 != .gray }) {
+        if let indexOfPreviousWinner = totalTeamWinColors.lastIndex(where: { $0 == firstTeamColor || $0 == secondTeamColor }) {
             if isFirstTeam {
                 // Using the index of the previous winner, set the next index to the winners color.
                 totalTeamWinColors[indexOfPreviousWinner + 1] = firstTeamColor

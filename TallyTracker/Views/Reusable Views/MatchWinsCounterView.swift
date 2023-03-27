@@ -12,37 +12,22 @@ struct MatchWinsCounterView: View {
     @Environment(\.colorScheme) var colorScheme
     /// View model for the button to display the teams score and intercept gestures during a game.
     @StateObject var gameVM: GameViewModel
+    /// Height size class, used to determine available horizontal space available and handle layout on the device.
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    /// Width size class, used to determine available vertical space available and handle layout on the device.
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
     
     var body: some View {
-        HStack {
-            ForEach(0..<gameVM.matchLimit, id:\.self) { index in
-                if gameVM.totalTeamWinColors[index] == gameVM.firstTeamColor {
-                    ZStack {
-                        Circle()
-                            .frame(width: 28)
-                        Circle()
-                            .frame(width: 24)
-                            .foregroundColor(gameVM.firstTeamColor)
-                            .offset(x: -0.5, y: -0.5)
-                    }
-                } else if gameVM.totalTeamWinColors[index] == gameVM.secondTeamColor {
-                    ZStack {
-                        Circle()
-                            .frame(width: 28)
-                        Circle()
-                            .frame(width: 24)
-                            .foregroundColor(gameVM.secondTeamColor)
-                            .offset(x: -0.5, y: -0.5)
-                    }
-                } else {
-                    ZStack {
-                        Circle()
-                            .frame(width: 28)
-                        Circle()
-                            .frame(width: 24)
-                            .foregroundColor(colorScheme == .dark ? .black : .white)
-                            .offset(x: -0.5, y: -0.5)
-                    }
+        if heightSizeClass == .regular && widthSizeClass == .compact {
+            HStack {
+                ForEach(0..<gameVM.matchLimit, id:\.self) { index in
+                    OffsetCircleView(color: gameVM.totalTeamWinColors[index])
+                }
+            }
+        } else {
+            VStack {
+                ForEach(0..<gameVM.matchLimit, id:\.self) { index in
+                    OffsetCircleView(color: gameVM.totalTeamWinColors[index])
                 }
             }
         }
@@ -62,7 +47,7 @@ struct MatchWinsCounterView_Previews: PreviewProvider {
                                       firstTeamIsServing: true,
                                       matchLimit: 5,
                                       teamsAutomaticallySwitchSides: true)
-        viewModel.totalTeamWinColors = [.red, .blue, .gray, .gray, .gray]
+        viewModel.totalTeamWinColors = [.red, .blue, .white, .white, .white]
         return viewModel
     }()
     

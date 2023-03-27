@@ -13,7 +13,7 @@ struct GameTallyView: View {
     /// Used to determine the color scheme of the users device for layout/color purposes.
     @Environment(\.colorScheme) var colorScheme
     /// View model for the UI.
-    @StateObject var viewModel: GameViewModel
+    @ObservedObject var viewModel: GameViewModel
     /// Height size class, used to determine available horizontal space available and handle layout on the device.
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     /// Width size class, used to determine available vertical space available and handle layout on the device.
@@ -43,11 +43,10 @@ struct GameTallyView: View {
                                     .onTapGesture {
                                         viewModel.presentAlert.toggle()
                                     }
+                                MatchWinsCounterView(gameVM: viewModel)
+                                    .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.075)
                                 Spacer()
                             }
-                            Spacer()
-                            MatchWinsCounterView(gameVM: viewModel)
-                            Spacer()
                         }
                         TallyButtonView(gameVM: viewModel,
                                         teamColor: viewModel.secondTeamColor,
@@ -96,23 +95,8 @@ struct GameTallyView: View {
                                         viewModel.presentAlert.toggle()
                                     }
                                 Spacer()
-                                // TODO: Replace with ServeCounterView after support for different size classes has been added.
-                                ForEach(0..<viewModel.matchLimit, id:\.self) { index in
-                                    if viewModel.totalTeamWinColors[index] == viewModel.firstTeamColor {
-                                        Circle()
-                                            .frame(width: geo.size.width * 0.03)
-                                            .foregroundColor(viewModel.firstTeamColor)
-                                    } else if viewModel.totalTeamWinColors[index] == viewModel.secondTeamColor {
-                                        Circle()
-                                            .frame(width: geo.size.width * 0.03)
-                                            .foregroundColor(viewModel.secondTeamColor)
-                                    } else {
-                                        Circle()
-                                            .stroke()
-                                            .frame(width: geo.size.width * 0.03)
-                                            .foregroundColor(.gray)
-                                    }
-                                }
+                                MatchWinsCounterView(gameVM: viewModel)
+                                    .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.7)
                                 Spacer()
                             }
                             TallyButtonView(gameVM: viewModel,
@@ -182,7 +166,7 @@ struct ContentView_Previews: PreviewProvider {
                                       matchLimit: 5,
                                       teamsAutomaticallySwitchSides: true)
         viewModel.gameOver = false
-        viewModel.totalTeamWinColors = [.red, .blue, .red, .gray, .gray]
+        viewModel.totalTeamWinColors = [.red, .blue, .red, .white, .white]
         return viewModel
     }
     

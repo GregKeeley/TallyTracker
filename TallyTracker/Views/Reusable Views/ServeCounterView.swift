@@ -18,7 +18,6 @@ struct ServeCounterView: View {
     @Binding var teamColor: Color
     
     var body: some View {
-        // TODO: Account for size classes and orientation (landscape).
         HStack {
             ForEach(0..<gameVM.serveLimit, id: \.self) { serveLimit in
                 if serveCount > serveLimit {
