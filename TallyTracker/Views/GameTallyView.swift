@@ -44,7 +44,7 @@ struct GameTallyView: View {
                                         viewModel.presentAlert.toggle()
                                     }
                                 MatchWinsCounterView(gameVM: viewModel, teamWinColors: $viewModel.totalTeamWinColors)
-                                    .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.075)
+                                    .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.05)
                                 Spacer()
                             }
                         }
