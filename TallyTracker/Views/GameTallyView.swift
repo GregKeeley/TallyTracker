@@ -59,7 +59,6 @@ struct GameTallyView: View {
                         .disabled(viewModel.gameOver)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-                    .ignoresSafeArea(.all)
                     if viewModel.gameOver {
                         Circle()
                             .fill(Color.blue)
@@ -125,7 +124,7 @@ struct GameTallyView: View {
                     }
                 }
             }
-            .ignoresSafeArea(.all)
+//            .ignoresSafeArea(.all)
         }
         .alert(isPresented: $viewModel.presentAlert, content: {
             if viewModel.gameOver {

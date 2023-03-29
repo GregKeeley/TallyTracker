@@ -60,15 +60,15 @@ struct TallyButtonView: View {
                         Text(teamName.prefix(12))
                             .font(.system(size: 32, weight: .bold))
                             .lineLimit(1)
-                            .minimumScaleFactor(0.4)
-                            .frame(maxWidth: .infinity)
+                            .minimumScaleFactor(0.01)
                             .foregroundColor(colorScheme == .dark ? .black : .white)
                     }
                     // Team Score
                     Text(teamScore.description)
-                        .font(.system(size: 148, weight: .bold))
-                        .minimumScaleFactor(0.5)
+                        .font(.system(size: 132, weight: .bold))
+                        .minimumScaleFactor(0.01)
                         .foregroundColor(colorScheme == .dark ? .black : .white)
+                    Spacer()
                     ZStack {
                         ServeCounterView(gameVM: gameVM, serveCount: $serveCount, teamColor: $gameVM.firstTeamColor)
                             .opacity(isFirstTeam && isfirstTeamServing ? 1.0 : 0)
@@ -77,11 +77,11 @@ struct TallyButtonView: View {
                             .opacity(!isFirstTeam && !isfirstTeamServing ? 1.0 : 0)
                             .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.1)
                     }
-                    Spacer()
+                    .padding()
                 }
             }
+            .frame(width: geo.size.width)
             .background(teamColor)
-            .contentShape(RoundedRectangle(cornerRadius: 8))
             .onTapGesture {
                 let impact = UIImpactFeedbackGenerator(style: .rigid)
                 impact.impactOccurred()

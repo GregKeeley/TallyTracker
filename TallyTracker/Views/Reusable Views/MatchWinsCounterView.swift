@@ -36,6 +36,7 @@ struct MatchWinsCounterView: View {
 }
 
 
+
 //MARK: - Previews
 struct MatchWinsCounterView_Previews: PreviewProvider {
     static let previewVM: GameViewModel = {
