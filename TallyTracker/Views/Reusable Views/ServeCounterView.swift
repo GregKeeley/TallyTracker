@@ -21,9 +21,9 @@ struct ServeCounterView: View {
         HStack {
             ForEach(0..<gameVM.serveLimit, id: \.self) { serveLimit in
                 if serveCount > serveLimit {
-                    OffsetCircleView(color: .white)
+                    OffsetCircleView(color: .constant(.white))
                 } else {
-                    OffsetCircleView(color: teamColor)
+                    OffsetCircleView(color: $teamColor)
                 }
             }
         }

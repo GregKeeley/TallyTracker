@@ -22,13 +22,13 @@ struct MatchWinsCounterView: View {
         if heightSizeClass == .regular && widthSizeClass == .compact {
             HStack {
                 ForEach(0..<teamWinColors.count, id:\.self) { index in
-                    OffsetCircleView(color: teamWinColors[index])
+                    OffsetCircleView(color: $teamWinColors[index])
                 }
             }
         } else {
             VStack {
                 ForEach(0..<teamWinColors.count, id:\.self) { index in
-                    OffsetCircleView(color: teamWinColors[index])
+                    OffsetCircleView(color: $teamWinColors[index])
                 }
             }
         }
