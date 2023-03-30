@@ -80,13 +80,13 @@ struct GameTallyView: View {
                                             serveLimit: viewModel.serveLimit,
                                             serveCount:  $viewModel.serveCount,
                                             isfirstTeamServing: $viewModel.isFirstTeamServing)
-                            .offset(x: !viewModel.teamsSwitchedSides ? (geo.size.width) * 0.6 : 0, y: 0)
+                            .offset(x: !viewModel.teamsSwitchedSides ? (geo.size.width) * 0.535 : 0, y: 0)
                             .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360: 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
                             .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                             .disabled(viewModel.gameOver)
                             VStack {
                                 //                                Image(systemName: "line.3.horizontal.circle")
-                                Image(systemName: "arrow.backward.circle")
+                                Image(systemName: "x.circle")
                                     .resizable()
                                     .frame(width: geo.size.width * 0.03, height: geo.size.width * 0.03)
                                     .padding(.top)
@@ -106,7 +106,7 @@ struct GameTallyView: View {
                                             serveLimit: viewModel.serveLimit,
                                             serveCount:  $viewModel.serveCount,
                                             isfirstTeamServing: $viewModel.isFirstTeamServing)
-                            .offset(x: !viewModel.teamsSwitchedSides ? (-geo.size.width * 0.6) : 0, y: 0)
+                            .offset(x: !viewModel.teamsSwitchedSides ? (-geo.size.width * 0.535) : 0, y: 0)
                             .rotation3DEffect(.degrees(viewModel.teamsSwitchedSides ? 360 : 0), axis: viewModel.teamsSwitchedSides ? (x: 100, y: 100, z: 100) :(x: 0, y: 0, z: 0))
                             .animation(Animation.easeOut(duration: 0.5), value: viewModel.teamsSwitchedSides)
                             .disabled(viewModel.gameOver)
@@ -124,7 +124,6 @@ struct GameTallyView: View {
                     }
                 }
             }
-//            .ignoresSafeArea(.all)
         }
         .alert(isPresented: $viewModel.presentAlert, content: {
             if viewModel.gameOver {
