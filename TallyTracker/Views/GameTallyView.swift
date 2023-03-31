@@ -38,13 +38,18 @@ struct GameTallyView: View {
                                 //                            Image(systemName: "line.3.horizontal.circle")
                                 Image(systemName: "x.circle")
                                     .resizable()
-                                    .frame(width: 28, height: 28)
+                                    .scaledToFill()
+                                    .frame(width: geo.size.width * 0.075, height: geo.size.width * 0.075)
                                     .padding(.leading)
                                     .onTapGesture {
                                         viewModel.presentAlert.toggle()
                                     }
+                                Spacer()
+                            }
+                            HStack {
+                                Spacer()
                                 MatchWinsCounterView(gameVM: viewModel, teamWinColors: $viewModel.totalTeamWinColors)
-                                    .frame(width: geo.size.width * 0.8, height: geo.size.height * 0.05)
+                                    .frame(width: geo.size.width * 0.6, height: geo.size.height * 0.05)
                                 Spacer()
                             }
                         }
@@ -88,7 +93,8 @@ struct GameTallyView: View {
                                 //                                Image(systemName: "line.3.horizontal.circle")
                                 Image(systemName: "x.circle")
                                     .resizable()
-                                    .frame(width: geo.size.width * 0.03, height: geo.size.width * 0.03)
+                                    .scaledToFill()
+                                    .frame(width: geo.size.width * 0.025, height: geo.size.width * 0.045)
                                     .padding(.top)
                                     .onTapGesture {
                                         viewModel.presentAlert.toggle()
