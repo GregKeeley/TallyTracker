@@ -245,6 +245,7 @@ struct CustomGameSetupView: View {
                                 .frame(maxWidth: UIScreen.main.bounds.size.width * 0.5)
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                                 .background(colorScheme == .dark ? .black : .white)
+                                .cornerRadius(8.0)
                                 .ignoresSafeArea()
                                 .colorInvert()
                         }
