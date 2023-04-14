@@ -18,6 +18,21 @@ struct SplashScreenView: View {
                 Color.white.opacity(0.5)
                     .frame(width: geo.size.height * 0.025)
                     .ignoresSafeArea()
+                VStack {
+                    Spacer(minLength: geo.size.height * 0.75)
+                    Button {
+                        // Start Button
+                        // TODO: Discuss what purpose this button will serve.
+                    } label: {
+                        ZStack {
+                            Capsule()
+                                .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.08625)
+                            Text("Start")
+                                .foregroundColor(.white)
+                        }
+                    }
+                    Spacer()
+                }
             }
         }
     }
