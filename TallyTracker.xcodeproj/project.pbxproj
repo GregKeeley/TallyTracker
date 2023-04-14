@@ -26,6 +26,7 @@
 		37C980E529B4F96E0069B7B7 /* ParticlesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */; };
 		37CDBF7429C21E3500D59B28 /* ChangeValueButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CDBF7329C21E3500D59B28 /* ChangeValueButtonView.swift */; };
 		37D9FFEC299D8D31009E6729 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9FFEB299D8D31009E6729 /* GameViewModel.swift */; };
+		37EC425929E9EA8100CB1F76 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EC425829E9EA8100CB1F76 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesModifier.swift; sourceTree = "<group>"; };
 		37CDBF7329C21E3500D59B28 /* ChangeValueButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeValueButtonView.swift; sourceTree = "<group>"; };
 		37D9FFEB299D8D31009E6729 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		37EC425829E9EA8100CB1F76 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				370A87812997E68D00CAB1E2 /* GameTallyView.swift */,
 				370F633B299EBBA70045ADE3 /* CustomGameSetupView.swift */,
 				37D9FFEF299D9270009E6729 /* Reusable Views */,
+				37EC425829E9EA8100CB1F76 /* SplashScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37EC425929E9EA8100CB1F76 /* SplashScreenView.swift in Sources */,
 				37C980E529B4F96E0069B7B7 /* ParticlesModifier.swift in Sources */,
 				375A11BD299C517100830277 /* MainMenuLandscapeView.swift in Sources */,
 				375A11B9299C484900830277 /* MainMenuGameButtonView.swift in Sources */,
