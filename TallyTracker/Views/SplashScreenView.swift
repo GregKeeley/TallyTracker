@@ -9,7 +9,17 @@ import SwiftUI
 
 struct SplashScreenView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        GeometryReader { geo in
+            ZStack {
+                Color.green
+                    .ignoresSafeArea()
+                Color.white.opacity(0.5)
+                    .frame(height: geo.size.height * 0.025)
+                Color.white.opacity(0.5)
+                    .frame(width: geo.size.height * 0.025)
+                    .ignoresSafeArea()
+            }
+        }
     }
 }
 
