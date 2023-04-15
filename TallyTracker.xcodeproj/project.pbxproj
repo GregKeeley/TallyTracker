@@ -108,11 +108,11 @@
 		37D9FFED299D91E2009E6729 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				37EC425829E9EA8100CB1F76 /* SplashScreenView.swift */,
 				37D9FFEE299D925D009E6729 /* Main Menu */,
 				370A87812997E68D00CAB1E2 /* GameTallyView.swift */,
 				370F633B299EBBA70045ADE3 /* CustomGameSetupView.swift */,
 				37D9FFEF299D9270009E6729 /* Reusable Views */,
-				37EC425829E9EA8100CB1F76 /* SplashScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

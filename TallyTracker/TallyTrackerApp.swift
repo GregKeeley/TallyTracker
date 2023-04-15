@@ -12,7 +12,8 @@ struct TallyTrackerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            MainMenuOrientationView()
+//            MainMenuOrientationView()
+            SplashScreenView()
         }
     }
 }
