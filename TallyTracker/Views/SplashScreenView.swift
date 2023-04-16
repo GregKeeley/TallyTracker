@@ -31,26 +31,17 @@ struct SplashScreenView: View {
                                 .foregroundColor(.white)
                         }
                     }
-//                    Button {
-//                        // Start Button
-//                        NavigationLink(destination: MainMenuOrientationView()) {
-//
-//                        }
-//                    } label: {
-//                        ZStack {
-//                            Capsule()
-//                                .frame(width: geo.size.width * 0.5, height: geo.size.height * 0.08625)
-//                            Text("Start")
-//                                .foregroundColor(.white)
-//                        }
-//                    }
                     Spacer()
                 }
             }
         }
     }
+    
 }
 
+
+
+//MARK: - Previews
 struct SplashScreenView_Previews: PreviewProvider {
     static var previews: some View {
         SplashScreenView()
