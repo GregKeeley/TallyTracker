@@ -26,12 +26,18 @@ struct MainMenuPortraitView: View {
                 Spacer()
                 HStack {
                     Spacer()
-                    Text("Logo")
-                        .font(.system(size: 48, weight: .bold))
-                        .frame(maxWidth: UIScreen.main.bounds.size.width * 0.33)
-                        .background(colorScheme == .dark ? .black : .white)
-                        .ignoresSafeArea()
-                        .colorInvert()
+                    // TODO: Move this ZStack to it's own subview.
+                    ZStack {
+                        AppColors.primaryLightGreen
+                        Text("Start Tallying Your Way To Victory!")
+                            .font(.system(size: 48))
+                            .fontWeight(.bold)
+                            .minimumScaleFactor(0.4)
+                            .frame(width: 300)
+                        RoundedRectangle(cornerRadius: 8.0)
+                            .stroke()
+                            .padding()
+                    }
                     Spacer()
                 }
                 Spacer()
@@ -57,7 +63,8 @@ struct MainMenuPortraitView: View {
                                 .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
-                    .frame(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.height * 0.3)
+                    .padding()
+//                    .frame(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.height * 0.3)
                 }
                 Spacer()
             }
