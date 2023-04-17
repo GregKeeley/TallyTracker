@@ -13,6 +13,8 @@ struct MainMenuPortraitView: View {
     
     var body: some View {
         ZStack {
+            AppColors.primaryGreen
+                .ignoresSafeArea()
             VStack {
                 HStack {
                     Spacer()
