@@ -17,6 +17,10 @@ struct MainMenuPortraitView: View {
                 .ignoresSafeArea()
             VStack {
                 HStack {
+                    Image("ContextButton")
+                        .padding(.leading)
+                    Spacer()
+                    Image("LogoWhite")
                     Spacer()
                     Image("SettingsButton")
 //                        .resizable()
