@@ -18,9 +18,9 @@ struct MainMenuPortraitView: View {
             VStack {
                 HStack {
                     Spacer()
-                    Image(systemName: "gear")
-                        .resizable()
-                        .frame(width: 28, height: 28)
+                    Image("SettingsButton")
+//                        .resizable()
+//                        .frame(width: 28, height: 28)
                         .padding(.trailing)
                 }
                 // TODO: Move this ZStack to it's own subview.
