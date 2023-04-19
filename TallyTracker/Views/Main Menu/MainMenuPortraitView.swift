@@ -30,15 +30,15 @@ struct MainMenuPortraitView: View {
                 // TODO: Move this ZStack to it's own subview.
                 ZStack {
                     AppColors.primaryLightGreen
-                        .cornerRadius(8.0)
+                        .cornerRadius(27.0)
                         .padding()
                     Text("Start Tallying Your Way To Victory!")
                         .font(.system(size: 48))
                         .fontWeight(.bold)
                         .minimumScaleFactor(0.4)
                         .frame(width: 300)
-                    RoundedRectangle(cornerRadius: 8.0)
-                        .stroke()
+                    RoundedRectangle(cornerRadius: 27.0)
+                        .stroke(lineWidth: 4)
                         .padding()
                 }
                 NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 5,

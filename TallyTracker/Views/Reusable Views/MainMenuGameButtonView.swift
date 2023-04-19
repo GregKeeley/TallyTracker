@@ -16,8 +16,10 @@ struct MainMenuGameButtonView: View {
     
     var body: some View {
         ZStack {
-            RoundedRectangle(cornerRadius: 8)
-                .stroke()
+            AppColors.standardWhite
+                .cornerRadius(27.0)
+            RoundedRectangle(cornerRadius: 27.0)
+                .stroke(lineWidth: 4)
             HStack {
                 VStack(alignment: .leading) {
                     Text(gameTitle)

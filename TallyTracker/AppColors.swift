@@ -21,5 +21,6 @@ struct AppColors {
     
     static let secondaryWhite1 = Color.fromHex(hex: "#838643")
     static let secondaryWhite2 = Color.fromHex(hex: "#909925")
+    static let standardWhite = Color.fromHex(hex: "#FFFFFF")
     
 }
