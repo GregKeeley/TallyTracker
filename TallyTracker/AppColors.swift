@@ -14,7 +14,7 @@ struct AppColors {
     static let primaryLightGreen = Color.fromHex(hex: "#5CF17D")
     
     static let neutralBlack1 = Color.fromHex(hex: "#272727")
-    static let netutralGray1 = Color.fromHex(hex: "#595959")
+    static let neutralGray1 = Color.fromHex(hex: "#595959")
     static let neutralGray2 = Color.fromHex(hex: "#767676")
     static let neutralGray3 = Color.fromHex(hex: "#C6C6C6")
     static let neutralGray4 = Color.fromHex(hex: "#F6F6F6")

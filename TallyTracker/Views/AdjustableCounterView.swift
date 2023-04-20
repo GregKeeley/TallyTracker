@@ -9,14 +9,30 @@ import SwiftUI
 
 struct AdjustableCounterView: View {
     
+    @Binding var currentValue: Int
+    
     var body: some View {
         ZStack {
-            Image("Pill shape")
+            Capsule()
+                .stroke(lineWidth: 4.0)
+                .frame(width: 127.5, height: 40)
             HStack {
-                Image("minus")
-//                Spacer()
-                Image("add")
+                // TODO: The plus and minus images need to be buttons.
+                Image(systemName: "minus.circle")
+                    .resizable()
+                    .background(AppColors.neutralGray1)
+                    .clipShape(Circle())
+                    .frame(width: 42.5, height: 42.5)
+                Spacer()
+                Text("\(currentValue)")
+                Spacer()
+                Image(systemName: "plus.circle")
+                    .resizable()
+                    .background(AppColors.primaryGreen)
+                    .clipShape(Circle())
+                    .frame(width: 42.5, height: 42.5)
             }
+            .frame(width: 130, height: 40)
         }
     }
 }
@@ -26,7 +42,7 @@ struct AdjustableCounterView: View {
 //MARK: - Previews
 struct AdjustableCounterView_Previews: PreviewProvider {
     static var previews: some View {
-        AdjustableCounterView()
-            .previewLayout(.sizeThatFits)
+        AdjustableCounterView(currentValue: .constant(0))
+        //            .previewLayout(.sizeThatFits)
     }
 }
