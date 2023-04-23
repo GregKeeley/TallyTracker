@@ -58,24 +58,6 @@ struct CustomGameSetupView: View {
                         AdjustableCounterView(currentValue: 1,
                                               maxValue: 25,
                                               minValue: 3)
-//                        Button {
-//                            // Decrement set points, 11 point minimum.
-//                            if maxScore > 10 {
-//                                maxScore -= 1
-//                            }
-//                        } label: {
-//                            Text("-")
-//                                .font(.system(size: 32, weight: .regular))
-//                        }
-//                        Text(maxScore.description)
-//                            .font(.system(size: 32, weight: .regular))
-//                        Button {
-//                            // Increment set points, no maximum set.
-//                            maxScore += 1
-//                        } label: {
-//                            Text("+")
-//                                .font(.system(size: 32, weight: .regular))
-//                        }
                     }
                     .padding()
                     

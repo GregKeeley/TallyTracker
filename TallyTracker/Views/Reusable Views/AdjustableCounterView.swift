@@ -36,6 +36,8 @@ struct AdjustableCounterView: View {
                 .foregroundColor(.black)
                 Spacer()
                 Text("\(currentValue)")
+                    .font(Font.custom(AppFonts.poppinsRegular, size: 40))
+                    .minimumScaleFactor(0.5)
                 Spacer()
                 Button {
                     if currentValue < maxValue {
