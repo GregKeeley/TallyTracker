@@ -9,16 +9,16 @@ import SwiftUI
 
 struct AdjustableCounterView: View {
     
-    @Binding var currentValue: Int
-    
+    @State var currentValue: Int
+    @Binding var maxValue: Int
+    @Binding var minValue: Int
     var body: some View {
         ZStack {
-            Capsule()
-                .stroke(lineWidth: 4.0)
-                .frame(width: 127.5, height: 40)
             HStack {
                 Button {
-                    // Decrement current value.
+                    if currentValue > minValue {
+                        currentValue -= 1
+                    }
                 } label: {
                     
                     ZStack {
@@ -28,7 +28,7 @@ struct AdjustableCounterView: View {
                         Image(systemName: "minus.circle")
                             .resizable()
                             .clipShape(Circle())
-                        .frame(width: 42.5, height: 42.5)
+                            .frame(width: 42.5, height: 42.5)
                     }
                 }
                 .foregroundColor(.black)
@@ -36,7 +36,9 @@ struct AdjustableCounterView: View {
                 Text("\(currentValue)")
                 Spacer()
                 Button {
-                    // Increment current value.
+                    if currentValue < maxValue {
+                        currentValue += 1
+                    }
                 } label: {
                     ZStack {
                         Circle()
@@ -45,12 +47,15 @@ struct AdjustableCounterView: View {
                         Image(systemName: "plus.circle")
                             .resizable()
                             .clipShape(Circle())
-                        .frame(width: 42.5, height: 42.5)
+                            .frame(width: 42.5, height: 42.5)
                     }
                 }
                 .foregroundColor(.black)
             }
             .frame(width: 130, height: 40)
+            Capsule()
+                .stroke(lineWidth: 4.0)
+                .frame(width: 127.5, height: 40)
         }
     }
 }
@@ -60,7 +65,9 @@ struct AdjustableCounterView: View {
 //MARK: - Previews
 struct AdjustableCounterView_Previews: PreviewProvider {
     static var previews: some View {
-        AdjustableCounterView(currentValue: .constant(0))
-//                    .previewLayout(.sizeThatFits)
+        AdjustableCounterView(currentValue: 1,
+                              maxValue: .constant(10),
+                              minValue: .constant(0))
+        .previewLayout(.sizeThatFits)
     }
 }
