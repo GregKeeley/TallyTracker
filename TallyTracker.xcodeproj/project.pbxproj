@@ -118,10 +118,9 @@
 			children = (
 				37EC425829E9EA8100CB1F76 /* SplashScreenView.swift */,
 				37D9FFEE299D925D009E6729 /* Main Menu */,
-				370A87812997E68D00CAB1E2 /* GameTallyView.swift */,
 				370F633B299EBBA70045ADE3 /* CustomGameSetupView.swift */,
+				370A87812997E68D00CAB1E2 /* GameTallyView.swift */,
 				37D9FFEF299D9270009E6729 /* Reusable Views */,
-				37AB9F5A29F09A42009A22C6 /* AdjustableCounterView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -139,6 +138,7 @@
 		37D9FFEF299D9270009E6729 /* Reusable Views */ = {
 			isa = PBXGroup;
 			children = (
+				37AB9F5A29F09A42009A22C6 /* AdjustableCounterView.swift */,
 				371796FB29AA66FC00DDFB9D /* EditNameView.swift */,
 				3767899029CB54C000E89721 /* MatchWinsCounterView.swift */,
 				376C48DB299AF2FA00801CBA /* TallyButtonView.swift */,

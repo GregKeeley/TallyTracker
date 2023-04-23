@@ -8,10 +8,13 @@
 import SwiftUI
 
 struct AdjustableCounterView: View {
-    
+    /// The value displayed to the used. This value is used to establish a parameter when setting up a custom game.
     @State var currentValue: Int
-    @Binding var maxValue: Int
-    @Binding var minValue: Int
+    /// The upper bound of the range for the value.
+    @State var maxValue: Int
+    /// Lower bound of the range for the value.
+    @State var minValue: Int
+    
     var body: some View {
         ZStack {
             HStack {
@@ -20,7 +23,6 @@ struct AdjustableCounterView: View {
                         currentValue -= 1
                     }
                 } label: {
-                    
                     ZStack {
                         Circle()
                             .foregroundColor(AppColors.neutralGray2)
@@ -66,8 +68,8 @@ struct AdjustableCounterView: View {
 struct AdjustableCounterView_Previews: PreviewProvider {
     static var previews: some View {
         AdjustableCounterView(currentValue: 1,
-                              maxValue: .constant(10),
-                              minValue: .constant(0))
+                              maxValue: 10,
+                              minValue: 0)
         .previewLayout(.sizeThatFits)
     }
 }

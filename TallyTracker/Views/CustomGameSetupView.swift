@@ -55,24 +55,27 @@ struct CustomGameSetupView: View {
                         Text("Set Points")
                             .font(.system(size: 24, weight: .bold))
                         Spacer()
-                        Button {
-                            // Decrement set points, 11 point minimum.
-                            if maxScore > 10 {
-                                maxScore -= 1
-                            }
-                        } label: {
-                            Text("-")
-                                .font(.system(size: 32, weight: .regular))
-                        }
-                        Text(maxScore.description)
-                            .font(.system(size: 32, weight: .regular))
-                        Button {
-                            // Increment set points, no maximum set.
-                            maxScore += 1
-                        } label: {
-                            Text("+")
-                                .font(.system(size: 32, weight: .regular))
-                        }
+                        AdjustableCounterView(currentValue: 1,
+                                              maxValue: 25,
+                                              minValue: 3)
+//                        Button {
+//                            // Decrement set points, 11 point minimum.
+//                            if maxScore > 10 {
+//                                maxScore -= 1
+//                            }
+//                        } label: {
+//                            Text("-")
+//                                .font(.system(size: 32, weight: .regular))
+//                        }
+//                        Text(maxScore.description)
+//                            .font(.system(size: 32, weight: .regular))
+//                        Button {
+//                            // Increment set points, no maximum set.
+//                            maxScore += 1
+//                        } label: {
+//                            Text("+")
+//                                .font(.system(size: 32, weight: .regular))
+//                        }
                     }
                     .padding()
                     
@@ -184,45 +187,6 @@ struct CustomGameSetupView: View {
                                 .font(.system(size: 32, weight: .regular))
                         }
                     }
-                    .padding()
-                    
-                    // Singles/Doubles selection
-                    // ICEBOX Feature.
-                    //                HStack {
-                    //                    Spacer()
-                    //                    Button {
-                    //                        singlesModeSelected.toggle()
-                    //                    } label: {
-                    //                        if singlesModeSelected {
-                    //                            Image(systemName: "x.square")
-                    //                                .resizable()
-                    //                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-                    //                        } else {
-                    //                            Image(systemName: "square")
-                    //                                .resizable()
-                    //                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-                    //                        }
-                    //                    }
-                    //                    Text("Singles")
-                    //                        .font(.system(size: 24, weight: .bold))
-                    //                    Spacer()
-                    //                    Button {
-                    //                        singlesModeSelected.toggle()
-                    //                    } label: {
-                    //                        if !singlesModeSelected {
-                    //                            Image(systemName: "x.square")
-                    //                                .resizable()
-                    //                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-                    //                        } else {
-                    //                            Image(systemName: "square")
-                    //                                .resizable()
-                    //                                .frame(width: UIScreen.main.bounds.size.width * 0.05, height: UIScreen.main.bounds.size.width * 0.05)
-                    //                        }
-                    //                    }
-                    //                    Text("Doubles")
-                    //                        .font(.system(size: 24, weight: .bold))
-                    //                    Spacer()
-                    //                }
                     .padding()
                     Spacer()
                     // Begin game button.
