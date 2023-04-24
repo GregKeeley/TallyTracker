@@ -60,7 +60,7 @@ struct MainMenuPortraitView: View {
                     CustomGameSetupView()
                 } label: {
                     MainMenuGameButtonView(gameTitle: "House Rules",
-                                           description: "Custom game.",
+                                           description: "Customize to your rules.",
                                            imageName: "HouseRulesCube")
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                     .padding()

@@ -24,25 +24,34 @@ struct MainMenuGameButtonView: View {
                 RoundedRectangle(cornerRadius: 27.0)
                     .stroke(lineWidth: 4)
                 VStack {
-                    VStack(alignment: .leading) {
-                        Text(gameTitle)
-                            .font(.system(size: 32, weight: .bold))
-                            .minimumScaleFactor(0.4)
-                        Text(description)
-                            .font(.system(size: 24, weight: .regular))
-                            .minimumScaleFactor(0.4)
+                    
+                    HStack {
+                        VStack(alignment: .leading) {
+                            Text(gameTitle)
+                                .font(Font.custom(AppFonts.poppinsSemiBold, size: 26))
+                                .fontWeight(Font.Weight.bold)
+//                                .minimumScaleFactor(0.4)
+                            Spacer()
+                            Text(description)
+                                .font(Font.custom(AppFonts.poppinsRegular, size: 18))
+                                .fontWeight(Font.Weight.regular)
+//                                .minimumScaleFactor(0.4)
+                        }
+                        .padding()
+                        Spacer()
                     }
-                    .padding()
+                    
                     HStack {
                         Image(imageName)
                             .resizable()
-                            .frame(width: geo.size.width * 0.29)
-//                            .padding()
+//                            .frame(width: geo.size.width * 0.29, height: geo.size.width * 0.29)
                             .aspectRatio(contentMode: .fit)
-                        Spacer()
+//                            .padding()
+//                        Spacer()
                         Image("StartArrow")
                             .padding()
                     }
+                    Spacer()
                 }
             }
         }
