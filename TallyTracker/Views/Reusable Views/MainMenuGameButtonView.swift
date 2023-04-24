@@ -13,27 +13,37 @@ struct MainMenuGameButtonView: View {
     @State var gameTitle: String
     /// Message displayed below the game title, to describer the rules of the games.
     @State var description: String
-    
+    /// Name of the image from assets to be loaded onto the view.
+    // TODO: Make an enum for the image names.
+    @State var imageName: String
     var body: some View {
         ZStack {
-            AppColors.standardWhite
-                .cornerRadius(27.0)
-            RoundedRectangle(cornerRadius: 27.0)
-                .stroke(lineWidth: 4)
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(gameTitle)
-                        .font(.system(size: 32, weight: .bold))
-                        .minimumScaleFactor(0.4)
-                    Text(description)
-                        .font(.system(size: 24, weight: .regular))
-                        .minimumScaleFactor(0.4)
+            GeometryReader { geo in
+                AppColors.standardWhite
+                    .cornerRadius(27.0)
+                RoundedRectangle(cornerRadius: 27.0)
+                    .stroke(lineWidth: 4)
+                VStack {
+                    VStack(alignment: .leading) {
+                        Text(gameTitle)
+                            .font(.system(size: 32, weight: .bold))
+                            .minimumScaleFactor(0.4)
+                        Text(description)
+                            .font(.system(size: 24, weight: .regular))
+                            .minimumScaleFactor(0.4)
+                    }
+                    .padding()
+                    HStack {
+                        Image(imageName)
+                            .resizable()
+                            .frame(width: geo.size.width * 0.29)
+//                            .padding()
+                            .aspectRatio(contentMode: .fit)
+                        Spacer()
+                        Image("StartArrow")
+                            .padding()
+                    }
                 }
-                .padding()
-                Image(systemName: "x.circle")
-                    .resizable()
-                    .padding(40)
-                    .aspectRatio(contentMode: .fit)
             }
         }
     }
@@ -46,7 +56,9 @@ struct MainMenuGameButtonView: View {
 struct MainMenuGameButtonView_Previews: PreviewProvider {
     
     static var previews: some View {
-        MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")
-            .previewLayout(.sizeThatFits)
+        MainMenuGameButtonView(gameTitle: "Official Rules",
+                               description: "Play to 11. Win by 2. Best of 5.",
+                               imageName: "Starburst")
+        .previewLayout(.sizeThatFits)
     }
 }

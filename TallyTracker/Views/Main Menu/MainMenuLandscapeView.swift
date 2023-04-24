@@ -29,7 +29,7 @@ struct MainMenuLandscapeView: View {
                     Image(systemName: "gear")
                         .resizable()
                         .frame(width: 28, height: 28)
-                    .padding(.trailing)
+                        .padding(.trailing)
                 }
                 Spacer()
                 VStack {
@@ -46,16 +46,20 @@ struct MainMenuLandscapeView: View {
                                                                    teamsAutomaticallySwitchSides: true))
                         } label: {
                             // TODO: Refactor this button view to not have a reference directly to GameViewModel.
-                            MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                            MainMenuGameButtonView(gameTitle: "Official Rules",
+                                                   description: "Play to 11. Win by 2. Best of 5.",
+                                                   imageName: "Starburst")
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                         .isDetailLink(false)
                         Spacer(minLength: 40)
                         NavigationLink {
                             CustomGameSetupView()
                         } label: {
-                            MainMenuGameButtonView(gameTitle: "House Rules", description: "Custom game.")
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
+                            MainMenuGameButtonView(gameTitle: "House Rules",
+                                                   description: "Custom game.",
+                                                   imageName: "HouseRulesCube")
+                            .foregroundColor(colorScheme == .dark ? .white : .black)
                         }
                     }
                     .frame(width: UIScreen.main.bounds.size.width * 0.8, height: UIScreen.main.bounds.size.height * 0.3)

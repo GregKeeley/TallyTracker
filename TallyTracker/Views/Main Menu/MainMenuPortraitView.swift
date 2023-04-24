@@ -23,8 +23,8 @@ struct MainMenuPortraitView: View {
                     Image("LogoWhite")
                     Spacer()
                     Image("SettingsButton")
-//                        .resizable()
-//                        .frame(width: 28, height: 28)
+                    //                        .resizable()
+                    //                        .frame(width: 28, height: 28)
                         .padding(.trailing)
                 }
                 // TODO: Move this ZStack to it's own subview.
@@ -50,16 +50,20 @@ struct MainMenuPortraitView: View {
                                                                                    firstTeamIsServing: true,
                                                                                    matchLimit: 5,
                                                                                    teamsAutomaticallySwitchSides: true))) {
-                    MainMenuGameButtonView(gameTitle: "Official Rules", description: "Play to 11. Win by 2. Best of 5.")
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .padding()
+                    MainMenuGameButtonView(gameTitle: "Official Rules",
+                                           description: "Play to 11. Win by 2. Best of 5."
+                                           ,imageName: "Starburst")
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                    .padding()
                 }
                 NavigationLink {
                     CustomGameSetupView()
                 } label: {
-                    MainMenuGameButtonView(gameTitle: "House Rules", description: "Custom game.")
-                        .foregroundColor(colorScheme == .dark ? .white : .black)
-                        .padding()
+                    MainMenuGameButtonView(gameTitle: "House Rules",
+                                           description: "Custom game.",
+                                           imageName: "HouseRulesCube")
+                    .foregroundColor(colorScheme == .dark ? .white : .black)
+                    .padding()
                 }
                 
                 Spacer()
