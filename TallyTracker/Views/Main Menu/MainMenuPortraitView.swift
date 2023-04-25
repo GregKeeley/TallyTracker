@@ -52,7 +52,7 @@ struct MainMenuPortraitView: View {
                                                                                    teamsAutomaticallySwitchSides: true))) {
                     MainMenuGameButtonView(gameTitle: "Official Rules",
                                            description: "Play to 11. Win by 2. Best of 5."
-                                           ,imageName: "Starburst")
+                                           ,imageName: "StarburstRev")
                     .foregroundColor(colorScheme == .dark ? .white : .black)
                     .padding()
                 }
