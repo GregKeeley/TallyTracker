@@ -16,6 +16,7 @@ struct MainMenuGameButtonView: View {
     /// Name of the image from assets to be loaded onto the view.
     // TODO: Make an enum for the image names.
     @State var imageName: String
+    
     var body: some View {
         ZStack {
             GeometryReader { geo in
@@ -43,14 +44,15 @@ struct MainMenuGameButtonView: View {
                     
                     HStack {
                         Image(imageName)
-                            .resizable()
-//                            .frame(width: geo.size.width * 0.29, height: geo.size.width * 0.29)
-                            .aspectRatio(contentMode: .fit)
-//                            .padding()
-//                        Spacer()
+                            .padding(.leading)
+                        Spacer()
                         Image("StartArrow")
-                            .padding()
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: geo.size.width * 0.5)
+                            .padding(.trailing)
                     }
+                    .padding(.bottom)
                     Spacer()
                 }
             }
