@@ -40,15 +40,28 @@ struct CustomGameSetupView: View {
     
     // MARK: - Body
     var body: some View {
-        ScrollView {
+        GeometryReader { geo in
             ZStack {
-                VStack(alignment: .leading) {
+                AppColors.primaryGreen
+                    .ignoresSafeArea()
+                VStack {
+                    HStack {
+                        Image("BackButton")
+                        Spacer()
+                    }
+                    .frame(width: geo.size.width * 0.872)
                     
-                    // House Rules
-                    Text("House Rules")
-                        .font(.system(size: 48, weight: .bold))
-                        .underline()
-                        .padding()
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 27)
+                            .stroke(lineWidth: 4)
+                            .frame(width: geo.size.width * 0.872, height: geo.size.height * 0.08)
+                            .background(AppColors.primaryLightGreen.cornerRadius(27))
+                            .padding()
+                        // House Rules
+                        Text("Create Rules")
+                            .font(Font.custom(AppFonts.poppinsSemiBold, size: 40))
+                            .padding()
+                    }
                     
                     // SET POINTS
                     HStack {
