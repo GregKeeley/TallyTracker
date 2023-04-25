@@ -60,155 +60,167 @@ struct CustomGameSetupView: View {
                         // House Rules
                         Text("Create Rules")
                             .font(Font.custom(AppFonts.poppinsSemiBold, size: 40))
+                            .minimumScaleFactor(0.4)
                             .padding()
                     }
-                    
-                    // SET POINTS
-                    HStack {
-                        Text("Set Points")
-                            .font(.system(size: 24, weight: .bold))
-                        Spacer()
-                        AdjustableCounterView(currentValue: 1,
-                                              maxValue: 25,
-                                              minValue: 3)
-                    }
-                    .padding()
-                    
-                    // # of serves before rotation
-                    HStack {
-                        Text("# of serves per rotation")
-                            .font(.system(size: 24, weight: .bold))
-                        Spacer()
-                        Button {
-                            // Decrement serves, only if above 3 serves.
-                            if servesPerRotation > 3 {
-                                servesPerRotation -= 1
-                            }
-                        } label: {
-                            Text("-")
-                                .font(.system(size: 32, weight: .regular))
-                        }
-                        Text(servesPerRotation.description)
-                            .font(.system(size: 32, weight: .regular))
-                        Button {
-                            // Increment serves, max of 7.
-                            if servesPerRotation < 7 {
-                                servesPerRotation += 1
-                            }
-                        } label: {
-                            Text("+")
-                                .font(.system(size: 32, weight: .regular))
-                        }
-                    }
-                    .padding(.top)
-                    .padding(.horizontal)
-                    HStack {
-                        Text("Auto Switch")
-                            .lineLimit(2)
-                            .minimumScaleFactor(0.4)
-                            .font(.system(size: 24, weight: .bold))
-                        Spacer()
-                        Button {
-                            automaticallySwitchSides.toggle()
-                        } label: {
-                            Image(systemName: automaticallySwitchSides ? "x.square" : "square")
-                                .resizable()
-                                .frame(width: UIScreen.main.bounds.size.width * 0.07, height: UIScreen.main.bounds.size.width * 0.07)
-                        }
-                        .padding(.horizontal, 24)
-                    }
-                    .padding(.horizontal)
-                    
-                    // Team color
-                    HStack {
-                        Spacer()
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 27)
+                            .stroke(lineWidth: 4)
+                            .frame(width: geo.size.width * 0.872)
+                            .background(AppColors.standardWhite.cornerRadius(27))
+                        
                         VStack {
-                            ColorPicker("", selection: $team1Color)
-                                .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
-                            Button {
-                                isEditingTeam1Name = true
-                            } label: {
-                                Text(team1Name)
-                                    .font(.system(size: 32, weight: .bold))
-                                    .foregroundColor(team1Color)
-                                Image(systemName: "pencil")
-                                    .resizable()
-                                    .foregroundColor(team1Color)
-                                    .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
+                            // SET POINTS
+                            HStack {
+                                Text("Set Points")
+                                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+//                                    .minimumScaleFactor(0.4)
+                                    .padding()
+                                Spacer()
+                                AdjustableCounterView(currentValue: 1,
+                                                      maxValue: 25,
+                                                      minValue: 3)
                             }
-                            Spacer(minLength: 24)
-                            ColorPicker("", selection: $team2Color)
-                                .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
-                            Button {
-                                isEditingTeam2Name = true
-                            } label: {
-                                HStack {
-                                    Text(team2Name)
-                                        .font(.system(size: 32, weight: .bold))
-                                        .foregroundColor(team2Color)
-                                    Image(systemName: "pencil")
-                                        .resizable()
-                                        .foregroundColor(team2Color)
-                                        .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
+                            .padding()
+                            
+                            // # of serves before rotation
+                            HStack {
+                                Text("# of serves per rotation")
+                                    .font(.system(size: 24, weight: .bold))
+                                Spacer()
+                                Button {
+                                    // Decrement serves, only if above 3 serves.
+                                    if servesPerRotation > 3 {
+                                        servesPerRotation -= 1
+                                    }
+                                } label: {
+                                    Text("-")
+                                        .font(.system(size: 32, weight: .regular))
+                                }
+                                Text(servesPerRotation.description)
+                                    .font(.system(size: 32, weight: .regular))
+                                Button {
+                                    // Increment serves, max of 7.
+                                    if servesPerRotation < 7 {
+                                        servesPerRotation += 1
+                                    }
+                                } label: {
+                                    Text("+")
+                                        .font(.system(size: 32, weight: .regular))
                                 }
                             }
-                            Spacer()
-                        }
-                        .padding()
-                        Spacer()
-                    }
-                    
-                    // Games Per Match
-                    HStack {
-                        Text("Game Per Match")
-                            .font(.system(size: 24, weight: .bold))
-                        Spacer()
-                        Button {
-                            // Decrement game per match. 1 game minimum.
-                            if matchLimit > 1 {
-                                matchLimit -= 1
+                            .padding(.top)
+                            .padding(.horizontal)
+                            HStack {
+                                Text("Auto Switch")
+                                    .lineLimit(2)
+                                    .minimumScaleFactor(0.4)
+                                    .font(.system(size: 24, weight: .bold))
+                                Spacer()
+                                Button {
+                                    automaticallySwitchSides.toggle()
+                                } label: {
+                                    Image(systemName: automaticallySwitchSides ? "x.square" : "square")
+                                        .resizable()
+                                        .frame(width: UIScreen.main.bounds.size.width * 0.07, height: UIScreen.main.bounds.size.width * 0.07)
+                                }
+                                .padding(.horizontal, 24)
                             }
-                        } label: {
-                            Text("-")
-                                .font(.system(size: 32, weight: .regular))
+                            .padding(.horizontal)
+                            
+                            // Team color
+                            HStack {
+                                Spacer()
+                                VStack {
+                                    ColorPicker("", selection: $team1Color)
+                                        .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
+                                    Button {
+                                        isEditingTeam1Name = true
+                                    } label: {
+                                        Text(team1Name)
+                                            .font(.system(size: 32, weight: .bold))
+                                            .foregroundColor(team1Color)
+                                        Image(systemName: "pencil")
+                                            .resizable()
+                                            .foregroundColor(team1Color)
+                                            .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
+                                    }
+                                    Spacer(minLength: 24)
+                                    ColorPicker("", selection: $team2Color)
+                                        .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
+                                    Button {
+                                        isEditingTeam2Name = true
+                                    } label: {
+                                        HStack {
+                                            Text(team2Name)
+                                                .font(.system(size: 32, weight: .bold))
+                                                .foregroundColor(team2Color)
+                                            Image(systemName: "pencil")
+                                                .resizable()
+                                                .foregroundColor(team2Color)
+                                                .frame(width: UIScreen.main.bounds.size.width * 0.075, height: UIScreen.main.bounds.size.width * 0.075)
+                                        }
+                                    }
+                                    Spacer()
+                                }
+                                .padding()
+                                Spacer()
+                            }
+                            
+                            // Games Per Match
+                            HStack {
+                                Text("Game Per Match")
+                                    .font(.system(size: 24, weight: .bold))
+                                Spacer()
+                                Button {
+                                    // Decrement game per match. 1 game minimum.
+                                    if matchLimit > 1 {
+                                        matchLimit -= 1
+                                    }
+                                } label: {
+                                    Text("-")
+                                        .font(.system(size: 32, weight: .regular))
+                                }
+                                Text(matchLimit.description)
+                                    .font(.system(size: 32, weight: .regular))
+                                Button {
+                                    // Increment games per match, mo maxiumum.
+                                    matchLimit += 1
+                                } label: {
+                                    Text("+")
+                                        .font(.system(size: 32, weight: .regular))
+                                }
+                            }
+                            .padding()
+                            // Begin game button.
+                            HStack {
+                                Spacer()
+                                NavigationLink {
+                                    let viewModel = GameViewModel(serveLimit: servesPerRotation,
+                                                                  scoreLimit: maxScore,
+                                                                  firstTeamColor: team1Color,
+                                                                  secondTeamColor: team2Color,
+                                                                  firstTeamName: team1Name,
+                                                                  secondTeamName: team2Name,
+                                                                  firstTeamIsServing: true,
+                                                                  matchLimit: matchLimit,
+                                                                  teamsAutomaticallySwitchSides: automaticallySwitchSides)
+                                    GameTallyView(viewModel: viewModel)
+                                } label: {
+                                    Text("BEGIN")
+                                        .font(.system(size: 48, weight: .bold))
+                                        .frame(maxWidth: UIScreen.main.bounds.size.width * 0.5)
+                                        .foregroundColor(colorScheme == .dark ? .white : .black)
+                                        .background(colorScheme == .dark ? .black : .white)
+                                        .cornerRadius(8.0)
+                                        .ignoresSafeArea()
+                                        .colorInvert()
+                                }
+                                Spacer()
+                            }
                         }
-                        Text(matchLimit.description)
-                            .font(.system(size: 32, weight: .regular))
-                        Button {
-                            // Increment games per match, mo maxiumum.
-                            matchLimit += 1
-                        } label: {
-                            Text("+")
-                                .font(.system(size: 32, weight: .regular))
-                        }
-                    }
-                    .padding()
-                    Spacer()
-                    // Begin game button.
-                    HStack {
                         Spacer()
-                        NavigationLink {
-                            let viewModel = GameViewModel(serveLimit: servesPerRotation,
-                                                          scoreLimit: maxScore,
-                                                          firstTeamColor: team1Color,
-                                                          secondTeamColor: team2Color,
-                                                          firstTeamName: team1Name,
-                                                          secondTeamName: team2Name,
-                                                          firstTeamIsServing: true,
-                                                          matchLimit: matchLimit,
-                                                          teamsAutomaticallySwitchSides: automaticallySwitchSides)
-                            GameTallyView(viewModel: viewModel)
-                        } label: {
-                            Text("BEGIN")
-                                .font(.system(size: 48, weight: .bold))
-                                .frame(maxWidth: UIScreen.main.bounds.size.width * 0.5)
-                                .foregroundColor(colorScheme == .dark ? .white : .black)
-                                .background(colorScheme == .dark ? .black : .white)
-                                .cornerRadius(8.0)
-                                .ignoresSafeArea()
-                                .colorInvert()
-                        }
-                        Spacer()
+                        
                     }
                     .padding()
                 }
