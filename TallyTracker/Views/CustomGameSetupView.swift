@@ -74,59 +74,39 @@ struct CustomGameSetupView: View {
                             HStack {
                                 Text("Set Points")
                                     .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
-//                                    .minimumScaleFactor(0.4)
                                     .padding()
                                 Spacer()
                                 AdjustableCounterView(currentValue: 1,
                                                       maxValue: 25,
                                                       minValue: 3)
                             }
-                            .padding()
+                            .padding(.top)
+                            .padding(.horizontal)
                             
                             // # of serves before rotation
                             HStack {
-                                Text("# of serves per rotation")
-                                    .font(.system(size: 24, weight: .bold))
+                                Text("Serves per rotation")
+                                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+                                    .padding(.horizontal)
                                 Spacer()
-                                Button {
-                                    // Decrement serves, only if above 3 serves.
-                                    if servesPerRotation > 3 {
-                                        servesPerRotation -= 1
-                                    }
-                                } label: {
-                                    Text("-")
-                                        .font(.system(size: 32, weight: .regular))
-                                }
-                                Text(servesPerRotation.description)
-                                    .font(.system(size: 32, weight: .regular))
-                                Button {
-                                    // Increment serves, max of 7.
-                                    if servesPerRotation < 7 {
-                                        servesPerRotation += 1
-                                    }
-                                } label: {
-                                    Text("+")
-                                        .font(.system(size: 32, weight: .regular))
-                                }
+                                AdjustableCounterView(currentValue: 1,
+                                                      maxValue: 5,
+                                                      minValue: 2)
                             }
                             .padding(.top)
                             .padding(.horizontal)
+                            
+                            // Games Per Match
                             HStack {
-                                Text("Auto Switch")
-                                    .lineLimit(2)
-                                    .minimumScaleFactor(0.4)
-                                    .font(.system(size: 24, weight: .bold))
+                                Text("Game Per Match")
+                                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+                                    .padding(.horizontal)
                                 Spacer()
-                                Button {
-                                    automaticallySwitchSides.toggle()
-                                } label: {
-                                    Image(systemName: automaticallySwitchSides ? "x.square" : "square")
-                                        .resizable()
-                                        .frame(width: UIScreen.main.bounds.size.width * 0.07, height: UIScreen.main.bounds.size.width * 0.07)
-                                }
-                                .padding(.horizontal, 24)
+                                AdjustableCounterView(currentValue: 1,
+                                                      maxValue: 10,
+                                                      minValue: 1)
                             }
-                            .padding(.horizontal)
+                            .padding()
                             
                             // Team color
                             HStack {
@@ -167,31 +147,6 @@ struct CustomGameSetupView: View {
                                 Spacer()
                             }
                             
-                            // Games Per Match
-                            HStack {
-                                Text("Game Per Match")
-                                    .font(.system(size: 24, weight: .bold))
-                                Spacer()
-                                Button {
-                                    // Decrement game per match. 1 game minimum.
-                                    if matchLimit > 1 {
-                                        matchLimit -= 1
-                                    }
-                                } label: {
-                                    Text("-")
-                                        .font(.system(size: 32, weight: .regular))
-                                }
-                                Text(matchLimit.description)
-                                    .font(.system(size: 32, weight: .regular))
-                                Button {
-                                    // Increment games per match, mo maxiumum.
-                                    matchLimit += 1
-                                } label: {
-                                    Text("+")
-                                        .font(.system(size: 32, weight: .regular))
-                                }
-                            }
-                            .padding()
                             // Begin game button.
                             HStack {
                                 Spacer()
@@ -218,9 +173,8 @@ struct CustomGameSetupView: View {
                                 }
                                 Spacer()
                             }
+                            Spacer()
                         }
-                        Spacer()
-                        
                     }
                     .padding()
                 }
