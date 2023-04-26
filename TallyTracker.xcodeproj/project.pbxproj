@@ -20,6 +20,7 @@
 		375A11BB299C4D3A00830277 /* MainMenuOrientationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */; };
 		375A11BD299C517100830277 /* MainMenuLandscapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375A11BC299C517100830277 /* MainMenuLandscapeView.swift */; };
 		375C898629F5969B00A0DE3C /* AppFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375C898529F5969B00A0DE3C /* AppFonts.swift */; };
+		376160C529F993F8001D1360 /* SimpleCircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376160C429F993F8001D1360 /* SimpleCircleButtonView.swift */; };
 		3767899129CB54C000E89721 /* MatchWinsCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3767899029CB54C000E89721 /* MatchWinsCounterView.swift */; };
 		376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48DB299AF2FA00801CBA /* TallyButtonView.swift */; };
 		377C210F29CF361D00DFAC58 /* OffsetCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */; };
@@ -48,6 +49,7 @@
 		375A11BA299C4D3A00830277 /* MainMenuOrientationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuOrientationView.swift; sourceTree = "<group>"; };
 		375A11BC299C517100830277 /* MainMenuLandscapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuLandscapeView.swift; sourceTree = "<group>"; };
 		375C898529F5969B00A0DE3C /* AppFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFonts.swift; sourceTree = "<group>"; };
+		376160C429F993F8001D1360 /* SimpleCircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleCircleButtonView.swift; sourceTree = "<group>"; };
 		3764845F29B398EF0056C409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3767899029CB54C000E89721 /* MatchWinsCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchWinsCounterView.swift; sourceTree = "<group>"; };
 		376C48DB299AF2FA00801CBA /* TallyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonView.swift; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				37CDBF7329C21E3500D59B28 /* ChangeValueButtonView.swift */,
 				37343DE129C8A825005810CA /* ServeCounterView.swift */,
 				377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */,
+				376160C429F993F8001D1360 /* SimpleCircleButtonView.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -232,6 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376160C529F993F8001D1360 /* SimpleCircleButtonView.swift in Sources */,
 				37EC425929E9EA8100CB1F76 /* SplashScreenView.swift in Sources */,
 				37C980E529B4F96E0069B7B7 /* ParticlesModifier.swift in Sources */,
 				375A11BD299C517100830277 /* MainMenuLandscapeView.swift in Sources */,

@@ -23,15 +23,7 @@ struct AdjustableCounterView: View {
                         currentValue -= 1
                     }
                 } label: {
-                    ZStack {
-                        Circle()
-                            .foregroundColor(AppColors.neutralGray2)
-                            .frame(width: 40, height: 40)
-                        Image(systemName: "minus.circle")
-                            .resizable()
-                            .clipShape(Circle())
-                            .frame(width: 42.5, height: 42.5)
-                    }
+                    SimpleCircleButtonView()
                 }
                 .foregroundColor(.black)
                 Spacer()
@@ -59,7 +51,7 @@ struct AdjustableCounterView: View {
             .frame(width: 130, height: 40)
             Capsule()
                 .stroke(lineWidth: 4.0)
-                .frame(width: 127.5, height: 40)
+                .frame(width: UIScreen.main.bounds.width * 0.38, height: UIScreen.main.bounds.height * 0.049)
         }
     }
 }
