@@ -16,43 +16,36 @@ struct AdjustableCounterView: View {
     @State var minValue: Int
     
     var body: some View {
-        ZStack {
-            HStack {
+        ZStack(alignment: .center) {
+            HStack(alignment: .center) {
                 Button {
                     if currentValue > minValue {
                         currentValue -= 1
                     }
                 } label: {
-                    SimpleCircleButtonView()
+                    SimpleCircleButtonView(imageName: "minus.circle", color: AppColors.neutralGray1)
                 }
                 .foregroundColor(.black)
-                Spacer()
+                
                 Text("\(currentValue)")
-                    .font(Font.custom(AppFonts.poppinsRegular, size: 40))
-                    .minimumScaleFactor(0.5)
+                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 40))
+                    .minimumScaleFactor(0.4)
                 Spacer()
                 Button {
                     if currentValue < maxValue {
                         currentValue += 1
                     }
                 } label: {
-                    ZStack {
-                        Circle()
-                            .foregroundColor(AppColors.primaryGreen)
-                            .frame(width: 40, height: 40)
-                        Image(systemName: "plus.circle")
-                            .resizable()
-                            .clipShape(Circle())
-                            .frame(width: 42.5, height: 42.5)
-                    }
+                    SimpleCircleButtonView(imageName: "plus.circle", color: AppColors.primaryLightGreen)
                 }
                 .foregroundColor(.black)
             }
-            .frame(width: 130, height: 40)
+            .frame(width: UIScreen.main.bounds.width * 0.38, height: UIScreen.main.bounds.height * 0.049)
             Capsule()
                 .stroke(lineWidth: 4.0)
-                .frame(width: UIScreen.main.bounds.width * 0.38, height: UIScreen.main.bounds.height * 0.049)
+                .frame(width: UIScreen.main.bounds.width * 0.37, height: UIScreen.main.bounds.height * 0.049)
         }
+        .padding(.horizontal)
     }
 }
 

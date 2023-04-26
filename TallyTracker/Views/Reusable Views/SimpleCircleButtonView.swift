@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct SimpleCircleButtonView: View {
+    @State var imageName: String
+    @State var color: Color
     var body: some View {
         GeometryReader { geo in
             ZStack {
                 Circle()
-                    .foregroundColor(AppColors.neutralGray2)
+                    .foregroundColor(color)
                     .frame(width: geo.size.height, height: geo.size.height)
-                Image(systemName: "minus.circle")
+                Image(systemName: imageName)
                     .resizable()
                     .clipShape(Circle())
-                    .frame(width: 42.5, height: 42.5)
+                    .frame(width: geo.size.height * 1.05, height: geo.size.height * 1.05)
             }
         }
     }
@@ -28,7 +30,7 @@ struct SimpleCircleButtonView: View {
 //MARK: - Previews
 struct SimpleCircleButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        SimpleCircleButtonView()
+        SimpleCircleButtonView(imageName: "minus.circle", color: AppColors.neutralGray1)
             .previewLayout(.sizeThatFits)
     }
 }
