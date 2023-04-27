@@ -24,9 +24,10 @@ struct AdjustableCounterView: View {
                     }
                 } label: {
                     SimpleCircleButtonView(imageName: "minus.circle", color: AppColors.neutralGray1)
+                        .frame(width: UIScreen.main.bounds.height * 0.049, height: UIScreen.main.bounds.height * 0.049)
                 }
                 .foregroundColor(.black)
-                
+                Spacer()
                 Text("\(currentValue)")
                     .font(Font.custom(AppFonts.poppinsSemiBold, size: 40))
                     .minimumScaleFactor(0.4)
@@ -37,6 +38,7 @@ struct AdjustableCounterView: View {
                     }
                 } label: {
                     SimpleCircleButtonView(imageName: "plus.circle", color: AppColors.primaryLightGreen)
+                        .frame(width: UIScreen.main.bounds.height * 0.049, height: UIScreen.main.bounds.height * 0.049)
                 }
                 .foregroundColor(.black)
             }
