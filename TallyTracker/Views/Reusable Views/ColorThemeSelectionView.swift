@@ -20,8 +20,8 @@ import SwiftUI
 struct ColorThemeSelectionView: View {
     var cornerRadius: CGFloat = 8
     var body: some View {
-        ZStack {
-            GeometryReader{ geo in
+        GeometryReader{ geo in
+            ZStack {
                 // Bottom Corner
                 ColorSelectionShape()
                     .fill(.red)
@@ -48,6 +48,20 @@ struct ColorThemeSelectionView: View {
                     .rotationEffect(Angle(degrees: 45))
                     .position(x: geo.size.width)
                     .cornerRadius(cornerRadius)
+            }
+            VStack {
+                HStack {
+                    Text("1")
+                        .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+                        .frame(width: geo.size.width / 2, height: geo.size.height / 2)
+                    Spacer()
+                }
+                HStack {
+                    Spacer()
+                    Text("2")
+                        .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+                        .frame(width: geo.size.width / 2, height: geo.size.height / 2)
+                }
             }
         }
     }
