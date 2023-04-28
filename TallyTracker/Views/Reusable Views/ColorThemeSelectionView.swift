@@ -18,31 +18,36 @@ struct ColorSelectionShape: Shape {
 import SwiftUI
 
 struct ColorThemeSelectionView: View {
+    var cornerRadius: CGFloat = 8
     var body: some View {
         ZStack {
             GeometryReader{ geo in
+                // Bottom Corner
                 ColorSelectionShape()
                     .fill(.red)
-                    .cornerRadius(4)
+                    .cornerRadius(cornerRadius)
+                // Top Corner
                 ColorSelectionShape()
                     .fill(.green)
                     .rotationEffect(Angle(degrees: 180))
-                    .cornerRadius(4)
+                    .cornerRadius(cornerRadius)
+                // Top corner edge
                 ColorSelectionShape()
                     .stroke(lineWidth: 8)
                     .fill(.black)
                     .rotationEffect(Angle(degrees: 180))
-                    .cornerRadius(4)
+                    .cornerRadius(cornerRadius)
+                // Bottom corner edge
                 ColorSelectionShape()
                     .stroke(lineWidth: 8)
                     .fill(.black)
-                    .cornerRadius(4)
-//                Rectangle()
-//                    .stroke(lineWidth: 8)
-//                    .cornerRadius(4)
-//                Rectangle()
-//                    .frame(width: geo.size.width * 0.05, height: geo.size.height * 3)
-//                    .rotationEffect(Angle(degrees: 45))
+                    .cornerRadius(cornerRadius)
+                // Diagonal through line.
+                Rectangle()
+                    .frame(width: geo.size.width * 0.05, height: geo.size.height * 3)
+                    .rotationEffect(Angle(degrees: 45))
+                    .position(x: geo.size.width)
+                    .cornerRadius(cornerRadius)
             }
         }
     }
