@@ -15,6 +15,7 @@ struct ColorSelectionShape: Shape {
         return path
     }
 }
+
 import SwiftUI
 
 struct ColorThemeSelectionView: View {
@@ -42,9 +43,11 @@ struct ColorThemeSelectionView: View {
                     .stroke(lineWidth: 8)
                     .fill(.black)
                     .cornerRadius(cornerRadius)
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .stroke(lineWidth: geo.size.width * 0.05)
                 // Diagonal through line.
                 Rectangle()
-                    .frame(width: geo.size.width * 0.05, height: geo.size.height * 3)
+                    .frame(width: geo.size.width * 0.05, height: geo.size.width * 3)
                     .rotationEffect(Angle(degrees: 45))
                     .position(x: geo.size.width)
                     .cornerRadius(cornerRadius)
@@ -52,15 +55,19 @@ struct ColorThemeSelectionView: View {
             VStack {
                 HStack {
                     Text("1")
-                        .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+                        .font(Font.custom(AppFonts.poppinsSemiBold, size: 148))
+                        .minimumScaleFactor(0.2)
                         .frame(width: geo.size.width / 2, height: geo.size.height / 2)
+                        .offset(x: 4, y: 4)
                     Spacer()
                 }
                 HStack {
                     Spacer()
                     Text("2")
-                        .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+                        .font(Font.custom(AppFonts.poppinsSemiBold, size: 148))
+                        .minimumScaleFactor(0.2)
                         .frame(width: geo.size.width / 2, height: geo.size.height / 2)
+                        .offset(x: -8, y: -8)
                 }
             }
         }
@@ -74,6 +81,7 @@ struct ColorThemeSelectionView_Previews: PreviewProvider {
     static var previews: some View {
         ColorThemeSelectionView()
             .previewLayout(.sizeThatFits)
+            .aspectRatio(contentMode: .fit)
             .frame(width: 80, height: 80)
     }
 }
