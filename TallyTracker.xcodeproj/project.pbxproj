@@ -25,6 +25,7 @@
 		3767899129CB54C000E89721 /* MatchWinsCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3767899029CB54C000E89721 /* MatchWinsCounterView.swift */; };
 		376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48DB299AF2FA00801CBA /* TallyButtonView.swift */; };
 		377C210F29CF361D00DFAC58 /* OffsetCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */; };
+		378A785629FEF09C002B8441 /* Poppins in Resources */ = {isa = PBXBuildFile; fileRef = 378A785429FEF09C002B8441 /* Poppins */; };
 		37AB9F5B29F09A42009A22C6 /* AdjustableCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AB9F5A29F09A42009A22C6 /* AdjustableCounterView.swift */; };
 		37C980E329B4F04E0069B7B7 /* GeometryEffect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C980E229B4F04E0069B7B7 /* GeometryEffect.swift */; };
 		37C980E529B4F96E0069B7B7 /* ParticlesModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */; };
@@ -56,6 +57,7 @@
 		3767899029CB54C000E89721 /* MatchWinsCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchWinsCounterView.swift; sourceTree = "<group>"; };
 		376C48DB299AF2FA00801CBA /* TallyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonView.swift; sourceTree = "<group>"; };
 		377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetCircleView.swift; sourceTree = "<group>"; };
+		378A785429FEF09C002B8441 /* Poppins */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Poppins; sourceTree = "<group>"; };
 		37AB9F5A29F09A42009A22C6 /* AdjustableCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableCounterView.swift; sourceTree = "<group>"; };
 		37C980E229B4F04E0069B7B7 /* GeometryEffect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryEffect.swift; sourceTree = "<group>"; };
 		37C980E429B4F96E0069B7B7 /* ParticlesModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParticlesModifier.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 		370A877E2997E68D00CAB1E2 /* TallyTracker */ = {
 			isa = PBXGroup;
 			children = (
+				378A785729FEF0B1002B8441 /* Custom Fonts */,
 				37343DDF29C4DDBB005810CA /* pop.mp3 */,
 				3764845F29B398EF0056C409 /* Info.plist */,
 				370A877F2997E68D00CAB1E2 /* TallyTrackerApp.swift */,
@@ -118,6 +121,14 @@
 				370A87862997E68E00CAB1E2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		378A785729FEF0B1002B8441 /* Custom Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				378A785429FEF09C002B8441 /* Poppins */,
+			);
+			path = "Custom Fonts";
 			sourceTree = "<group>";
 		};
 		37D9FFED299D91E2009E6729 /* Views */ = {
@@ -225,6 +236,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				378A785629FEF09C002B8441 /* Poppins in Resources */,
 				37343DE029C4DDBB005810CA /* pop.mp3 in Resources */,
 				37343DDE29C4DC70005810CA /* Assets.xcassets in Resources */,
 				370A87872997E68E00CAB1E2 /* Preview Assets.xcassets in Resources */,
