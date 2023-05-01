@@ -5,7 +5,7 @@
 //  Created by Gregory Keeley on 4/23/23.
 //
 
-import Foundation
+import SwiftUI
 
 struct AppFonts {
     // Standard
@@ -15,3 +15,6 @@ struct AppFonts {
     // Medium
     static let poppinsMedium = "Poppins-Medium"
 }
+
+let poppinsMedium = "Poppins-Medium"
+let poppinsSemiBold = "Poppins-SemiBold"

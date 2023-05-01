@@ -73,7 +73,9 @@ struct CustomGameSetupView: View {
                             // SET POINTS
                             HStack {
                                 Text("Set Points")
-                                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+                                    .font(Font.custom(poppinsSemiBold, size: 40))
+                                    .minimumScaleFactor(0.5)
+                                    .lineLimit(1)
                                     .padding()
                                 Spacer()
                                 AdjustableCounterView(currentValue: 1,
@@ -86,7 +88,9 @@ struct CustomGameSetupView: View {
                             // # of serves before rotation
                             HStack {
                                 Text("Serves per rotation")
-                                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+                                    .font(Font.custom(poppinsSemiBold, size: 40))
+                                    .minimumScaleFactor(0.5)
+                                    .lineLimit(2)
                                     .padding(.horizontal)
                                 Spacer()
                                 AdjustableCounterView(currentValue: 1,
@@ -99,7 +103,9 @@ struct CustomGameSetupView: View {
                             // Games Per Match
                             HStack {
                                 Text("Game Per Match")
-                                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 20))
+                                    .font(Font.custom(poppinsSemiBold, size: 40))
+                                    .minimumScaleFactor(0.5)
+                                    .lineLimit(2)
                                     .padding(.horizontal)
                                 Spacer()
                                 AdjustableCounterView(currentValue: 1,

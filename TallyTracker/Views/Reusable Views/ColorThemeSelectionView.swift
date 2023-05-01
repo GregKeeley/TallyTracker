@@ -55,7 +55,7 @@ struct ColorThemeSelectionView: View {
             VStack {
                 HStack {
                     Text("1")
-                        .font(Font.custom(AppFonts.poppinsSemiBold, size: 148))
+                        .font(Font.custom(poppinsSemiBold, size: 148))
                         .minimumScaleFactor(0.2)
                         .frame(width: geo.size.width / 2, height: geo.size.height / 2)
                         .offset(x: 4, y: 4)
