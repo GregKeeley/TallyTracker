@@ -29,7 +29,7 @@ struct AdjustableCounterView: View {
                 .foregroundColor(.black)
                 Spacer()
                 Text("\(currentValue)")
-                    .font(Font.custom(poppinsSemiBold, size: 40))
+                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 40))
                     .minimumScaleFactor(0.4)
                 Spacer()
                 Button {

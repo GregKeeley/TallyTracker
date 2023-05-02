@@ -34,7 +34,7 @@ struct MainMenuGameButtonView: View {
                             //                                .minimumScaleFactor(0.4)
                             Spacer()
                             Text(description)
-                                .font(Font.custom(AppFonts.poppinsRegular, size: 18))
+                                .font(Font.custom(AppFonts.poppinsMedium, size: 18))
                                 .fontWeight(Font.Weight.regular)
                             //                                .minimumScaleFactor(0.4)
                         }

@@ -59,7 +59,7 @@ struct CustomGameSetupView: View {
                             .padding()
                         // House Rules
                         Text("Create Rules")
-                            .font(Font.custom(AppFonts.poppinsSemiBold, size: 40))
+                            .font(.custom(AppFonts.poppinsMedium, size: 40))
                             .minimumScaleFactor(0.4)
                             .padding()
                     }
@@ -73,7 +73,7 @@ struct CustomGameSetupView: View {
                             // SET POINTS
                             HStack {
                                 Text("Set Points")
-                                    .font(Font.custom(poppinsSemiBold, size: 40))
+                                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 40))
                                     .minimumScaleFactor(0.5)
                                     .lineLimit(1)
                                     .padding()
@@ -88,7 +88,7 @@ struct CustomGameSetupView: View {
                             // # of serves before rotation
                             HStack {
                                 Text("Serves per rotation")
-                                    .font(Font.custom(poppinsSemiBold, size: 40))
+                                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 40))
                                     .minimumScaleFactor(0.5)
                                     .lineLimit(2)
                                     .padding(.horizontal)
@@ -103,7 +103,7 @@ struct CustomGameSetupView: View {
                             // Games Per Match
                             HStack {
                                 Text("Game Per Match")
-                                    .font(Font.custom(poppinsSemiBold, size: 40))
+                                    .font(Font.custom(AppFonts.poppinsSemiBold, size: 40))
                                     .minimumScaleFactor(0.5)
                                     .lineLimit(2)
                                     .padding(.horizontal)
