@@ -25,6 +25,7 @@
 		3767899129CB54C000E89721 /* MatchWinsCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3767899029CB54C000E89721 /* MatchWinsCounterView.swift */; };
 		3769FC0E2A016C1C00AE3BA4 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378A785B2A016AF7002B8441 /* Poppins-SemiBold.ttf */; };
 		3769FC0F2A016C1F00AE3BA4 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 378A785A2A016AEC002B8441 /* Poppins-Medium.ttf */; };
+		3769FC112A02DB5C00AE3BA4 /* MainMenuMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3769FC102A02DB5C00AE3BA4 /* MainMenuMessageView.swift */; };
 		376C48DC299AF2FA00801CBA /* TallyButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376C48DB299AF2FA00801CBA /* TallyButtonView.swift */; };
 		377C210F29CF361D00DFAC58 /* OffsetCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */; };
 		37AB9F5B29F09A42009A22C6 /* AdjustableCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37AB9F5A29F09A42009A22C6 /* AdjustableCounterView.swift */; };
@@ -56,6 +57,7 @@
 		376160C629FA9E42001D1360 /* ColorThemeSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorThemeSelectionView.swift; sourceTree = "<group>"; };
 		3764845F29B398EF0056C409 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3767899029CB54C000E89721 /* MatchWinsCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchWinsCounterView.swift; sourceTree = "<group>"; };
+		3769FC102A02DB5C00AE3BA4 /* MainMenuMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuMessageView.swift; sourceTree = "<group>"; };
 		376C48DB299AF2FA00801CBA /* TallyButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TallyButtonView.swift; sourceTree = "<group>"; };
 		377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffsetCircleView.swift; sourceTree = "<group>"; };
 		378A785A2A016AEC002B8441 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Poppins-Medium.ttf"; path = "../../../../Downloads/Poppins Medium/Poppins-Medium.ttf"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 				377C210E29CF361D00DFAC58 /* OffsetCircleView.swift */,
 				376160C429F993F8001D1360 /* SimpleCircleButtonView.swift */,
 				376160C629FA9E42001D1360 /* ColorThemeSelectionView.swift */,
+				3769FC102A02DB5C00AE3BA4 /* MainMenuMessageView.swift */,
 			);
 			path = "Reusable Views";
 			sourceTree = "<group>";
@@ -276,6 +279,7 @@
 				370F633C299EBBA70045ADE3 /* CustomGameSetupView.swift in Sources */,
 				3767899129CB54C000E89721 /* MatchWinsCounterView.swift in Sources */,
 				37343DE229C8A825005810CA /* ServeCounterView.swift in Sources */,
+				3769FC112A02DB5C00AE3BA4 /* MainMenuMessageView.swift in Sources */,
 				37EC425D29EDA7CD00CB1F76 /* ColorExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
