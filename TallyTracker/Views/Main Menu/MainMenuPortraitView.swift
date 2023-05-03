@@ -12,61 +12,63 @@ struct MainMenuPortraitView: View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
-        ZStack {
-            AppColors.primaryGreen
-                .ignoresSafeArea()
-            VStack {
-                HStack {
-                    Image("ContextButton")
-                        .padding(.leading)
+        GeometryReader { geo in
+            ZStack {
+                AppColors.primaryGreen
+                    .ignoresSafeArea()
+                VStack {
+                    HStack {
+                        Image("ContextButton")
+                            .padding(.leading)
+                        Spacer()
+                        Image("LogoWhite")
+                        Spacer()
+                        Image("SettingsButton")
+                        //                        .resizable()
+                        //                        .frame(width: 28, height: 28)
+                            .padding(.trailing)
+                    }
+                    // TODO: Move this ZStack to it's own subview.
+                    ZStack {
+                        AppColors.primaryLightGreen
+                            .cornerRadius(27.0)
+                            .padding()
+                        Text("Start Tallying Your Way To Victory!")
+                            .font(.custom(AppFonts.poppinsSemiBold, size: 40))
+                            .minimumScaleFactor(0.4)
+                            .frame(width: geo.size.width * 0.77, height: geo.size.height * 0.35)
+                        RoundedRectangle(cornerRadius: 27.0)
+                            .stroke(lineWidth: 4)
+                            .padding()
+                    }
+                    Spacer(minLength: geo.size.height * 0.029)
+                    NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 5,
+                                                                                       scoreLimit: 11,
+                                                                                       firstTeamColor: .red,
+                                                                                       secondTeamColor: .blue,
+                                                                                       firstTeamName: "team1",
+                                                                                       secondTeamName: "team2",
+                                                                                       firstTeamIsServing: true,
+                                                                                       matchLimit: 5,
+                                                                                       teamsAutomaticallySwitchSides: true))) {
+                        MainMenuGameButtonView(gameTitle: "Official Rules",
+                                               description: "Play to 11. Win by 2. Best of 5."
+                                               ,imageName: "StarburstRev")
+                        .foregroundColor(.black)
+                        .padding(.horizontal)
+                    }
+                    Spacer(minLength: geo.size.height * 0.029)
+                    NavigationLink {
+                        CustomGameSetupView()
+                    } label: {
+                        MainMenuGameButtonView(gameTitle: "House Rules",
+                                               description: "Customize to your rules.",
+                                               imageName: "HouseRulesCube")
+                        .foregroundColor(.black)
+                        .padding([.horizontal])
+                    }
                     Spacer()
-                    Image("LogoWhite")
-                    Spacer()
-                    Image("SettingsButton")
-                    //                        .resizable()
-                    //                        .frame(width: 28, height: 28)
-                        .padding(.trailing)
                 }
-                // TODO: Move this ZStack to it's own subview.
-                ZStack {
-                    AppColors.primaryLightGreen
-                        .cornerRadius(27.0)
-                        .padding()
-                    Text("Start Tallying Your Way To Victory!")
-                        .font(.system(size: 48))
-                        .fontWeight(.bold)
-                        .minimumScaleFactor(0.4)
-                        .frame(width: 300)
-                    RoundedRectangle(cornerRadius: 27.0)
-                        .stroke(lineWidth: 4)
-                        .padding()
-                }
-                NavigationLink(destination: GameTallyView(viewModel: GameViewModel(serveLimit: 5,
-                                                                                   scoreLimit: 11,
-                                                                                   firstTeamColor: .red,
-                                                                                   secondTeamColor: .blue,
-                                                                                   firstTeamName: "team1",
-                                                                                   secondTeamName: "team2",
-                                                                                   firstTeamIsServing: true,
-                                                                                   matchLimit: 5,
-                                                                                   teamsAutomaticallySwitchSides: true))) {
-                    MainMenuGameButtonView(gameTitle: "Official Rules",
-                                           description: "Play to 11. Win by 2. Best of 5."
-                                           ,imageName: "StarburstRev")
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                    .padding()
-                }
-                NavigationLink {
-                    CustomGameSetupView()
-                } label: {
-                    MainMenuGameButtonView(gameTitle: "House Rules",
-                                           description: "Customize to your rules.",
-                                           imageName: "HouseRulesCube")
-                    .foregroundColor(colorScheme == .dark ? .white : .black)
-                    .padding()
-                }
-                
-                Spacer()
             }
         }
     }
