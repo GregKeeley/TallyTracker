@@ -18,8 +18,8 @@ struct MainMenuGameButtonView: View {
     @State var imageName: String
     
     var body: some View {
-        ZStack {
-            GeometryReader { geo in
+        GeometryReader { geo in
+            ZStack {
                 AppColors.standardWhite
                     .cornerRadius(27.0)
                 RoundedRectangle(cornerRadius: 27.0)
@@ -29,10 +29,10 @@ struct MainMenuGameButtonView: View {
                     HStack {
                         VStack(alignment: .leading) {
                             Text(gameTitle)
-                                .font(Font.custom(AppFonts.poppinsSemiBold, size: 26))
+                                .font(.custom(AppFonts.poppinsSemiBold, size: 40))
                                 .minimumScaleFactor(0.7)
                             Text(description)
-                                .font(Font.custom(AppFonts.poppinsMedium, size: 18))
+                                .font(Font.custom(AppFonts.poppinsMedium, size: 24))
                                 .minimumScaleFactor(0.7)
                         }
                         .padding()
@@ -40,20 +40,17 @@ struct MainMenuGameButtonView: View {
                     }
                     
                     HStack {
+                        Spacer()
                         Image(imageName)
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .padding(.leading)
-                            .frame(width: geo.size.width * 0.25, height: geo.size.width * 0.15)
                         Spacer()
                         Image("StartArrow")
                             .resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(width: geo.size.width * 0.5)
-                            .padding(.trailing)
                     }
+                    .frame(width: geo.size.width * 0.9, height: geo.size.height / 3)
                     .padding(.bottom)
-                    Spacer()
                 }
             }
         }

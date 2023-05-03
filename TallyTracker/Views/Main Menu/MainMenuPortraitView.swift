@@ -54,9 +54,9 @@ struct MainMenuPortraitView: View {
                                                description: "Customize to your rules.",
                                                imageName: "HouseRulesCube")
                         .foregroundColor(.black)
-                        .padding([.horizontal])
+                        .padding([.horizontal, .bottom])
                     }
-                    Spacer()
+                    Spacer(minLength: geo.size.height * 0.029)
                 }
             }
         }
