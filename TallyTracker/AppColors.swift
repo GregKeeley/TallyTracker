@@ -23,4 +23,11 @@ struct AppColors {
     static let secondaryWhite2 = Color.fromHex(hex: "#909925")
     static let standardWhite = Color.fromHex(hex: "#FFFFFF")
     
+    static let secondaryRed = Color.fromHex(hex: "#E10800")
+    static let secondaryPink = Color.fromHex(hex: "#FF417F")
+    static let secondaryOrange = Color.fromHex(hex: "#FF7D05")
+    static let secondaryBlue = Color.fromHex(hex: "#0C41E3")
+    static let secondaryLightBlue = Color.fromHex(hex: "#2B8CFF")
+    static let secondaryMagenta = Color.fromHex(hex: "#CD42FE")
+    
 }

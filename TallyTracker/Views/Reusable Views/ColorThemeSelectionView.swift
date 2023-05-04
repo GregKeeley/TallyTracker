@@ -19,35 +19,25 @@ struct ColorSelectionShape: Shape {
 import SwiftUI
 
 struct ColorThemeSelectionView: View {
-    var cornerRadius: CGFloat = 8
+    var cornerRadius: CGFloat = 25
     var body: some View {
         GeometryReader{ geo in
             ZStack {
                 // Bottom Corner
                 ColorSelectionShape()
-                    .fill(.red)
+                    .fill(AppColors.secondaryRed)
                     .cornerRadius(cornerRadius)
                 // Top Corner
                 ColorSelectionShape()
-                    .fill(.green)
+                    .fill(AppColors.secondaryBlue)
                     .rotationEffect(Angle(degrees: 180))
-                    .cornerRadius(cornerRadius)
-                // Top corner edge
-                ColorSelectionShape()
-                    .stroke(lineWidth: 8)
-                    .fill(.black)
-                    .rotationEffect(Angle(degrees: 180))
-                    .cornerRadius(cornerRadius)
-                // Bottom corner edge
-                ColorSelectionShape()
-                    .stroke(lineWidth: 8)
-                    .fill(.black)
                     .cornerRadius(cornerRadius)
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .stroke(lineWidth: geo.size.width * 0.05)
+                    .stroke(lineWidth: geo.size.width * 0.07)
+//                    .frame(width: geo.size.width * 0.97, height: geo.size.width * 0.97)
                 // Diagonal through line.
                 Rectangle()
-                    .frame(width: geo.size.width * 0.05, height: geo.size.width * 3)
+                    .frame(width: geo.size.width * 0.07, height: geo.size.width * 3)
                     .rotationEffect(Angle(degrees: 45))
                     .position(x: geo.size.width)
                     .cornerRadius(cornerRadius)
@@ -55,20 +45,21 @@ struct ColorThemeSelectionView: View {
             VStack {
                 HStack {
                     Text("1")
-                        .font(Font.custom(AppFonts.poppinsSemiBold, size: 148))
+                        .font(Font.custom(AppFonts.poppinsMedium, size: 148))
                         .minimumScaleFactor(0.2)
                         .frame(width: geo.size.width / 2, height: geo.size.height / 2)
-                        .offset(x: 4, y: 4)
+                        .offset(x: (geo.size.width / 16), y: (geo.size.width / 16))
                     Spacer()
                 }
                 HStack {
-                    Spacer()
+                    Spacer(minLength: geo.size.width * 0.6)
                     Text("2")
-                        .font(Font.custom(AppFonts.poppinsSemiBold, size: 148))
-                        .minimumScaleFactor(0.2)
-                        .frame(width: geo.size.width / 2, height: geo.size.height / 2)
-                        .offset(x: -8, y: -8)
+                        .font(Font.custom(AppFonts.poppinsMedium, size: 36))
+                        .minimumScaleFactor(0.7)
+                        .frame(height: geo.size.height / 3)
+                    Spacer()
                 }
+                .frame(width: geo.size.width, height: geo.size.height / 4)
             }
         }
     }
